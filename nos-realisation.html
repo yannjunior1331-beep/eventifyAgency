@@ -210,6 +210,23 @@
       transform: translateX(6px);
     }
 
+    .bento-card-light {
+      background-color: rgba(255, 255, 255, 0.9) !important;
+    }
+    .bento-card-light .bento-overlay {
+      background: none !important;
+      display: none !important;
+    }
+    .bento-card-light .bento-sector-title {
+      color: #111111 !important;
+    }
+    .bento-card-light .bento-arrow {
+      color: #333333 !important;
+    }
+    .bento-card-light:hover .bento-arrow {
+      color: #000000 !important;
+    }
+
     @media screen and (max-width: 1024px) {
       .section-realisation-bento {
         padding-left: 5%;
@@ -247,7 +264,7 @@
 
     <div class="bento-grid">
       <!-- 1. INSTITUTIONNEL (Hero 8 Cols) -->
-      <a href="institutionel.html" class="bento-card span-8" style="background-color: #ffffff;">
+      <a href="institutionel.html" class="bento-card span-8 bento-card-light" style="background-color: rgba(255, 255, 255, 0.9);">
         <div class="bento-bg-img contain" style="background-image: url('assets/images/nos-realisation/guce_white.png'); background-size: 60% auto;"></div>
         <div class="bento-overlay"></div>
         <div class="bento-content">
@@ -259,7 +276,7 @@
       </a>
 
       <!-- 2. BANQUE & ASSURANCE (4 Cols) -->
-      <a href="banque-and-assurance.html" class="bento-card span-4" style="background-color: #ffffff;">
+      <a href="banque-and-assurance.html" class="bento-card span-4 bento-card-light" style="background-color: rgba(255, 255, 255, 0.9);">
         <div class="bento-bg-img contain" style="background-image: url('assets/images/nos-realisation/ld_assurance_white.jpg'); background-size: 75% auto;"></div>
         <div class="bento-overlay"></div>
         <div class="bento-content">
@@ -283,8 +300,8 @@
       </a>
 
       <!-- 4. INDUSTRIE (4 Cols) -->
-      <a href="industrie.html" class="bento-card span-4" style="background-color: #ffffff;">
-        <div class="bento-bg-img contain" style="background-image: url('assets/images/nos-realisation/Sika_NoClaim_pos_rgb_30.png'); background-size: 70% auto;"></div>
+      <a href="industrie.html" class="bento-card span-4 bento-card-light" style="background-color: rgba(255, 255, 255, 0.9);">
+        <div class="bento-bg-img contain" style="background-image: url('assets/images/nos-realisation/sika_white.svg'); background-size: 70% auto;"></div>
         <div class="bento-overlay"></div>
         <div class="bento-content">
           <h2 class="bento-sector-title">
