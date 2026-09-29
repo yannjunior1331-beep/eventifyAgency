@@ -1291,9 +1291,11 @@ a {
 }
 
 .div-block-18.sika {
-  background-image: url('../images/nos-realisation/sika2.webp');
-  background-size: cover;
+  background-image: url('../images/nos-realisation/Sika_NoClaim_pos_rgb_30.png');
+  background-size: 70% auto;
   background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
 }
 
 .div-block-18.b2bs {
@@ -1331,11 +1333,11 @@ a {
 }
 
 .div-block-18.ld-assurances {
-  background-image: url('../images/nos-realisation/ldassurance_2k.jpg');
+  background-image: url('../images/nos-realisation/ld_assurance_white.jpg');
   background-size: 65% auto;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #000000;
+  background-color: #ffffff;
 }
 
 .div-block-18.ecobank {
@@ -1356,9 +1358,11 @@ a {
 }
 
 .div-block-18.guce {
-  background-image: url('../images/nos-realisation/guce.jpg');
-  background-size: cover;
+  background-image: url('../images/nos-realisation/guce_white.png');
+  background-size: 65% auto;
   background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
 }
 
 .div-block-18.pad {
@@ -1480,23 +1484,27 @@ a {
 }
 
 .glenfiddich-section-hero.guce {
-  background-image: url('../images/nos-realisation/guce.jpg');
+  background-image: url('../images/nos-realisation/guce_white.png');
   background-position: center;
-  background-size: cover;
+  background-size: 50% auto;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
 }
 
 .glenfiddich-section-hero.ld-assurances {
-  background-image: url('../images/nos-realisation/ldassurance_2k.jpg');
+  background-image: url('../images/nos-realisation/ld_assurance_white.jpg');
   background-position: center;
   background-size: 60% auto;
   background-repeat: no-repeat;
-  background-color: #000000;
+  background-color: #ffffff;
 }
 
 .glenfiddich-section-hero.sika {
-  background-image: url('../images/industrie-cover.jpg');
+  background-image: url('../images/nos-realisation/Sika_NoClaim_pos_rgb_30.png');
   background-position: center;
-  background-size: cover;
+  background-size: 50% auto;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
 }
 
 .glenfiddich-section-hero.b2bs {
