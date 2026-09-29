@@ -842,6 +842,12 @@ a {
   color: #fff0f0;
   font-family: Gilroy, sans-serif;
   text-decoration: none;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cell:hover .heading-food-beverage,
+.div-food-beverage:hover .heading-food-beverage {
+  transform: translateY(20px);
 }
 
 .div-media-tech {
