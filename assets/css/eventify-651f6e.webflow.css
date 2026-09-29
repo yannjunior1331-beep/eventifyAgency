@@ -207,18 +207,17 @@ a {
   background-image: url('../images/MRS/004.jpg');
   background-position: 50% 50%;
   background-size: cover;
-  transform: scale(1.25);
-  animation: oilBgZoomOut 2.4s cubic-bezier(0.16, 1, 0.3, 1) 1 forwards;
+  animation: oilSlowZoomBreath 10s ease-in-out infinite alternate;
   z-index: 0;
   pointer-events: none;
 }
 
-@keyframes oilBgZoomOut {
+@keyframes oilSlowZoomBreath {
   0% {
-    transform: scale(1.25);
+    transform: scale(1.0);
   }
   100% {
-    transform: scale(1.0);
+    transform: scale(1.15);
   }
 }
 
