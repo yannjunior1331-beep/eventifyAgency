@@ -1324,9 +1324,11 @@ a {
 }
 
 .div-block-18.studely {
-  background-image: url('../images/nos-realisation/studely2.jpg');
-  background-size: cover;
+  background-image: url('../images/nos-realisation/studely_white.jpg');
+  background-size: 70% auto;
   background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .div-block-18.hsd {
