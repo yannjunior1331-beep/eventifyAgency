@@ -213,6 +213,11 @@ a {
   background-color: rgba(255, 255, 255, 0.9);
 }
 
+.cell .heading-food-beverage,
+.cell-3 .heading-21 {
+  display: none !important;
+}
+
 .cell-2 {
   position: relative;
   overflow: hidden;
