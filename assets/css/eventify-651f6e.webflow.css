@@ -101,26 +101,40 @@ a {
 }
 
 .nav-bar {
-  background-color: #ddd0;
-  width: auto;
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding-top: 1rem;
-  position: absolute;
-  inset: 0% 0% auto;
-  box-shadow: 0 6px 14px -5px #0000000f;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
 .nav-bar.home {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .nav-bar.home.main {
   margin-top: 0;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  position: fixed;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(10, 10, 10, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .italic-text {
