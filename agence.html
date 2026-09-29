@@ -206,12 +206,13 @@
     }
     .grid-2 {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 2rem;
       max-width: 1200px;
       margin: 0 auto;
     }
     .div-agence-notre-equipe-holder {
+      grid-column: span 2;
       position: relative;
       background-image: url('assets/images/Unknown_person.jpg');
       background-position: center 20%;
@@ -223,6 +224,9 @@
       transition: transform 0.4s ease, box-shadow 0.4s ease;
       cursor: pointer;
       opacity: 1 !important;
+    }
+    .div-agence-notre-equipe-holder:nth-child(13) {
+      grid-column: 2 / span 2;
     }
     .div-agence-notre-equipe-holder:hover {
       transform: translateY(-6px);
@@ -257,10 +261,18 @@
       .grid-2 {
         grid-template-columns: repeat(2, 1fr);
       }
+      .div-agence-notre-equipe-holder,
+      .div-agence-notre-equipe-holder:nth-child(13) {
+        grid-column: auto;
+      }
     }
     @media screen and (max-width: 600px) {
       .grid-2 {
         grid-template-columns: 1fr;
+      }
+      .div-agence-notre-equipe-holder,
+      .div-agence-notre-equipe-holder:nth-child(13) {
+        grid-column: auto;
       }
     }
   </style>
