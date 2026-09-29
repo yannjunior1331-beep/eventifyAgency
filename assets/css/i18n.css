@@ -1,0 +1,115 @@
+/* ==========================================================================
+   EVENTIFY AGENCY — SIMPLE LANGUAGE DROPDOWN TOGGLE (BLACK THEME)
+   ========================================================================== */
+
+.eventify-lang-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 16px;
+  vertical-align: middle;
+  font-family: Gilroy, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Main Button */
+.lang-dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: #ffffff;
+  border: 1.5px solid #000000;
+  border-radius: 6px;
+  color: #000000 !important;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.lang-dropdown-btn:hover {
+  background: #000000;
+  color: #ffffff !important;
+}
+
+.lang-dropdown-btn:hover .lang-arrow-icon {
+  stroke: #ffffff;
+}
+
+/* Arrow Icon */
+.lang-arrow-icon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  stroke: #000000;
+  stroke-width: 2.5;
+  transition: transform 0.25s ease, stroke 0.2s ease;
+}
+
+.eventify-lang-dropdown.is-open .lang-arrow-icon {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.lang-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: #ffffff;
+  border: 1.5px solid #000000;
+  border-radius: 6px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 4px;
+  min-width: 78px;
+  z-index: 999999;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.eventify-lang-dropdown.is-open .lang-dropdown-menu {
+  display: flex;
+}
+
+/* Dropdown Option Items */
+.lang-dropdown-item {
+  padding: 8px 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #000000;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.lang-dropdown-item:hover {
+  background: #f0f0f0;
+  color: #000000;
+}
+
+.lang-dropdown-item.active {
+  background: #000000;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 991px) {
+  .eventify-lang-dropdown {
+    margin: 12px 0 12px 18px;
+    align-self: flex-start;
+  }
+  
+  .lang-dropdown-btn {
+    padding: 8px 16px;
+    font-size: 0.95rem;
+  }
+}

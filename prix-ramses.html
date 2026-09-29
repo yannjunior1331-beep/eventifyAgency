@@ -1,0 +1,4471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="assets/images/prix-ramses/logo.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRIX RAMSES 2026 | Architecture Competition</title>
+  <meta name="description" content="The Prix RAMSES is an architectural competition that places Cameroonian architects at the heart of reflecting on new urban spaces. Organized by EVENTIFY.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&family=Source+Code+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    /* ==========================================================================
+       GLOBAL DESIGN SYSTEM & VARIABLES (Exact Figma & React Project 1:1 Match)
+       ========================================================================== */
+    :root {
+      --color-gold: #F3C151;
+      --color-gold-accent: #DB9700; /* Exact 2026 text color in Figma */
+      --color-gold-primary: #DB9700;
+      --color-bronze: #A06F00;
+      --color-bronze-hover: #b88000;
+      --color-nav-bg: transparent;
+      --color-pill-bg: rgba(98, 98, 98, 0.34);
+      --color-pill-hover: rgba(120, 120, 120, 0.45);
+      --color-chevron-bg: rgba(255, 255, 255, 0.08);
+      --color-overlay: rgba(0, 0, 0, 0.71);
+      --color-white: #ffffff;
+      --color-text-muted: rgba(255, 255, 255, 0.85);
+
+      --font-heading: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-headline: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Outfit', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'Source Code Pro', monospace, sans-serif;
+
+      background-color: #0b0b0d;
+      color: var(--color-white);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      overflow-x: clip;
+      background-color: #0b0b0d;
+      scroll-behavior: smooth;
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+      outline: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ==========================================================================
+       1. NAVBAR (Theme-Adaptive Floating Pills & Dropdowns)
+       ========================================================================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: clamp(68px, calc(84 * 100vw / 1728), 93.33px);
+      padding: 0 clamp(24px, calc(120 * 100vw / 1728), 133.33px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      z-index: 1000;
+      box-sizing: border-box;
+      pointer-events: none;
+    }
+
+    .navbar-pill,
+    .navbar-logo-link,
+    .nav-center-menu {
+      pointer-events: auto;
+    }
+
+    .navbar-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: clamp(38px, calc(44 * 100vw / 1728), 48.89px);
+      border-radius: 0;
+      border: none !important;
+      background: transparent !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      box-shadow: none !important;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+
+    /* Dark Theme (Default over dark sections) */
+    .navbar--on-dark .navbar-pill {
+      background: transparent !important;
+      border: none !important;
+      color: #ffffff;
+    }
+
+    .navbar--on-dark .navbar-pill:hover {
+      background: transparent !important;
+      opacity: 0.8;
+    }
+
+    .navbar--on-dark .navbar-lang-text {
+      color: #ffffff;
+    }
+
+    .navbar--on-dark .navbar-chevron-box {
+      background: transparent !important;
+      color: #ffffff;
+    }
+
+    /* Light Theme (Over why, registration sections) */
+    .navbar--on-light .navbar-pill {
+      background: transparent !important;
+      border: none !important;
+      color: #111B2C;
+    }
+
+    .navbar--on-light .navbar-pill:hover {
+      background: transparent !important;
+      opacity: 0.8;
+    }
+
+    .navbar--on-light .navbar-lang-text {
+      color: #111B2C;
+    }
+
+    .navbar--on-light .navbar-chevron-box {
+      background: transparent !important;
+      color: #111B2C;
+    }
+
+    /* Center Navigation Links (4 White Links) */
+    .nav-center-menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-center-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: clamp(14px, calc(32 * 100vw / 1728), 44px);
+    }
+
+    .nav-center-item {
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-center-link {
+      font-family: var(--font-body);
+      font-size: clamp(12px, calc(13.5 * 100vw / 1728), 15px);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      position: relative;
+      padding: 4px 2px;
+      transition: color 0.25s ease, opacity 0.25s ease;
+      cursor: pointer;
+    }
+
+    /* On Dark Sections: White text */
+    .navbar--on-dark .nav-center-link {
+      color: #ffffff;
+      opacity: 0.92;
+    }
+    .navbar--on-dark .nav-center-link:hover {
+      color: var(--color-gold-accent);
+      opacity: 1;
+    }
+
+    /* On Light Sections: Dark text */
+    .navbar--on-light .nav-center-link {
+      color: #111B2C;
+      opacity: 0.92;
+    }
+    .navbar--on-light .nav-center-link:hover {
+      color: var(--color-gold-accent);
+      opacity: 1;
+    }
+
+    /* Subtle Gold Underline Animation */
+    .nav-center-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 1.5px;
+      background-color: var(--color-gold-accent);
+      transition: width 0.25s ease, left 0.25s ease;
+    }
+
+    .nav-center-link:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    /* Brand Logo (Left) */
+    .navbar-logo-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .navbar-logo-link:hover {
+      opacity: 0.92;
+      transform: scale(1.02);
+    }
+
+    .navbar-logo-img {
+      width: clamp(80px, calc(90 * 100vw / 1728), 100px);
+      height: auto;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Language selector */
+    .navbar-lang-pill {
+      width: auto;
+      gap: 6px;
+      padding: 4px 6px;
+    }
+
+    .navbar-lang-text {
+      font-family: var(--font-body);
+      font-size: clamp(10px, calc(11 * 100vw / 1728), 12.22px);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-chevron-box {
+      width: clamp(18px, calc(22 * 100vw / 1728), 24.44px);
+      height: clamp(18px, calc(22 * 100vw / 1728), 24.44px);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .navbar-chevron-box svg {
+      width: clamp(8px, calc(10 * 100vw / 1728), 12px);
+      height: auto;
+      display: block;
+      stroke: currentColor;
+      transition: stroke 0.3s ease;
+    }
+
+    .navbar-pill-wrapper {
+      position: relative;
+      display: inline-flex;
+      pointer-events: auto;
+    }
+
+    /* Autolayout 25 & 26 Dropdown Menus */
+    .navbar-dropdown {
+      position: absolute;
+      top: calc(100% + clamp(6px, calc(8 * 100vw / 1728), 10px));
+      background: rgba(33, 33, 33, 0.88);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: clamp(6px, calc(8 * 100vw / 1728), 8.89px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+      box-sizing: border-box;
+      display: none;
+      flex-direction: column;
+      padding: clamp(20px, calc(30 * 100vw / 1728), 33.33px) clamp(16px, calc(24 * 100vw / 1728), 26.67px);
+      gap: clamp(14px, calc(19 * 100vw / 1728), 21.11px);
+      z-index: 1050;
+      pointer-events: auto;
+      animation: navbarDropdownFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transform-origin: top;
+    }
+
+    .navbar-dropdown.is-open {
+      display: flex;
+    }
+
+    @keyframes navbarDropdownFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-6px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .navbar-menu-dropdown {
+      left: 0;
+      width: clamp(220px, calc(261 * 100vw / 1728), 290px);
+    }
+
+    .navbar-lang-dropdown {
+      right: 0;
+      width: clamp(160px, calc(200 * 100vw / 1728), 220px);
+    }
+
+    .nav-dropdown-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      text-align: left;
+      color: #FFFFFF;
+      opacity: 0.35;
+      transition: opacity 0.25s cubic-bezier(0.25, 1, 0.5, 1), transform 0.15s ease;
+    }
+
+    .nav-dropdown-item:hover,
+    .nav-dropdown-item.is-current-page {
+      opacity: 1;
+    }
+
+    .nav-dropdown-label {
+      font-family: var(--font-body), Gilroy-Medium, sans-serif;
+      font-size: clamp(11px, calc(12 * 100vw / 1728), 13.33px);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      line-height: 1.25;
+    }
+
+    .nav-dropdown-dot {
+      width: clamp(5px, calc(6 * 100vw / 1728), 6.67px);
+      height: clamp(5px, calc(6 * 100vw / 1728), 6.67px);
+      border-radius: 50%;
+      background-color: var(--color-gold-accent);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .nav-dropdown-item:hover .nav-dropdown-dot,
+    .nav-dropdown-item.is-current-page .nav-dropdown-dot {
+      opacity: 1;
+    }
+
+    .lang-dropdown-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      color: #FFFFFF;
+      opacity: 0.35;
+      transition: opacity 0.25s ease;
+    }
+
+    .lang-dropdown-item:hover,
+    .lang-dropdown-item.is-active {
+      opacity: 1;
+      color: var(--color-gold-accent);
+    }
+
+    .lang-dropdown-label {
+      font-family: var(--font-body);
+      font-size: clamp(11px, calc(12 * 100vw / 1728), 13.33px);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      text-transform: capitalize;
+    }
+
+    /* ==========================================================================
+       2. HERO SECTION
+       ========================================================================== */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.71)),
+        url('assets/images/prix-ramses/hero-bg.webp');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      padding-top: clamp(100px, calc(140 * 100vw / 1728), 160px);
+      padding-bottom: clamp(60px, calc(100 * 100vw / 1728), 120px);
+      padding-left: clamp(24px, calc(117 * 100vw / 1728), 130px);
+      padding-right: clamp(24px, calc(117 * 100vw / 1728), 130px);
+      box-sizing: border-box;
+    }
+
+    .hero-inner-container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: clamp(1100px, calc(1494 * 100vw / 1728), 1660px);
+      display: flex;
+      flex-direction: column;
+      gap: clamp(40px, calc(80 * 100vw / 1728), 88.89px);
+      margin-top: 0;
+    }
+
+    .hero-headline-wrap {
+      width: 100%;
+      max-width: clamp(700px, calc(940 * 100vw / 1728), 1044px);
+    }
+
+    .hero-main-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: clamp(64px, calc(128 * 100vw / 1728), 142.22px);
+      line-height: 0.95;
+      letter-spacing: clamp(-6px, calc(-5.2 * 100vw / 1728), -3px);
+      color: #ffffff;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .hero-title-highlight {
+      color: var(--color-gold-accent);
+    }
+
+    .hero-columns-wrap {
+      width: auto;
+      max-width: 100%;
+      align-self: flex-end;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hero-columns-grid {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      gap: clamp(36px, calc(64 * 100vw / 1728), 71.11px);
+    }
+
+    .hero-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hero-col-practice {
+      width: clamp(300px, calc(360 * 100vw / 1728), 400px);
+    }
+
+    .hero-col-process {
+      width: clamp(240px, calc(282 * 100vw / 1728), 313.33px);
+    }
+
+    .hero-col-title {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: clamp(11px, calc(12 * 100vw / 1728), 13.33px);
+      line-height: 1;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+      margin-bottom: clamp(16px, calc(20 * 100vw / 1728), 22.22px);
+    }
+
+    .hero-col-text {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: clamp(13px, calc(14 * 100vw / 1728), 15.56px);
+      line-height: clamp(15.5px, calc(16.8 * 100vw / 1728), 18.67px);
+      letter-spacing: 0;
+      color: #ffffff;
+      opacity: 1;
+      margin: 0;
+    }
+
+    .hero-btn-work {
+      margin-top: clamp(26px, calc(32 * 100vw / 1728), 35.56px);
+      min-width: clamp(115.2px, calc(115.2 * 100vw / 1728), 128px);
+      width: auto;
+      padding: 0 clamp(16px, calc(20 * 100vw / 1728), 24px);
+      height: clamp(36px, calc(38 * 100vw / 1728), 42.22px);
+      background-color: var(--color-bronze);
+      color: #ffffff;
+      font-family: var(--font-body);
+      font-size: clamp(11px, calc(12 * 100vw / 1728), 13.33px);
+      font-weight: 700;
+      letter-spacing: clamp(-0.53px, calc(-0.48 * 100vw / 1728), -0.35px);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      border: none;
+      border-radius: 0;
+      cursor: pointer;
+      align-self: flex-start;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .hero-btn-work:hover {
+      background-color: var(--color-bronze-hover);
+      transform: translateY(-1px);
+    }
+
+    .hero-btn-desktop {
+      display: inline-flex;
+    }
+
+    .hero-btn-mobile {
+      display: none;
+    }
+
+    .hero-col-bar {
+      display: none;
+    }
+
+    /* ==========================================================================
+       3. STATS SECTION (WHY?)
+       ========================================================================== */
+    .stats-section {
+      position: relative;
+      width: 100%;
+      background-color: #ffffff;
+      color: #000000;
+      padding-top: clamp(100px, calc(180 * 100vw / 1728), 200px);
+      padding-bottom: clamp(100px, calc(180 * 100vw / 1728), 200px);
+      padding-left: clamp(24px, calc(121 * 100vw / 1728), 134.44px);
+      padding-right: clamp(24px, calc(121 * 100vw / 1728), 134.44px);
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .stats-inner-container {
+      width: 100%;
+      max-width: clamp(1100px, calc(1486 * 100vw / 1728), 1651.11px);
+      display: flex;
+      flex-direction: column;
+      gap: clamp(48px, calc(80 * 100vw / 1728), 88.89px);
+    }
+
+    .stats-statement-wrap {
+      width: 100%;
+      position: relative;
+      min-height: clamp(80px, calc(120 * 100vw / 1728), 133.33px);
+    }
+
+    .stats-tag-why {
+      position: absolute;
+      left: 0;
+      top: clamp(2px, calc(4 * 100vw / 1728), 6px);
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: clamp(16px, calc(24 * 100vw / 1728), 26.67px);
+      line-height: 1;
+      color: var(--color-gold-accent);
+      letter-spacing: 0.14em;
+      user-select: none;
+    }
+
+    .stats-statement {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: clamp(18px, calc(38 * 100vw / 1728), 40px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      color: #000000;
+      margin: 0;
+      text-indent: calc(720 / 1486 * 100%);
+    }
+
+    .stats-row-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+
+    .stats-grid {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      gap: clamp(32px, calc(71 * 100vw / 1728), 78.89px);
+      flex-wrap: wrap;
+    }
+
+    .stat-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+      gap: clamp(6px, calc(8 * 100vw / 1728), 10px);
+    }
+
+    .stat-card-1 { width: clamp(190px, calc(223 * 100vw / 1728), 248px); }
+    .stat-card-2 { width: clamp(155px, calc(185 * 100vw / 1728), 206px); }
+    .stat-card-3 { width: clamp(210px, calc(277 * 100vw / 1728), 308px); }
+    .stat-card-4 { width: clamp(145px, calc(180 * 100vw / 1728), 200px); }
+
+    .stat-number {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: clamp(56px, calc(96 * 100vw / 1728), 106.67px);
+      line-height: 1;
+      color: var(--color-gold-accent);
+      letter-spacing: 0;
+      text-align: right;
+      user-select: none;
+    }
+
+    .stat-label {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: clamp(12px, calc(16 * 100vw / 1728), 17.78px);
+      line-height: 1.25;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #000000;
+      text-align: right;
+      margin: 0;
+      white-space: pre-line;
+    }
+
+    /* ==========================================================================
+       4. PRIZES SECTION (Exact Pinned Stage + ScrollTrigger Scrub + Clip-path Wipe)
+       ========================================================================== */
+    .prizes-sticky-section {
+      width: 100%;
+      background-color: #191919;
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    .prizes-stage {
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      min-height: 680px;
+      max-height: 1080px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: clamp(40px, calc(80 * 100vw / 1728), 100px) clamp(40px, calc(120 * 100vw / 1728), 133.33px);
+      box-sizing: border-box;
+      overflow: hidden;
+      background-color: #191919;
+    }
+
+    .prizes-container {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: center;
+      gap: clamp(40px, calc(100 * 100vw / 1728), 111.11px);
+      width: 100%;
+      max-width: clamp(1100px, calc(1488 * 100vw / 1728), 1700px);
+      height: clamp(520px, calc(770 * 100vw / 1728), 780px);
+    }
+
+    .prizes-visual-col {
+      flex: 1 1 0;
+      max-width: clamp(300px, calc(694 * 100vw / 1728), 771.11px);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .prizes-image-frame {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      overflow: hidden;
+      background-color: #111111;
+      border-radius: 0;
+    }
+
+    .prizes-visual-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      will-change: clip-path;
+    }
+
+    .prizes-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .prizes-progress-w {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      margin-top: 0;
+      z-index: 10;
+      overflow: hidden;
+      border-radius: 0;
+    }
+
+    .prizes-progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #DB9700;
+      transform: scaleX(0);
+      transform-origin: 0% 50%;
+      box-shadow: 0 0 8px rgba(219, 151, 0, 0.6);
+    }
+
+    .prizes-content-col {
+      flex: 1 1 0;
+      max-width: clamp(300px, calc(694 * 100vw / 1728), 771.11px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      height: 100%;
+      box-sizing: border-box;
+    }
+
+    .prizes-header-group {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(10px, calc(16 * 100vw / 1728), 18px);
+      width: 100%;
+    }
+
+    .prizes-title {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: clamp(26px, calc(40 * 100vw / 1728), 44.44px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: #FFFFFF;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .prizes-description {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: clamp(12px, calc(14 * 100vw / 1728), 15px);
+      line-height: 1.45;
+      letter-spacing: 0.02em;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0;
+      max-width: 100%;
+    }
+
+    .prizes-detail-group {
+      width: 100%;
+      position: relative;
+    }
+
+    .prizes-text-items-wrap {
+      position: relative;
+      width: 100%;
+      height: clamp(240px, calc(363 * 100vw / 1728), 370px);
+    }
+
+    .prizes-text-item {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .prizes-item-top {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(12px, calc(20 * 100vw / 1728), 22px);
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .prize-single-badge {
+      width: clamp(45px, calc(55 * 100vw / 1728), 62px);
+      height: clamp(32px, calc(39 * 100vw / 1728), 44px);
+      background: rgba(73, 73, 73, 0.3);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .prize-badge-text {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: clamp(14px, calc(16 * 100vw / 1728), 17.78px);
+      line-height: 1;
+      color: #DB9700;
+    }
+
+    .prizes-category-label {
+      font-family: var(--font-headline);
+      font-weight: 400;
+      font-size: clamp(11px, calc(12 * 100vw / 1728), 13.5px);
+      letter-spacing: 0.02em;
+      line-height: 1;
+      color: #DB9700 !important;
+      text-transform: none;
+      margin: 0;
+      display: block;
+    }
+
+    .prizes-headline {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: clamp(30px, calc(64 * 100vw / 1728), 66px);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+      color: #FFFFFF;
+      margin: 0;
+      text-transform: capitalize;
+      max-width: 100%;
+    }
+
+    /* ==========================================================================
+       5. TIMELINE SECTION (Synchronized Sticky Row + Moving Line + Tracking Diamond)
+       ========================================================================== */
+    .timeline-section {
+      position: relative;
+      width: 100%;
+      background-color: #111B2C;
+      color: #FFFFFF;
+      padding-top: clamp(100px, calc(160 * 100vw / 1728), 200px);
+      padding-bottom: clamp(200px, calc(360 * 100vw / 1728), 440px);
+      padding-left: clamp(24px, calc(120 * 100vw / 1728), 133.33px);
+      padding-right: clamp(24px, calc(120 * 100vw / 1728), 133.33px);
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: visible;
+    }
+
+    .timeline-inner-container {
+      width: 100%;
+      max-width: clamp(1100px, calc(1488 * 100vw / 1728), 1650px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .timeline-header-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin-bottom: clamp(60px, calc(100 * 100vw / 1728), 120px);
+    }
+
+    .timeline-section-title {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: clamp(32px, calc(48 * 100vw / 1728), 54px);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+      color: #FFFFFF;
+      margin: 0;
+      text-align: center;
+      text-transform: capitalize;
+    }
+
+    .timeline_component {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Static Orange / Gold Timeline Track */
+    .timeline_progress {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(219, 151, 0, 0.25) 0%, rgba(219, 151, 0, 0.85) 15%, rgba(219, 151, 0, 0.85) 85%, rgba(219, 151, 0, 0.85) 100%);
+      box-shadow: 0 0 10px rgba(219, 151, 0, 0.4);
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .timeline_progress::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: clamp(180px, calc(320 * 100vw / 1728), 400px);
+      background: linear-gradient(180deg, rgba(219, 151, 0, 0.85) 0%, rgba(219, 151, 0, 0.5) 50%, rgba(219, 151, 0, 0) 100%);
+      box-shadow: 0 0 10px rgba(219, 151, 0, 0.3);
+      pointer-events: none;
+    }
+
+    /* Moving White Progress Line */
+    .timeline_progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      background: #FFFFFF;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.95), 0 0 24px rgba(255, 255, 255, 0.6);
+      z-index: 1;
+    }
+
+    /* Pure Diamond Dot locked to tip of white progress line */
+    .timeline_diamond-dot {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      background-color: #FFFFFF;
+      border: none;
+      transform: translate(-50%, 50%) rotate(45deg);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.9);
+      box-sizing: border-box;
+      z-index: 2;
+    }
+
+    .timeline_items-list {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(48px, calc(80 * 100vw / 1728), 96px);
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .timeline_item {
+      position: relative;
+      width: 100%;
+      height: clamp(280px, calc(386 * 100vw / 1728), 415px);
+      min-height: clamp(280px, calc(386 * 100vw / 1728), 415px);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      border: none;
+      box-shadow: none;
+      box-sizing: border-box;
+      padding-top: clamp(48px, calc(64 * 100vw / 1728), 76px);
+      padding-bottom: clamp(48px, calc(64 * 100vw / 1728), 76px);
+    }
+
+    .timeline_card-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.6;
+      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .timeline_item.is-active .timeline_card-bg {
+      opacity: 0.72;
+    }
+
+    .timeline_item:hover .timeline_card-bg {
+      opacity: 0.68;
+    }
+
+    .timeline_item.is-active:hover .timeline_card-bg {
+      opacity: 0.78;
+    }
+
+    .timeline_img {
+      width: 100%;
+      height: 120%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.80);
+      transition: filter 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .timeline_item.is-active .timeline_img {
+      filter: brightness(0.85);
+    }
+
+    .timeline_overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(17, 27, 44, 0.65);
+      transition: background 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .timeline_item.is-active .timeline_overlay {
+      background: rgba(17, 27, 44, 0.48);
+    }
+
+    /* Single Synchronized Sticky Row (Date & Title Lock & Release Together at 50vh) */
+    .timeline_sticky_row {
+      position: sticky;
+      top: 50vh;
+      transform: translateY(-50%);
+      display: grid;
+      grid-template-columns: 1fr clamp(40px, 8vw, 100px) 1fr;
+      align-items: center;
+      width: 100%;
+      z-index: 2;
+      box-sizing: border-box;
+      pointer-events: none;
+    }
+
+    .timeline_left {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: clamp(32px, calc(80 * 100vw / 1728), 90px);
+      padding-right: clamp(16px, calc(32 * 100vw / 1728), 40px);
+      box-sizing: border-box;
+    }
+
+    .timeline_date-text {
+      font-family: var(--font-headline);
+      font-weight: 400;
+      font-size: clamp(13px, calc(16 * 100vw / 1728), 20px);
+      letter-spacing: 0.02em;
+      color: #DB9700;
+      text-transform: capitalize;
+      margin: 0;
+      user-select: none;
+      opacity: 0.25;
+      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .timeline_centre {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .timeline_right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: clamp(16px, calc(32 * 100vw / 1728), 40px);
+      padding-right: clamp(32px, calc(80 * 100vw / 1728), 90px);
+      box-sizing: border-box;
+    }
+
+    .timeline_title-text {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: clamp(18px, calc(24 * 100vw / 1728), 30px);
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      margin: 0;
+      max-width: 520px;
+      opacity: 0.25;
+      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .timeline_item.is-active .timeline_date-text,
+    .timeline_item.is-active .timeline_title-text {
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       6. REGISTRATION SECTION
+       ========================================================================== */
+    .registration-section {
+      position: relative;
+      width: 100%;
+      background-color: #FFFFFF;
+      color: #000000;
+      padding-top: clamp(100px, calc(180 * 100vw / 1728), 220px);
+      padding-bottom: clamp(100px, calc(180 * 100vw / 1728), 220px);
+      padding-left: clamp(24px, calc(121 * 100vw / 1728), 133.33px);
+      padding-right: clamp(24px, calc(121 * 100vw / 1728), 133.33px);
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      border-radius: 0;
+    }
+
+    .registration-container {
+      width: 100%;
+      max-width: clamp(1100px, calc(1486 * 100vw / 1728), 1600px);
+      display: flex;
+      flex-direction: column;
+      gap: clamp(48px, calc(80 * 100vw / 1728), 96px);
+      box-sizing: border-box;
+    }
+
+    .registration-headline-wrap {
+      width: 100%;
+      position: relative;
+      min-height: clamp(80px, calc(144 * 100vw / 1728), 160px);
+    }
+
+    .registration-tag {
+      position: absolute;
+      left: 0;
+      top: clamp(4px, calc(8 * 100vw / 1728), 10px);
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: clamp(16px, calc(24 * 100vw / 1728), 26.67px);
+      line-height: 1;
+      letter-spacing: 0.14em;
+      color: var(--color-gold-accent);
+      text-transform: uppercase;
+      margin: 0;
+      user-select: none;
+    }
+
+    .registration-headline {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: clamp(22px, calc(40 * 100vw / 1728), 44.44px);
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      color: #000000;
+      margin: 0;
+      text-indent: clamp(200px, calc(720 * 100vw / 1728), 800px);
+      max-width: 1486px;
+    }
+
+    .registration-copy-columns {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      gap: clamp(32px, calc(64 * 100vw / 1728), 80px);
+      box-sizing: border-box;
+    }
+
+    .registration-copy-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: clamp(180px, calc(198 * 100vw / 1728), 220px);
+      box-sizing: border-box;
+    }
+
+    .registration-practice-col {
+      width: clamp(300px, calc(465 * 100vw / 1728), 480px);
+    }
+
+    .registration-process-col {
+      width: clamp(320px, calc(483 * 100vw / 1728), 500px);
+    }
+
+    .registration-col-text-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(16px, calc(20 * 100vw / 1728), 24px);
+      margin-bottom: clamp(24px, calc(34 * 100vw / 1728), 40px);
+    }
+
+    .registration-eyebrow {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      color: #000000;
+      text-transform: uppercase;
+    }
+
+    .registration-desc {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16.8px;
+      color: #000000;
+      margin: 0;
+    }
+
+    .registration-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      height: 54px;
+      border-radius: 0;
+      font-family: var(--font-headline);
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 22px;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      box-sizing: border-box;
+      text-align: center;
+      transition: background-color 0.25s ease, opacity 0.25s ease;
+      cursor: pointer;
+    }
+
+    .registration-btn-gold {
+      background-color: #A06F00;
+      color: #FFFFFF;
+    }
+
+    .registration-btn-gold:hover {
+      background-color: #B88000;
+    }
+
+    .registration-btn-gray {
+      background-color: #EEEEEE;
+      color: #000000;
+    }
+
+    .registration-btn-gray:hover {
+      background-color: #E2E2E2;
+    }
+
+    /* ==========================================================================
+       7. JURY SECTION
+       ========================================================================== */
+    .jury-section {
+      position: relative;
+      width: 100%;
+      background-color: #191919;
+      color: #FFFFFF;
+      padding-top: clamp(100px, calc(200 * 100vw / 1728), 240px);
+      padding-bottom: clamp(100px, calc(200 * 100vw / 1728), 240px);
+      padding-left: clamp(24px, calc(121 * 100vw / 1728), 134.44px);
+      padding-right: clamp(24px, calc(121 * 100vw / 1728), 134.44px);
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(36px, calc(54 * 100vw / 1728), 64px);
+      overflow: hidden;
+      z-index: 5;
+    }
+
+    .jury-inner-container {
+      width: 100%;
+      max-width: clamp(1100px, calc(1486 * 100vw / 1728), 1651.11px);
+      box-sizing: border-box;
+    }
+
+    .jury-header-wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-sizing: border-box;
+    }
+
+    .jury-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: clamp(32px, calc(48 * 100vw / 1728), 54px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: #FFFFFF;
+      margin: 0;
+      text-align: left;
+    }
+
+    .jury-intro-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .jury-intro-text {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+      color: #FFFFFF;
+      max-width: clamp(320px, calc(745 * 100vw / 1728), 780px);
+      margin: 0;
+      text-align: left;
+    }
+
+    .jury-marquee-wrapper {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      overflow-x: hidden;
+      user-select: none;
+      cursor: grab;
+      box-sizing: border-box;
+    }
+
+    .jury-marquee-track {
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, calc(20 * 100vw / 1728), 24px);
+      width: max-content;
+      box-sizing: border-box;
+      will-change: transform;
+    }
+
+    .jury-card {
+      position: relative;
+      width: clamp(280px, calc(510 * 100vw / 1728), 540px);
+      height: clamp(420px, calc(774 * 100vw / 1728), 820px);
+      flex-shrink: 0;
+      border-radius: 0;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      overflow: hidden;
+      background-color: #000000;
+      box-sizing: border-box;
+      cursor: pointer;
+      contain: paint;
+      transform: translate3d(0, 0, 0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      isolation: isolate;
+      clip-path: inset(0);
+    }
+
+    .jury-card-media {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      background-color: #000000;
+      contain: paint;
+      transform: translate3d(0, 0, 0);
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      pointer-events: none;
+    }
+
+    .jury-card-img {
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      width: calc(100% + 8px);
+      height: calc(100% + 8px);
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      border: none !important;
+      outline: none !important;
+      pointer-events: none;
+      transform: scale(1) translate3d(0, 0, 0);
+      transform-origin: center center;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      will-change: transform, opacity;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      opacity: 0.94;
+    }
+
+    .jury-card:hover .jury-card-img {
+      transform: scale(1.05) translate3d(0, 0, 0);
+      opacity: 0.72;
+    }
+
+    .jury-card-overlay {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      background: rgba(0, 0, 0, 0.82);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(24px, calc(56 * 100vw / 1728), 64px) clamp(20px, calc(47 * 100vw / 1728), 54px);
+      box-sizing: border-box;
+      z-index: 5;
+      opacity: 0;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      transform: translate3d(0, 0, 0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      will-change: opacity;
+    }
+
+    .jury-card:hover .jury-card-overlay {
+      opacity: 1;
+    }
+
+    .jury-card-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transform: translateY(8px) translate3d(0, 0, 0);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      pointer-events: none;
+    }
+
+    .jury-card:hover .jury-card-info {
+      transform: translateY(0) translate3d(0, 0, 0);
+    }
+
+    .jury-member-name {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: clamp(22px, calc(32 * 100vw / 1728), 36px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      margin: 0;
+    }
+
+    .jury-member-role {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: clamp(12px, calc(14 * 100vw / 1728), 16px);
+      line-height: 1;
+      letter-spacing: 0;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .jury-bottom-text-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      box-sizing: border-box;
+    }
+
+    .jury-bottom-text {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+      color: #FFFFFF;
+      max-width: clamp(320px, calc(738 * 100vw / 1728), 780px);
+      margin: 0;
+      text-align: left;
+    }
+
+    /* ==========================================================================
+       8. FAQ SECTION
+       ========================================================================== */
+    .faq-section {
+      position: relative;
+      width: 100%;
+      background-color: #795300;
+      color: #FFFFFF;
+      padding-top: clamp(100px, calc(180 * 100vw / 1728), 220px);
+      padding-bottom: clamp(100px, calc(180 * 100vw / 1728), 220px);
+      padding-left: clamp(24px, calc(121 * 100vw / 1728), 134.44px);
+      padding-right: clamp(24px, calc(121 * 100vw / 1728), 134.44px);
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      z-index: 5;
+    }
+
+    .faq-bg-fixed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .faq-bg-img {
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transform: translateZ(0);
+    }
+
+    .faq-container {
+      position: relative;
+      width: 100%;
+      max-width: clamp(1100px, calc(1486 * 100vw / 1728), 1651.11px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(48px, calc(80 * 100vw / 1728), 96px);
+      box-sizing: border-box;
+      z-index: 2;
+    }
+
+    .faq-header-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .faq-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: clamp(32px, calc(48 * 100vw / 1728), 54px);
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      color: #FFFFFF;
+      margin: 0;
+      text-align: center;
+    }
+
+    .faq-accordion-list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(16px, calc(22 * 100vw / 1728), 28px);
+      box-sizing: border-box;
+    }
+
+    .faq-accordion-item {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      padding-bottom: clamp(16px, calc(20 * 100vw / 1728), 24px);
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    .faq-accordion-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question-btn {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      background: none;
+      border: none;
+      padding: 8px 0;
+      cursor: pointer;
+      text-align: left;
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    .faq-question-text {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: clamp(18px, calc(24 * 100vw / 1728), 28px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      transition: opacity 0.25s ease;
+    }
+
+    .faq-question-btn:hover .faq-question-text {
+      opacity: 0.9;
+    }
+
+    .faq-chevron-box {
+      width: 48px;
+      height: 36px;
+      flex-shrink: 0;
+      background-color: rgba(255, 255, 255, 0.06);
+      border-radius: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #FFFFFF;
+      transition: background-color 0.3s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .faq-question-btn:hover .faq-chevron-box {
+      background-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .faq-chevron-icon {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .faq-accordion-item.is-open .faq-chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer-collapse {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      opacity: 0;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .faq-accordion-item.is-open .faq-answer-collapse {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+
+    .faq-answer-inner {
+      min-height: 0;
+      overflow: hidden;
+      padding-top: clamp(12px, calc(16 * 100vw / 1728), 20px);
+    }
+
+    .faq-answer-text {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: clamp(13px, calc(14 * 100vw / 1728), 16px);
+      line-height: 1.6;
+      letter-spacing: 0;
+      color: #FFFFFF;
+      max-width: clamp(320px, calc(884 * 100vw / 1728), 940px);
+      margin: 0;
+    }
+
+    /* ==========================================================================
+       8B. LAUREATES EDITIONS LIST SECTION (Figma Frame 34 & Frame 57)
+       ========================================================================== */
+    .laureates-list-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      background-color: #FFFFFF;
+      color: #000000;
+      position: relative;
+      z-index: 5;
+    }
+
+    .laureate-card {
+      position: relative;
+      width: 100%;
+      background-color: #FFFFFF;
+      color: #000000;
+      padding-top: clamp(60px, calc(140 * 100vw / 1728), 160px);
+      padding-bottom: clamp(60px, calc(140 * 100vw / 1728), 160px);
+      padding-left: clamp(20px, calc(121 * 100vw / 1728), 121px);
+      padding-right: clamp(20px, calc(121 * 100vw / 1728), 121px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .laureate-card:last-child {
+      border-bottom: none;
+    }
+
+    .laureate-card-inner {
+      width: 100%;
+      max-width: 1486px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: clamp(32px, calc(120 * 100vw / 1728), 120px);
+      box-sizing: border-box;
+    }
+
+    /* Left Column: Information Block */
+    .laureate-info-col {
+      width: clamp(320px, calc(560 * 100vw / 1728), 560px);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      gap: clamp(20px, calc(40 * 100vw / 1728), 40px);
+      flex-shrink: 0;
+    }
+
+    .laureate-theme-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: clamp(28px, calc(48 * 100vw / 1728), 48px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #000000;
+      margin: 0;
+    }
+
+    .laureate-meta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .laureate-edition-tag {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: clamp(12px, calc(13 * 100vw / 1728), 13px);
+      line-height: 1;
+      letter-spacing: 0;
+      color: #000000;
+      margin: 0;
+    }
+
+    .laureate-winner-label {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: clamp(14px, calc(16 * 100vw / 1728), 16px);
+      line-height: 1.3;
+      letter-spacing: 0;
+      color: #000000;
+      margin: 0;
+    }
+
+    .laureate-cta-wrap {
+      width: 100%;
+    }
+
+    .laureate-cta-desktop {
+      display: block;
+    }
+
+    .laureate-cta-mobile {
+      display: none;
+    }
+
+    .laureate-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(170px, calc(202 * 100vw / 1728), 202px);
+      height: clamp(38px, calc(38 * 100vw / 1728), 42px);
+      background-color: #DB9700;
+      color: #FFFFFF;
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 22px;
+      letter-spacing: -0.02em;
+      border-radius: 0;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.25s ease, transform 0.2s ease;
+      touch-action: manipulation;
+    }
+
+    .laureate-cta-btn:hover {
+      background-color: #b88000;
+      transform: translateY(-1px);
+    }
+
+    /* Right Column: Gallery Frame */
+    .laureate-gallery-col {
+      width: clamp(420px, calc(806 * 100vw / 1728), 806px);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 1;
+    }
+
+    .laureate-slider-frame {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* 3-Image Strip Layout with Animated Slots */
+    .laureate-images-strip {
+      --peek-w: clamp(64px, calc(124.5 * 100vw / 1728), 124.5px);
+      --gap: 10px;
+      position: relative;
+      width: 100%;
+      height: clamp(340px, calc(633 * 100vw / 1728), 633px);
+      overflow: hidden;
+      touch-action: pan-y pinch-zoom;
+      user-select: none;
+      contain: paint;
+    }
+
+    .laureate-slide-slot {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      overflow: hidden;
+      transition: left 0.5s cubic-bezier(0.25, 1, 0.35, 1),
+                  width 0.5s cubic-bezier(0.25, 1, 0.35, 1),
+                  opacity 0.5s cubic-bezier(0.25, 1, 0.35, 1),
+                  filter 0.5s cubic-bezier(0.25, 1, 0.35, 1);
+      will-change: left, width, opacity, filter;
+      box-sizing: border-box;
+      contain: paint;
+    }
+
+    .laureate-slide-slot.slot-no-transition {
+      transition: none !important;
+    }
+
+    .laureate-slide-slot.slot-left-peek {
+      left: 0;
+      width: var(--peek-w);
+      opacity: 0.82;
+      filter: brightness(0.85);
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .laureate-slide-slot.slot-left-peek:hover {
+      opacity: 1;
+      filter: brightness(1);
+    }
+
+    .laureate-slide-slot.slot-left-peek:hover .laureate-strip-img {
+      transform: scale(1.03);
+    }
+
+    .laureate-slide-slot.slot-center {
+      left: calc(var(--peek-w) + var(--gap));
+      width: calc(100% - (var(--peek-w) * 2) - (var(--gap) * 2));
+      opacity: 1;
+      filter: brightness(1);
+      z-index: 3;
+      cursor: default;
+    }
+
+    .laureate-slide-slot.slot-center:hover .laureate-strip-img {
+      transform: scale(1.02);
+    }
+
+    .laureate-slide-slot.slot-right-peek {
+      left: calc(100% - var(--peek-w));
+      width: var(--peek-w);
+      opacity: 0.82;
+      filter: brightness(0.85);
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .laureate-slide-slot.slot-right-peek:hover {
+      opacity: 1;
+      filter: brightness(1);
+    }
+
+    .laureate-slide-slot.slot-right-peek:hover .laureate-strip-img {
+      transform: scale(1.03);
+    }
+
+    .laureate-slide-slot.slot-offscreen-left {
+      left: calc(-1 * var(--peek-w) - var(--gap) * 2);
+      width: var(--peek-w);
+      opacity: 0;
+      filter: brightness(0.7);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .laureate-slide-slot.slot-offscreen-right {
+      left: calc(100% + var(--gap) * 2);
+      width: var(--peek-w);
+      opacity: 0;
+      filter: brightness(0.7);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .laureate-strip-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+      pointer-events: none;
+    }
+
+    /* Slider Controls */
+    .laureate-slider-controls {
+      width: 100%;
+      height: 32px;
+      padding: 0 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    .laureate-dots-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .laureate-dot-btn {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #000000;
+      opacity: 0.2;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      touch-action: manipulation;
+    }
+
+    .laureate-dot-btn.is-active {
+      opacity: 1;
+      background-color: #000000;
+      transform: scale(1.25);
+    }
+
+    .laureate-arrows-wrap {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .laureate-arrow-btn {
+      width: 32px;
+      height: 32px;
+      background-color: #DB9700;
+      border: none;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+      touch-action: manipulation;
+    }
+
+    .laureate-arrow-btn:hover {
+      background-color: #b88000;
+    }
+
+    .laureate-arrow-btn:active {
+      transform: scale(0.92);
+    }
+
+    @media (max-width: 1024px) {
+      .laureate-card {
+        padding-top: 64px;
+        padding-bottom: 64px;
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+
+      .laureate-card-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 32px;
+      }
+
+      .laureate-info-col,
+      .laureate-gallery-col {
+        width: 100%;
+      }
+
+      .laureate-theme-title {
+        font-size: clamp(28px, 5vw, 38px);
+      }
+
+      .laureate-images-strip {
+        --peek-w: clamp(40px, 8vw, 80px);
+        --gap: 8px;
+        height: clamp(320px, 45vw, 460px);
+      }
+
+      .laureate-cta-desktop {
+        display: none;
+      }
+
+      .laureate-cta-mobile {
+        display: block;
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      .laureate-cta-mobile .laureate-cta-btn {
+        width: 100%;
+        max-width: 240px;
+        height: 42px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .laureate-card {
+        padding-top: 48px;
+        padding-bottom: 48px;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .laureate-card-inner {
+        gap: 24px;
+      }
+
+      .laureate-info-col {
+        gap: 14px;
+      }
+
+      .laureate-theme-title {
+        font-size: 26px;
+        line-height: 1.15;
+      }
+
+      .laureate-winner-label {
+        font-size: 14px;
+      }
+
+      .laureate-images-strip {
+        --peek-w: clamp(16px, 6vw, 28px);
+        --gap: 6px;
+        height: clamp(240px, 62vw, 320px);
+      }
+
+      .laureate-slider-controls {
+        padding: 0;
+      }
+
+      .laureate-arrows-wrap {
+        gap: 16px;
+      }
+
+      .laureate-arrow-btn {
+        width: 32px;
+        height: 32px;
+      }
+
+      .laureate-cta-mobile {
+        margin-top: 16px;
+      }
+
+      .laureate-cta-mobile .laureate-cta-btn {
+        max-width: 100%;
+        height: 44px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .laureate-theme-title {
+        font-size: 22px;
+      }
+
+      .laureate-images-strip {
+        --peek-w: 12px;
+        --gap: 4px;
+        height: 220px;
+      }
+    }
+
+    /* ==========================================================================
+       9. FOOTER SECTION
+       ========================================================================== */
+    .footer-section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 100vh;
+      min-height: 100dvh;
+      background-color: #111B2C;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-sizing: border-box;
+      padding: 40px clamp(24px, calc(120 * 100vw / 1728), 133.33px);
+    }
+
+    .footer-watermark-wrap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      max-width: 1728px;
+      height: 100%;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.85;
+      z-index: 1;
+    }
+
+    .footer-watermark-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .footer-container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: clamp(280px, calc(360 * 100vw / 1728), 400px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: clamp(40px, calc(63 * 100vw / 1728), 72px);
+      width: 100%;
+    }
+
+    .footer-logo-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+    }
+
+    .footer-logo-link:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    .footer-logo-img {
+      width: clamp(140px, calc(169.33 * 100vw / 1728), 190px);
+      height: auto;
+      display: block;
+    }
+
+    .footer-nav {
+      width: 100%;
+    }
+
+    .footer-nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(14px, calc(19 * 100vw / 1728), 24px);
+    }
+
+    .footer-nav-item {
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer-nav-link {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: clamp(14px, calc(16 * 100vw / 1728), 18px);
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+      color: #FFFFFF;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.25s ease, opacity 0.25s ease;
+      position: relative;
+      display: inline-block;
+      padding: 2px 4px;
+    }
+
+    .footer-nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 1px;
+      background-color: var(--color-gold-accent);
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    .footer-nav-link:hover {
+      color: var(--color-gold-accent);
+    }
+
+    .footer-nav-link:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    .footer-copyright-wrap {
+      width: 100%;
+    }
+
+    .footer-copyright-text {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: clamp(11px, calc(12 * 100vw / 1728), 14px);
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.22);
+      margin: 0;
+      user-select: none;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS (1:1 Match with Original Site)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      /* Navbar */
+      .navbar {
+        height: 72px;
+        padding: 0 clamp(20px, 4vw, 40px);
+      }
+      .nav-center-links {
+        gap: clamp(10px, 2vw, 20px);
+      }
+      .nav-center-link {
+        font-size: 11.5px;
+      }
+
+      /* Hero */
+      .hero-section {
+        padding-top: 110px;
+        padding-bottom: 60px;
+        padding-left: clamp(20px, 4vw, 48px);
+        padding-right: clamp(20px, 4vw, 48px);
+        min-height: auto;
+      }
+      .hero-main-title {
+        font-size: clamp(52px, 8vw, 88px);
+        line-height: 1.02;
+        letter-spacing: -0.03em;
+      }
+      .hero-columns-grid {
+        gap: 36px;
+      }
+      .hero-inner-container {
+        gap: 40px;
+      }
+
+      /* Stats (Why) */
+      .stats-section {
+        padding-top: 80px;
+        padding-bottom: 80px;
+        padding-left: clamp(20px, 4vw, 48px);
+        padding-right: clamp(20px, 4vw, 48px);
+      }
+      .stats-tag-why {
+        position: static;
+        display: block;
+        margin-bottom: 16px;
+      }
+      .stats-statement {
+        text-indent: 0;
+        font-size: clamp(24px, 4vw, 34px);
+        line-height: 1.2;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        justify-content: flex-start;
+        gap: 36px 32px;
+      }
+      .stat-card {
+        align-items: flex-start;
+        text-align: left;
+        width: 100% !important;
+      }
+      .stat-number,
+      .stat-label {
+        text-align: left;
+      }
+
+      /* Timeline */
+      .timeline-section {
+        padding: 80px clamp(20px, 4vw, 40px);
+      }
+      .timeline-header-wrap {
+        margin-bottom: 56px;
+      }
+      .timeline-section-title {
+        font-size: clamp(26px, 5vw, 40px);
+      }
+      .timeline_progress {
+        left: 4px;
+        right: auto;
+        transform: none;
+      }
+      .timeline_diamond-dot {
+        width: 8px;
+        height: 8px;
+      }
+      .timeline_items-list {
+        padding-left: 32px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .timeline_item {
+        height: auto;
+        min-height: clamp(160px, 25vw, 220px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: clamp(28px, 4vw, 36px) clamp(24px, 3.5vw, 32px);
+        border-radius: 0;
+        overflow: hidden;
+      }
+      .timeline_card-bg {
+        border-radius: 0;
+      }
+      .timeline_img {
+        height: 100%;
+      }
+      .timeline_sticky_row {
+        position: static;
+        transform: none;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 0;
+      }
+      .timeline_centre {
+        display: none;
+      }
+      .timeline_left,
+      .timeline_right {
+        padding: 0;
+      }
+      .timeline_date-text {
+        opacity: 0.35;
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        transition: opacity 0.4s ease;
+      }
+      .timeline_title-text {
+        max-width: 100%;
+        opacity: 0.35;
+        font-size: clamp(18px, 3.5vw, 22px);
+        line-height: 1.3;
+        transition: opacity 0.4s ease;
+      }
+      .timeline_item.is-active .timeline_date-text,
+      .timeline_item.is-active .timeline_title-text {
+        opacity: 1;
+      }
+
+      /* Jury */
+      .jury-section {
+        padding-top: 80px;
+        padding-bottom: 80px;
+        padding-left: clamp(20px, 4vw, 48px);
+        padding-right: clamp(20px, 4vw, 48px);
+        gap: 40px;
+      }
+      .jury-title {
+        font-size: clamp(28px, 5vw, 40px);
+      }
+      .jury-card {
+        width: 260px;
+        height: 380px;
+      }
+      .jury-card-overlay {
+        padding: 24px 20px;
+      }
+      .jury-member-name {
+        font-size: 22px;
+      }
+      .jury-member-role {
+        font-size: 13px;
+      }
+
+      /* Prizes */
+      .prizes-stage {
+        height: 100vh;
+        height: 100dvh;
+        min-height: 100dvh;
+        max-height: none;
+        padding: clamp(70px, 9vh, 90px) clamp(20px, 4vw, 40px) clamp(20px, 3vh, 32px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+      }
+      .prizes-container {
+        flex-direction: column;
+        height: 100%;
+        max-height: 100%;
+        justify-content: space-between;
+        gap: clamp(14px, 2.5vh, 22px);
+      }
+      .prizes-visual-col {
+        max-width: 100%;
+        width: 100%;
+        flex: 1 1 auto;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      .prizes-image-frame {
+        aspect-ratio: unset;
+        width: 100%;
+        height: 100%;
+        min-height: clamp(220px, 34vh, 380px);
+        flex: 1;
+      }
+      .prizes-content-col {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        flex-shrink: 0;
+        gap: clamp(10px, 1.8vh, 16px);
+      }
+      .prizes-header-group {
+        gap: 4px;
+      }
+      .prizes-title {
+        font-size: clamp(20px, 4.5vw, 30px);
+      }
+      .prizes-description {
+        font-size: clamp(12px, 3vw, 13.5px);
+        line-height: 1.35;
+      }
+      .prizes-detail-group {
+        margin-top: 0;
+        width: 100%;
+      }
+      .prizes-item-top {
+        margin-bottom: 6px;
+        gap: 8px;
+      }
+      .prize-single-badge {
+        width: 44px;
+        height: 30px;
+      }
+      .prize-badge-text {
+        font-size: 14px;
+      }
+      .prizes-category-label {
+        font-size: 12px;
+      }
+      .prizes-text-items-wrap {
+        height: clamp(90px, 13vh, 120px);
+        min-height: unset;
+      }
+      .prizes-headline {
+        font-size: clamp(18px, 4.5vw, 24px);
+        line-height: 1.15;
+      }
+
+      /* Registration */
+      .registration-section {
+        padding-top: 80px;
+        padding-bottom: 80px;
+        padding-left: clamp(20px, 4vw, 48px);
+        padding-right: clamp(20px, 4vw, 48px);
+      }
+      .registration-container {
+        gap: 56px;
+      }
+      .registration-tag {
+        position: static;
+        display: block;
+        margin-bottom: 16px;
+      }
+      .registration-headline {
+        text-indent: 0;
+        font-size: clamp(24px, 4vw, 34px);
+        line-height: 1.2;
+      }
+      .registration-copy-columns {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .registration-practice-col,
+      .registration-process-col {
+        width: 100%;
+      }
+
+      /* FAQ */
+      .faq-section {
+        padding-top: 80px;
+        padding-bottom: 80px;
+        padding-left: clamp(20px, 4vw, 48px);
+        padding-right: clamp(20px, 4vw, 48px);
+      }
+      .faq-container {
+        gap: 56px;
+      }
+      .faq-title {
+        font-size: clamp(28px, 5vw, 40px);
+      }
+      .faq-question-text {
+        font-size: 20px;
+      }
+      .faq-chevron-box {
+        width: 40px;
+        height: 32px;
+      }
+
+      /* Footer */
+      .footer-section {
+        height: auto;
+        min-height: auto;
+        padding-top: 80px;
+        padding-bottom: 60px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* Navbar */
+      .navbar {
+        height: 64px;
+        padding: 0 16px;
+      }
+      .navbar-logo-img {
+        width: 76px;
+      }
+      .nav-center-menu {
+        display: none;
+      }
+      .navbar-lang-pill {
+        width: auto;
+        height: 36px;
+        padding: 2px 8px;
+      }
+      .navbar-dropdown {
+        max-width: calc(100vw - 32px);
+        padding: 20px 18px;
+        gap: 14px;
+      }
+      .navbar-lang-dropdown {
+        right: 0;
+        width: 160px;
+      }
+
+      /* Hero Exact 1:1 Responsive Behavior */
+      .hero-section {
+        height: 100vh;
+        height: 100dvh;
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding-top: clamp(74px, 10vh, 90px);
+        padding-bottom: clamp(20px, 3.5vh, 28px);
+        padding-left: clamp(20px, 5.5vw, 28px);
+        padding-right: clamp(20px, 5.5vw, 28px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+      .hero-inner-container {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: left;
+        gap: 0;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+      }
+      .hero-headline-wrap {
+        width: 100%;
+        max-width: 100%;
+        text-align: left;
+        margin-top: 0;
+      }
+      .hero-main-title {
+        text-align: left;
+        font-size: clamp(42px, 11.5vw, 56px);
+        font-weight: 800;
+        line-height: 0.93;
+        letter-spacing: -0.035em;
+      }
+      .hero-title-highlight {
+        color: var(--color-gold-accent, #DB9700);
+        display: block;
+        margin-top: 2px;
+      }
+      .hero-columns-wrap {
+        width: 100%;
+        max-width: 100%;
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: clamp(25px, 3.8vh, 37px);
+      }
+      .hero-columns-grid {
+        flex-direction: column;
+        width: 100%;
+        gap: clamp(16px, 2.5vh, 24px);
+      }
+      .hero-col-practice,
+      .hero-col-process {
+        width: 100%;
+        max-width: 100%;
+        align-items: flex-start;
+        text-align: left;
+      }
+      .hero-col-title {
+        text-align: left;
+        font-size: clamp(17px, 4.6vw, 20px);
+        font-weight: 700;
+        line-height: 1.2;
+        color: #FFFFFF;
+        margin-bottom: 6px;
+        letter-spacing: -0.01em;
+      }
+      .hero-col-bar {
+        display: block;
+        width: 28px;
+        height: 3px;
+        background-color: var(--color-gold-accent, #DB9700);
+        margin-top: 0;
+        margin-bottom: 10px;
+        border-radius: 2px;
+      }
+      .hero-col-text {
+        text-align: left;
+        font-size: clamp(12.5px, 3.4vw, 14px);
+        line-height: 1.45;
+        color: rgba(255, 255, 255, 0.88);
+        max-width: clamp(260px, 78vw, 320px);
+        margin: 0;
+      }
+      .hero-btn-desktop {
+        display: none !important;
+      }
+      .hero-btn-mobile {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        max-width: 100%;
+        height: clamp(48px, 6.5vh, 52px);
+        background-color: #DB9700;
+        background: linear-gradient(180deg, #DB9700 0%, #C48200 100%);
+        color: #FFFFFF;
+        border-radius: 4px;
+        font-family: var(--font-body);
+        font-size: clamp(13.5px, 3.6vw, 15px);
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        border: none;
+        cursor: pointer;
+        margin-top: clamp(24px, 3.5vh, 32px);
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+        text-decoration: none;
+      }
+
+      /* Jury Touch Display */
+      .jury-section {
+        padding-top: 64px;
+        padding-bottom: 64px;
+        padding-left: 20px;
+        padding-right: 20px;
+        gap: 32px;
+      }
+      .jury-title {
+        font-size: clamp(24px, 6vw, 32px);
+      }
+      .jury-card {
+        width: 220px;
+        height: 330px;
+      }
+      .jury-card-overlay {
+        opacity: 1 !important;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.5) 45%, transparent 100%) !important;
+        padding: 20px 16px;
+      }
+      .jury-card-info {
+        transform: translateY(0) !important;
+        gap: 6px;
+      }
+      .jury-member-name {
+        font-size: 18px;
+      }
+      .jury-member-role {
+        font-size: 12px;
+      }
+
+      /* Footer */
+      .footer-section {
+        padding-top: 80px;
+        padding-bottom: 60px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .footer-stack {
+        gap: 36px;
+      }
+      .footer-logo-img {
+        width: 136px;
+      }
+      .footer-nav-list {
+        gap: 16px;
+      }
+      .footer-nav-link {
+        font-size: 14px;
+        padding: 6px 12px;
+      }
+      .footer-copyright-text {
+        font-size: 11px;
+        line-height: 1.4;
+      }
+    }
+
+    @media (max-width: 640px) {
+      /* Stats */
+      .stats-section {
+        padding-top: 64px;
+        padding-bottom: 64px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .stats-inner-container {
+        gap: 40px;
+      }
+      .stats-statement {
+        font-size: clamp(20px, 5.5vw, 26px);
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+      }
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px 16px;
+      }
+      .stat-number {
+        font-size: clamp(38px, 11vw, 52px);
+      }
+      .stat-label {
+        font-size: 11px;
+        line-height: 1.3;
+        letter-spacing: 0.04em;
+      }
+
+      /* Timeline */
+      .timeline-section {
+        padding: 64px 16px;
+      }
+      .timeline-header-wrap {
+        margin-bottom: 40px;
+      }
+      .timeline_progress {
+        left: 2px;
+        right: auto;
+        transform: none;
+      }
+      .timeline_items-list {
+        padding-left: 24px;
+        gap: 24px;
+      }
+      .timeline_item {
+        min-height: clamp(150px, 40vw, 190px);
+        padding: 24px 20px;
+      }
+      .timeline_sticky_row {
+        gap: 10px;
+      }
+      .timeline_date-text {
+        font-size: 13px;
+      }
+      .timeline_title-text {
+        font-size: clamp(16px, 4.2vw, 18px);
+        line-height: 1.32;
+      }
+
+      /* Prizes */
+      .prizes-stage {
+        padding: clamp(64px, 8vh, 80px) 16px clamp(16px, 2.5vh, 24px);
+      }
+      .prizes-container {
+        gap: clamp(12px, 2vh, 18px);
+      }
+      .prizes-image-frame {
+        min-height: clamp(200px, 35vh, 340px);
+      }
+      .prizes-title {
+        font-size: 22px;
+      }
+      .prizes-headline {
+        font-size: clamp(17px, 5vw, 22px);
+      }
+
+      /* Registration */
+      .registration-section {
+        padding-top: 64px;
+        padding-bottom: 64px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .registration-container {
+        gap: 40px;
+      }
+      .registration-headline {
+        font-size: clamp(20px, 5.5vw, 26px);
+        line-height: 1.25;
+      }
+      .registration-copy-columns {
+        gap: 32px;
+      }
+      .registration-col-text-wrap {
+        margin-bottom: 20px;
+        gap: 12px;
+      }
+      .registration-btn {
+        height: 48px;
+        font-size: 13px;
+      }
+
+      /* FAQ */
+      .faq-section {
+        padding-top: 64px;
+        padding-bottom: 64px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .faq-container {
+        gap: 36px;
+      }
+      .faq-title {
+        font-size: clamp(24px, 6vw, 30px);
+      }
+      .faq-question-btn {
+        gap: 14px;
+        min-height: 48px;
+      }
+      .faq-question-text {
+        font-size: 16px;
+        line-height: 1.3;
+      }
+      .faq-answer-text {
+        font-size: 14px;
+        line-height: 1.55;
+      }
+      .faq-chevron-box {
+        width: 36px;
+        height: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-section {
+        padding-top: clamp(68px, 9vh, 80px);
+        padding-bottom: clamp(18px, 3vh, 24px);
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .hero-main-title {
+        font-size: clamp(38px, 10.5vw, 46px);
+      }
+      .hero-columns-wrap {
+        margin-top: 23px;
+      }
+      .hero-columns-grid {
+        gap: 16px;
+      }
+      .hero-col-title {
+        font-size: 17px;
+      }
+      .hero-col-text {
+        font-size: 13px;
+        max-width: 280px;
+      }
+      .hero-btn-mobile {
+        height: 48px;
+        font-size: 14px;
+        margin-top: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================= -->
+  <!-- 1. NAVBAR (THEME ADAPTIVE PILLS & DROPDOWNS)                  -->
+  <!-- ============================================================= -->
+  <header class="navbar navbar--on-dark" id="prixNavbar" role="banner">
+    <!-- Left: Brand Logo -->
+    <a href="#hero" class="navbar-logo-link" aria-label="PRIX RAMSES Home">
+      <img src="assets/images/prix-ramses/logo.svg" alt="PRIX RAMSES" id="navbarLogoImg" class="navbar-logo-img">
+    </a>
+
+    <!-- Center: Main Section Links -->
+    <nav class="nav-center-menu" aria-label="Main Navigation">
+      <ul class="nav-center-links">
+        <li class="nav-center-item">
+          <a href="#prizes" class="nav-center-link" data-i18n="navbar.prizes">Prizes</a>
+        </li>
+        <li class="nav-center-item">
+          <a href="#timeline" class="nav-center-link" data-i18n="navbar.timeline">Key Dates</a>
+        </li>
+        <li class="nav-center-item">
+          <a href="#laureates" class="nav-center-link" data-i18n="navbar.laureates">Laureates</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Right: Language selector pill with dropdown -->
+    <div class="navbar-pill-wrapper" id="navLangWrapper">
+      <button
+        type="button"
+        class="navbar-pill navbar-lang-pill"
+        onclick="toggleLang()"
+        aria-label="Select language"
+      >
+        <span class="navbar-lang-text" id="currentLangLabel">EN</span>
+        <span class="navbar-chevron-box" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="14" height="14" fill="none">
+            <path d="M 4 6 L 8 10 L 12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+
+      <!-- Language Dropdown Menu -->
+      <div class="navbar-dropdown navbar-lang-dropdown" id="navLangDropdown" role="menu">
+        <button type="button" class="lang-dropdown-item is-active" onclick="switchLanguage('EN')">
+          <span class="lang-dropdown-label">English</span>
+        </button>
+        <button type="button" class="lang-dropdown-item" onclick="switchLanguage('FR')">
+          <span class="lang-dropdown-label">Français</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================= -->
+  <!-- 2. HERO SECTION                                               -->
+  <!-- ============================================================= -->
+  <section class="hero-section" id="hero" data-theme="dark" aria-label="Hero Section">
+    <div class="hero-inner-container">
+      <div class="hero-headline-wrap">
+        <h1 class="hero-main-title">
+          <span data-i18n="hero.title">PRIX RAMSES</span>
+          <br>
+          <span class="hero-title-highlight" data-i18n="hero.year">2026</span>
+        </h1>
+      </div>
+
+      <div class="hero-columns-wrap">
+        <div class="hero-columns-grid">
+          <!-- Column 1: Ambition -->
+          <div class="hero-col hero-col-practice">
+            <h2 class="hero-col-title" data-i18n="hero.practiceTitle">Our Ambition</h2>
+            <div class="hero-col-bar" aria-hidden="true"></div>
+            <p class="hero-col-text" data-i18n="hero.practiceText">
+              The Prix RAMSES places Cameroonian architects at the heart of reflection on new urban spaces.
+            </p>
+            <a href="#registration" class="hero-btn-work hero-btn-desktop" data-i18n="hero.workWithUs">
+              Register Now
+            </a>
+          </div>
+
+          <!-- Column 2: Vision -->
+          <div class="hero-col hero-col-process">
+            <h2 class="hero-col-title" data-i18n="hero.processTitle">Our Vision</h2>
+            <div class="hero-col-bar" aria-hidden="true"></div>
+            <p class="hero-col-text" data-i18n="hero.processText">
+              A platform for the architecture that will shape tomorrow’s cities.
+            </p>
+          </div>
+        </div>
+
+        <!-- Mobile Hero CTA Button -->
+        <a href="#registration" class="hero-btn-work hero-btn-mobile" data-i18n="hero.workWithUs">
+          Register Now
+          <svg class="hero-btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 3. STATS SECTION (WHY?)                                       -->
+  <!-- ============================================================= -->
+  <section class="stats-section" id="why" data-theme="light" aria-label="Key Figures and Mission">
+    <div class="stats-inner-container">
+      <div class="stats-statement-wrap">
+        <span class="stats-tag-why" data-i18n="stats.why">WHY?</span>
+        <h2 class="stats-statement" data-i18n="stats.statement">
+          The Prix RAMSES celebrates architectural excellence and encourages the design of projects capable of sustainably transforming our cities.
+        </h2>
+      </div>
+
+      <div class="stats-row-wrap">
+        <div class="stats-grid">
+          <article class="stat-card stat-card-1">
+            <span class="stat-number" id="statNum1">+17</span>
+            <p class="stat-label" data-i18n="stats.competitions">SUCCESSFULLY ORGANIZED<br>COMPETITIONS</p>
+          </article>
+
+          <article class="stat-card stat-card-2">
+            <span class="stat-number" id="statNum2">05</span>
+            <p class="stat-label" data-i18n="stats.jury">INVITED JURY<br>MEMBERS</p>
+          </article>
+
+          <article class="stat-card stat-card-3">
+            <span class="stat-number" id="statNum3">140+</span>
+            <p class="stat-label" data-i18n="stats.awards">AWARDS<br>GRANTED</p>
+          </article>
+
+          <article class="stat-card stat-card-4">
+            <span class="stat-number" id="statNum4">03</span>
+            <p class="stat-label" data-i18n="stats.experience">YEARS OF<br>EXPERIENCE</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 4. PRIZES SECTION (EXACT PINNED SCROLL EXPERIENCE)            -->
+  <!-- ============================================================= -->
+  <section class="prizes-sticky-section" id="prizes" data-theme="dark">
+    <div class="prizes-stage">
+      <div class="prizes-container">
+        <!-- Left Column: Layered Visual Stack + Progress Bar Inside Image Card -->
+        <div class="prizes-visual-col">
+          <div class="prizes-image-frame">
+            <div class="prizes-visual-wrap" id="prizeVisual0">
+              <img src="assets/images/prix-ramses/prizes-01.webp" alt="Architect blueprint design with drafting compass" class="prizes-img" loading="lazy">
+            </div>
+            <div class="prizes-visual-wrap" id="prizeVisual1">
+              <img src="assets/images/prix-ramses/prizes-02.webp" alt="Crystal and gold trophy on marble base" class="prizes-img" loading="lazy">
+            </div>
+            <div class="prizes-visual-wrap" id="prizeVisual2">
+              <img src="assets/images/prix-ramses/prizes-03.webp" alt="Architectural modern residence 3D model" class="prizes-img" loading="lazy">
+            </div>
+            <!-- Progress Bar inside image card at the bottom (Mosaicist style) -->
+            <div class="prizes-progress-w">
+              <div class="prizes-progress-bar" id="prizesProgressBar"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Persistent Header + Bottom-Aligned Dynamic Award Info -->
+        <div class="prizes-content-col">
+          <!-- Top Fixed Header (Frame 38) -->
+          <div class="prizes-header-group">
+            <h2 class="prizes-title" data-i18n="prizes.sectionTitle">PRIZES (Awards)</h2>
+            <p class="prizes-description" data-i18n="prizes.description">
+              Rewarding the most ambitious architectural visions, the winner of the Prix RAMSES 2026 will receive exceptional recognition for their project and their commitment to transforming urban spaces.
+            </p>
+          </div>
+
+          <!-- Bottom Dynamic Section (Frame 39) -->
+          <div class="prizes-detail-group">
+            <div class="prizes-text-items-wrap">
+              <!-- Item 1 -->
+              <div class="prizes-text-item" id="prizeTextItem0">
+                <div class="prizes-item-top" data-prize-anim>
+                  <div class="prize-single-badge">
+                    <span class="prize-badge-text">/01</span>
+                  </div>
+                  <span class="prizes-category-label" data-i18n="prizes.includes">The Grand Prix RAMSES includes:</span>
+                </div>
+                <h3 class="prizes-headline" data-prize-anim data-i18n="prizes.prize1Title">
+                  A financial reward of 2,000,000FCFA
+                </h3>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="prizes-text-item" id="prizeTextItem1">
+                <div class="prizes-item-top" data-prize-anim>
+                  <div class="prize-single-badge">
+                    <span class="prize-badge-text">/02</span>
+                  </div>
+                  <span class="prizes-category-label" data-i18n="prizes.includes">The Grand Prix RAMSES includes:</span>
+                </div>
+                <h3 class="prizes-headline" data-prize-anim data-i18n="prizes.prize2Title">
+                  An exclusive crystal trophy bearing the image of Ramses
+                </h3>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="prizes-text-item" id="prizeTextItem2">
+                <div class="prizes-item-top" data-prize-anim>
+                  <div class="prize-single-badge">
+                    <span class="prize-badge-text">/03</span>
+                  </div>
+                  <span class="prizes-category-label" data-i18n="prizes.includes">The Grand Prix RAMSES includes:</span>
+                </div>
+                <h3 class="prizes-headline" data-prize-anim data-i18n="prizes.prize3Title">
+                  A publication in a prestigious local magazine
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 5. TIMELINE SECTION (SYNCHRONIZED STICKY ROW + TRACKING DOT)  -->
+  <!-- ============================================================= -->
+  <section class="timeline-section" id="timeline" data-theme="dark" aria-label="Key Dates">
+    <div class="timeline-inner-container">
+      <!-- Centered Section Heading (Frame 42) -->
+      <div class="timeline-header-wrap">
+        <h2 class="timeline-section-title" data-i18n="timeline.title">Key Dates (Timeline)</h2>
+      </div>
+
+      <!-- Timeline Component -->
+      <div class="timeline_component" id="timelineComponent">
+        <!-- Static Orange Track, Moving White Line & Tracking Diamond Dot -->
+        <div class="timeline_progress">
+          <div class="timeline_progress-bar" id="timelineProgressBar">
+            <div class="timeline_diamond-dot"></div>
+          </div>
+        </div>
+
+        <!-- Milestone Items List -->
+        <div class="timeline_items-list">
+          <!-- Item 1 -->
+          <div class="timeline_item">
+            <div class="timeline_card-bg">
+              <img src="assets/images/prix-ramses/timeline-01.webp" alt="Official launch" class="timeline_img" loading="lazy">
+              <div class="timeline_overlay"></div>
+            </div>
+            <div class="timeline_sticky_row">
+              <div class="timeline_left">
+                <div class="timeline_date-text" data-i18n="timeline.step1Date">May 10, 2025</div>
+              </div>
+              <div class="timeline_centre"></div>
+              <div class="timeline_right">
+                <h3 class="timeline_title-text" data-i18n="timeline.step1Title">Official launch and opening of call for applications</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="timeline_item">
+            <div class="timeline_card-bg">
+              <img src="assets/images/prix-ramses/timeline-02.webp" alt="Deadline for applications" class="timeline_img" loading="lazy">
+              <div class="timeline_overlay"></div>
+            </div>
+            <div class="timeline_sticky_row">
+              <div class="timeline_left">
+                <div class="timeline_date-text" data-i18n="timeline.step2Date">June 15, 2025</div>
+              </div>
+              <div class="timeline_centre"></div>
+              <div class="timeline_right">
+                <h3 class="timeline_title-text" data-i18n="timeline.step2Title">Deadline for applications and participant validation (70 selected firms)</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="timeline_item">
+            <div class="timeline_card-bg">
+              <img src="assets/images/prix-ramses/timeline-03.webp" alt="Prequalification of finalists" class="timeline_img" loading="lazy">
+              <div class="timeline_overlay"></div>
+            </div>
+            <div class="timeline_sticky_row">
+              <div class="timeline_left">
+                <div class="timeline_date-text" data-i18n="timeline.step3Date">July 15, 2025</div>
+              </div>
+              <div class="timeline_centre"></div>
+              <div class="timeline_right">
+                <h3 class="timeline_title-text" data-i18n="timeline.step3Title">Prequalification of finalists (20 firms advance)</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="timeline_item">
+            <div class="timeline_card-bg">
+              <img src="assets/images/prix-ramses/timeline-04.webp" alt="Project submission deadline" class="timeline_img" loading="lazy">
+              <div class="timeline_overlay"></div>
+            </div>
+            <div class="timeline_sticky_row">
+              <div class="timeline_left">
+                <div class="timeline_date-text" data-i18n="timeline.step4Date">November 10, 2025</div>
+              </div>
+              <div class="timeline_centre"></div>
+              <div class="timeline_right">
+                <h3 class="timeline_title-text" data-i18n="timeline.step4Title">Project submission deadline</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="timeline_item">
+            <div class="timeline_card-bg">
+              <img src="assets/images/prix-ramses/timeline-05.webp" alt="Grand Finale" class="timeline_img" loading="lazy">
+              <div class="timeline_overlay"></div>
+            </div>
+            <div class="timeline_sticky_row">
+              <div class="timeline_left">
+                <div class="timeline_date-text" data-i18n="timeline.step5Date">December 07, 2025</div>
+              </div>
+              <div class="timeline_centre"></div>
+              <div class="timeline_right">
+                <h3 class="timeline_title-text" data-i18n="timeline.step5Title">Grand Finale, Prix RAMSES Gala Evening at the Hilton Hotel in Yaoundé (300 guests)</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 6. REGISTRATION SECTION                                       -->
+  <!-- ============================================================= -->
+  <section class="registration-section" id="registration" data-theme="light">
+    <div class="registration-container">
+      <div class="registration-headline-wrap">
+        <span class="registration-tag" data-i18n="registration.tag">Registration</span>
+        <h2 class="registration-headline" data-i18n="registration.headline">
+          Would you like to participate in a competition that highlights architectural innovation and helps shape the African cities of tomorrow?
+        </h2>
+      </div>
+
+      <div class="registration-copy-columns">
+        <!-- Practice Column -->
+        <div class="registration-copy-col registration-practice-col">
+          <div class="registration-col-text-wrap">
+            <span class="registration-eyebrow" data-i18n="registration.practiceEyebrow">How do you see the future? Show us.</span>
+            <p class="registration-desc" data-i18n="registration.practiceDesc">
+              Register for the Prix RAMSÈS 2025 and present your vision of the world.
+(Participation fees provide access to the official award ceremony evening.)
+            </p>
+          </div>
+
+          <a href="mailto:contact@eventifyagency.com?subject=Brief%20Prix%20Ramses" class="registration-btn registration-btn-gray">
+            <span data-i18n="registration.stayInformedBtn">Download the brief</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Process Column -->
+        <div class="registration-copy-col registration-process-col">
+          <div class="registration-col-text-wrap">
+            <span class="registration-eyebrow" data-i18n="registration.processEyebrow">Benefits</span>
+            <p class="registration-desc" data-i18n="registration.processDesc">
+              Participants benefit from masterclasses, webinars, and mentoring sessions, allowing them to refine their concepts and adapt them to international standards.
+            </p>
+          </div>
+
+          <a href="mailto:contact@eventifyagency.com?subject=Registration%20Prix%20Ramses" class="registration-btn registration-btn-gold" data-i18n="registration.registerBtn">
+            Register for the Prix RAMSÈS (150,000 FCFA)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 7. JURY SECTION                                               -->
+  <!-- ============================================================= -->
+  <section class="jury-section" id="jury" data-theme="dark" aria-label="Meet the Jury">
+    <div class="jury-inner-container">
+      <div class="jury-header-wrap">
+        <h2 class="jury-title" data-i18n="jury.title">Meet the Jury</h2>
+        <div class="jury-intro-wrap">
+          <p class="jury-intro-text" data-i18n="jury.intro">
+            Projects submitted to the Prix RAMSES are evaluated by a jury composed of professionals and experts from the fields of architecture, urban planning, design, construction, and territorial development. The jury's role is to identify the most remarkable projects based on several criteria: Originality, Feasibility, and Impact.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Infinite Loop Marquee -->
+    <div class="jury-marquee-wrapper" id="juryMarqueeWrap">
+      <div class="jury-marquee-track" id="juryTrack">
+        <!-- Set 1 -->
+        <div class="jury-card">
+          <div class="jury-card-media">
+            <img src="assets/images/jury/M_Jean_christophe_Ndongo.jpg" alt="M. Jean-Christophe Ndongo" class="jury-card-img" loading="lazy" style="object-position: center 20%;">
+            <div class="jury-card-overlay">
+              <div class="jury-card-info">
+                <h3 class="jury-member-name">M. Jean-Christophe Ndongo</h3>
+                <span class="jury-member-role">(Président ONAC)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="jury-card">
+          <div class="jury-card-media">
+            <img src="assets/images/jury/Mme_sandrine_ngo_Ngoum.jpg" alt="Mme Sandrine Nyambal" class="jury-card-img" loading="lazy" style="object-position: center 20%;">
+            <div class="jury-card-overlay">
+              <div class="jury-card-info">
+                <h3 class="jury-member-name">Mme Sandrine Nyambal</h3>
+                <span class="jury-member-role">(DG Eventify Agency)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="jury-card">
+          <div class="jury-card-media">
+            <img src="assets/images/jury/mr_frederic_nzoki_Epoh.jpg" alt="M. Frédéric Nzoki Epoh" class="jury-card-img" loading="lazy" style="object-position: center 20%;">
+            <div class="jury-card-overlay">
+              <div class="jury-card-info">
+                <h3 class="jury-member-name">M. Frédéric Nzoki Epoh</h3>
+                <span class="jury-member-role">(Maire de la commune de Nkongsamba)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="jury-card">
+          <div class="jury-card-media">
+            <img src="assets/images/jury/mr_jean_baptist_atemengue.jpg" alt="M. Jean-Baptiste Atemengue" class="jury-card-img" loading="lazy" style="object-position: center 20%;">
+            <div class="jury-card-overlay">
+              <div class="jury-card-info">
+                <h3 class="jury-member-name">M. Jean-Baptiste Atemengue</h3>
+                <span class="jury-member-role">(Maire de la commune de Ngoumou)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="jury-card">
+          <div class="jury-card-media">
+            <img src="assets/images/jury/mr_maurice_enama_fouda.jpg" alt="M. Maurice Enama Fouda" class="jury-card-img" loading="lazy" style="object-position: center 20%;">
+            <div class="jury-card-overlay">
+              <div class="jury-card-info">
+                <h3 class="jury-member-name">M. Maurice Enama Fouda</h3>
+                <span class="jury-member-role">(DG CHC)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Set 2 (Continuous Loop Duplicates) -->
+        <div class="jury-card">
+          <div class="jury-card-media">
+            <img src="assets/images/jury/M_Jean_christophe_Ndongo.jpg" alt="M. Jean-Christophe Ndongo" class="jury-card-img" loading="lazy" style="object-position: center 20%;">
+            <div class="jury-card-overlay">
+              <div class="jury-card-info">
+                <h3 class="jury-member-name">M. Jean-Christophe Ndongo</h3>
+                <span class="jury-member-role">(Président ONAC)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="jury-card">
+          <div class="jury-card-media">
+            <img src="assets/images/jury/Mme_sandrine_ngo_Ngoum.jpg" alt="Mme Sandrine Nyambal" class="jury-card-img" loading="lazy" style="object-position: center 20%;">
+            <div class="jury-card-overlay">
+              <div class="jury-card-info">
+                <h3 class="jury-member-name">Mme Sandrine Nyambal</h3>
+                <span class="jury-member-role">(DG Eventify Agency)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="jury-card">
+          <div class="jury-card-media">
+            <img src="assets/images/jury/mr_frederic_nzoki_Epoh.jpg" alt="M. Frédéric Nzoki Epoh" class="jury-card-img" loading="lazy" style="object-position: center 20%;">
+            <div class="jury-card-overlay">
+              <div class="jury-card-info">
+                <h3 class="jury-member-name">M. Frédéric Nzoki Epoh</h3>
+                <span class="jury-member-role">(Maire de la commune de Nkongsamba)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="jury-card">
+          <div class="jury-card-media">
+            <img src="assets/images/jury/mr_jean_baptist_atemengue.jpg" alt="M. Jean-Baptiste Atemengue" class="jury-card-img" loading="lazy" style="object-position: center 20%;">
+            <div class="jury-card-overlay">
+              <div class="jury-card-info">
+                <h3 class="jury-member-name">M. Jean-Baptiste Atemengue</h3>
+                <span class="jury-member-role">(Maire de la commune de Ngoumou)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="jury-card">
+          <div class="jury-card-media">
+            <img src="assets/images/jury/mr_maurice_enama_fouda.jpg" alt="M. Maurice Enama Fouda" class="jury-card-img" loading="lazy" style="object-position: center 20%;">
+            <div class="jury-card-overlay">
+              <div class="jury-card-info">
+                <h3 class="jury-member-name">M. Maurice Enama Fouda</h3>
+                <span class="jury-member-role">(DG CHC)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Text -->
+    <div class="jury-inner-container">
+      <div class="jury-bottom-text-wrap">
+        <p class="jury-bottom-text" data-i18n="jury.bottomText">
+          Through rigorous analysis, the jury supports the emergence of innovative architecture, adapted to local realities and open to international standards.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 8. LAUREATES EDITIONS LIST SECTION (Exact Figma & React 1:1)  -->
+  <!-- ============================================================= -->
+  <section class="laureates-list-section" id="laureates" data-theme="light" aria-label="Laureates Editions List">
+    <!-- Edition 2025 -->
+    <article class="laureate-card" data-theme="light" id="laureateCard2025">
+      <div class="laureate-card-inner">
+        <!-- Left Column: Project & Edition Details -->
+        <div class="laureate-info-col">
+          <h2 class="laureate-theme-title" data-i18n="laureatesPage.edition2025Theme">
+            Second Edition "The Original Place"
+          </h2>
+          <div class="laureate-meta-group">
+            <span class="laureate-edition-tag">Prix RAMSÈS 2025</span>
+            <p class="laureate-winner-label" data-i18n="laureatesPage.edition2025Winner">
+              The winning project: FAD Architectures
+            </p>
+          </div>
+          <div class="laureate-cta-wrap laureate-cta-desktop">
+            <a href="mailto:contact@eventifyagency.com?subject=Prix%20Ramses%202025%20Project" class="laureate-cta-btn" data-i18n="laureatesPage.learnMore">
+              Learn More
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Gallery Showcase Frame -->
+        <div class="laureate-gallery-col">
+          <div class="laureate-slider-frame" id="sliderFrame2025">
+            <!-- 3-Image Collage Strip with interactive slots -->
+            <div class="laureate-images-strip" id="strip2025">
+              <div class="laureate-slide-slot slot-center" data-slot-idx="0" onclick="handleSlotClick('2025', 0)">
+                <img src="assets/images/prix-ramse/DSC08966.jpg" alt="Second Edition slide 1" class="laureate-strip-img" loading="lazy" style="object-position: center 30%;">
+              </div>
+              <div class="laureate-slide-slot slot-right-peek" data-slot-idx="1" onclick="handleSlotClick('2025', 1)">
+                <img src="assets/images/prix-ramse/DSC09004.jpg" alt="Second Edition slide 2" class="laureate-strip-img" loading="lazy" style="object-position: center 30%;">
+              </div>
+              <div class="laureate-slide-slot slot-offscreen-right" data-slot-idx="2" onclick="handleSlotClick('2025', 2)">
+                <img src="assets/images/prix-ramse/DSC09184.jpg" alt="Second Edition slide 3" class="laureate-strip-img" loading="lazy" style="object-position: center 30%;">
+              </div>
+              <div class="laureate-slide-slot slot-left-peek" data-slot-idx="3" onclick="handleSlotClick('2025', 3)">
+                <img src="assets/images/prix-ramse/DSC09206.jpg" alt="Second Edition slide 4" class="laureate-strip-img" loading="lazy" style="object-position: center 30%;">
+              </div>
+            </div>
+
+            <!-- Slider Controls -->
+            <div class="laureate-slider-controls">
+              <div class="laureate-dots-wrap" role="tablist" aria-label="Slides">
+                <button type="button" class="laureate-dot-btn is-active" aria-label="Show slide 1 of 4" onclick="goToLaureateSlide('2025', 0)"></button>
+                <button type="button" class="laureate-dot-btn" aria-label="Show slide 2 of 4" onclick="goToLaureateSlide('2025', 1)"></button>
+                <button type="button" class="laureate-dot-btn" aria-label="Show slide 3 of 4" onclick="goToLaureateSlide('2025', 2)"></button>
+                <button type="button" class="laureate-dot-btn" aria-label="Show slide 4 of 4" onclick="goToLaureateSlide('2025', 3)"></button>
+              </div>
+
+              <div class="laureate-arrows-wrap">
+                <button type="button" class="laureate-arrow-btn" aria-label="Previous slide" onclick="prevLaureateSlide('2025')">
+                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                    <path d="M4.8433 7.1567L2.28299 4.59639H8V3.40361H2.28299L4.8433 0.843298L4 0L0 4L4 8L4.8433 7.1567Z" fill="white"/>
+                  </svg>
+                </button>
+                <button type="button" class="laureate-arrow-btn" aria-label="Next slide" onclick="nextLaureateSlide('2025')">
+                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                    <path d="M3.1567 7.1567L4 8L8 4L4 0L3.1567 0.843298L5.71701 3.40361H0V4.59639H5.71701L3.1567 7.1567Z" fill="white"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="laureate-cta-wrap laureate-cta-mobile">
+            <a href="mailto:contact@eventifyagency.com?subject=Prix%20Ramses%202025%20Project" class="laureate-cta-btn" data-i18n="laureatesPage.learnMore">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Edition 2024 -->
+    <article class="laureate-card" data-theme="light" id="laureateCard2024">
+      <div class="laureate-card-inner">
+        <!-- Left Column: Project & Edition Details -->
+        <div class="laureate-info-col">
+          <h2 class="laureate-theme-title" data-i18n="laureatesPage.edition2024Theme">
+            First Edition “Camp SIC Messa”
+          </h2>
+          <div class="laureate-meta-group">
+            <span class="laureate-edition-tag">Prix RAMSÈS 2024</span>
+            <p class="laureate-winner-label" data-i18n="laureatesPage.edition2024Winner">
+              The winning project: FAD Architectures
+            </p>
+          </div>
+          <div class="laureate-cta-wrap laureate-cta-desktop">
+            <a href="mailto:contact@eventifyagency.com?subject=Prix%20Ramses%202024%20Project" class="laureate-cta-btn" data-i18n="laureatesPage.learnMore">
+              Learn More
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Gallery Showcase Frame -->
+        <div class="laureate-gallery-col">
+          <div class="laureate-slider-frame" id="sliderFrame2024">
+            <!-- 3-Image Collage Strip with interactive slots -->
+            <div class="laureate-images-strip" id="strip2024">
+              <div class="laureate-slide-slot slot-center" data-slot-idx="0" onclick="handleSlotClick('2024', 0)">
+                <img src="assets/images/prix-ramses/laureate-2024-01.webp" alt="First Edition slide 1" class="laureate-strip-img" loading="lazy">
+              </div>
+              <div class="laureate-slide-slot slot-right-peek" data-slot-idx="1" onclick="handleSlotClick('2024', 1)">
+                <img src="assets/images/prix-ramses/laureate-2024-02.webp" alt="First Edition slide 2" class="laureate-strip-img" loading="lazy">
+              </div>
+              <div class="laureate-slide-slot slot-offscreen-right" data-slot-idx="2" onclick="handleSlotClick('2024', 2)">
+                <img src="assets/images/prix-ramses/laureate-2024-03.webp" alt="First Edition slide 3" class="laureate-strip-img" loading="lazy">
+              </div>
+              <div class="laureate-slide-slot slot-left-peek" data-slot-idx="3" onclick="handleSlotClick('2024', 3)">
+                <img src="assets/images/prix-ramses/project-gallery-02.webp" alt="First Edition slide 4" class="laureate-strip-img" loading="lazy">
+              </div>
+            </div>
+
+            <!-- Slider Controls -->
+            <div class="laureate-slider-controls">
+              <div class="laureate-dots-wrap" role="tablist" aria-label="Slides">
+                <button type="button" class="laureate-dot-btn is-active" aria-label="Show slide 1 of 4" onclick="goToLaureateSlide('2024', 0)"></button>
+                <button type="button" class="laureate-dot-btn" aria-label="Show slide 2 of 4" onclick="goToLaureateSlide('2024', 1)"></button>
+                <button type="button" class="laureate-dot-btn" aria-label="Show slide 3 of 4" onclick="goToLaureateSlide('2024', 2)"></button>
+                <button type="button" class="laureate-dot-btn" aria-label="Show slide 4 of 4" onclick="goToLaureateSlide('2024', 3)"></button>
+              </div>
+
+              <div class="laureate-arrows-wrap">
+                <button type="button" class="laureate-arrow-btn" aria-label="Previous slide" onclick="prevLaureateSlide('2024')">
+                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                    <path d="M4.8433 7.1567L2.28299 4.59639H8V3.40361H2.28299L4.8433 0.843298L4 0L0 4L4 8L4.8433 7.1567Z" fill="white"/>
+                  </svg>
+                </button>
+                <button type="button" class="laureate-arrow-btn" aria-label="Next slide" onclick="nextLaureateSlide('2024')">
+                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                    <path d="M3.1567 7.1567L4 8L8 4L4 0L3.1567 0.843298L5.71701 3.40361H0V4.59639H5.71701L3.1567 7.1567Z" fill="white"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="laureate-cta-wrap laureate-cta-mobile">
+            <a href="mailto:contact@eventifyagency.com?subject=Prix%20Ramses%202024%20Project" class="laureate-cta-btn" data-i18n="laureatesPage.learnMore">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 9. FAQ SECTION                                                -->
+  <!-- ============================================================= -->
+  <section class="faq-section" id="faq" data-theme="dark" aria-label="Frequently Asked Questions">
+    <div class="faq-bg-fixed" aria-hidden="true">
+      <img src="assets/images/prix-ramses/faq-bg.webp" alt="" class="faq-bg-img" loading="lazy">
+    </div>
+
+    <div class="faq-container">
+      <div class="faq-header-wrap">
+        <h2 class="faq-title" data-i18n="faq.title">FAQ - Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-accordion-list">
+        <!-- Q1 -->
+        <div class="faq-accordion-item is-open">
+          <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+            <span class="faq-question-text" data-i18n="faq.q1">Who can participate in the Prix RAMSÈS?</span>
+            <div class="faq-chevron-box" aria-hidden="true">
+              <svg class="faq-chevron-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-collapse">
+            <div class="faq-answer-inner">
+              <p class="faq-answer-text" data-i18n="faq.a1">
+                The competition is primarily aimed at architectural firms and design professionals wishing to offer an innovative vision of multifunctional hotel complexes in Cameroon.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-accordion-item">
+          <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+            <span class="faq-question-text" data-i18n="faq.q2">What are the evaluation criteria?</span>
+            <div class="faq-chevron-box" aria-hidden="true">
+              <svg class="faq-chevron-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-collapse">
+            <div class="faq-answer-inner">
+              <p class="faq-answer-text" data-i18n="faq.a2">
+                Innovation, sustainability, local context, feasibility, aesthetics, and functionality.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-accordion-item">
+          <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+            <span class="faq-question-text" data-i18n="faq.q3">How does the competition unfold?</span>
+            <div class="faq-chevron-box" aria-hidden="true">
+              <svg class="faq-chevron-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-collapse">
+            <div class="faq-answer-inner">
+              <p class="faq-answer-text" data-i18n="faq.a3">
+                Call for applications → Selection of finalists → Project development & mentoring → Final presentations → Jury deliberations → Gala awards ceremony.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-accordion-item">
+          <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+            <span class="faq-question-text" data-i18n="faq.q4">What prizes and awards are granted to the winners?</span>
+            <div class="faq-chevron-box" aria-hidden="true">
+              <svg class="faq-chevron-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-collapse">
+            <div class="faq-answer-inner">
+              <p class="faq-answer-text" data-i18n="faq.a4">
+                The winner of the Grand Prix RAMSÈS 2026 receives realization support for their architectural project, international publication features in prestigious architectural magazines, and official distinction.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="faq-accordion-item">
+          <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+            <span class="faq-question-text" data-i18n="faq.q5">What are the registration fees and what do they include?</span>
+            <div class="faq-chevron-box" aria-hidden="true">
+              <svg class="faq-chevron-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-collapse">
+            <div class="faq-answer-inner">
+              <p class="faq-answer-text" data-i18n="faq.a5">
+                Registration fees are 150,000 FCFA. They provide full access to masterclasses, webinars, expert mentoring sessions, and attendance at the official award ceremony gala.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="faq-accordion-item">
+          <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+            <span class="faq-question-text" data-i18n="faq.q6">What are the key dates to remember for the 2026 edition?</span>
+            <div class="faq-chevron-box" aria-hidden="true">
+              <svg class="faq-chevron-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer-collapse">
+            <div class="faq-answer-inner">
+              <p class="faq-answer-text" data-i18n="faq.a6">
+                Launch of registrations: December 2025 · Submission deadline: January 31, 2026 · Project evaluations: February 15, 2026 · Grand Finale and Gala: February 28, 2026.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 9. FOOTER SECTION                                             -->
+  <!-- ============================================================= -->
+  <footer class="footer-section" id="footer" data-theme="dark" aria-label="Page Footer">
+    <div class="footer-watermark-wrap" aria-hidden="true">
+      <img src="assets/images/prix-ramses/footer-watermark.svg" alt="" class="footer-watermark-img" loading="lazy">
+    </div>
+
+    <div class="footer-container">
+      <div class="footer-stack">
+        <a href="#hero" class="footer-logo-link" aria-label="Back to top">
+          <img src="assets/images/prix-ramses/logo.svg" alt="PRIX RAMSES" class="footer-logo-img">
+        </a>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <ul class="footer-nav-list">
+            <li class="footer-nav-item">
+              <a href="#hero" class="footer-nav-link" data-i18n="footer.home">Home</a>
+            </li>
+            <li class="footer-nav-item">
+              <a href="#laureates" class="footer-nav-link" data-i18n="footer.laureates">LAUREATES</a>
+            </li>
+            <li class="footer-nav-item">
+              <a href="#timeline" class="footer-nav-link" data-i18n="footer.archives">EDITION ARCHIVES</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="footer-copyright-wrap">
+          <p class="footer-copyright-text" data-i18n="footer.copyright">© POWERED BY EVENTIFY</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================= -->
+  <!-- SCRIPT: INTERACTION & GSAP SCROLL ANIMATION ENGINES           -->
+  <!-- ============================================================= -->
+  <script>
+    // -------------------------------------------------------------
+    // 1. DICTIONARY (EN & FR)
+    // -------------------------------------------------------------
+    const I18N_DATA = {
+      EN: {
+        "navbar.about": "Ambition",
+        "navbar.prizes": "Prizes",
+        "navbar.timeline": "Key Dates",
+        "navbar.laureates": "Laureates",
+        "hero.title": "PRIX RAMSES",
+        "hero.year": "2026",
+        "hero.practiceTitle": "Our Ambition",
+        "hero.practiceText": "The Prix RAMSES places Cameroonian architects at the heart of reflection on new urban spaces.",
+        "hero.workWithUs": "Register Now",
+        "hero.processTitle": "Our Vision",
+        "hero.processText": "A platform for the architecture that will shape tomorrow’s cities.",
+        "stats.why": "WHY?",
+        "stats.statement": "The Prix RAMSES celebrates architectural excellence and encourages the design of projects capable of sustainably transforming our cities.",
+        "stats.competitions": "SUCCESSFULLY ORGANIZED\nCOMPETITIONS",
+        "stats.jury": "INVITED JURY\nMEMBERS",
+        "stats.awards": "AWARDS\nGRANTED",
+        "stats.experience": "YEARS OF\nEXPERIENCE",
+        "prizes.sectionTitle": "PRIZES (Awards)",
+        "prizes.description": "Rewarding the most ambitious architectural visions, the winner of the Prix RAMSES 2026 will receive exceptional recognition for their project and their commitment to transforming urban spaces.",
+        "prizes.includes": "The Grand Prix RAMSES includes:",
+        "prizes.prize1Title": "A financial reward of 2,000,000FCFA",
+        "prizes.prize2Title": "An exclusive crystal trophy bearing the image of Ramses",
+        "prizes.prize3Title": "A publication in a prestigious local magazine",
+        "timeline.title": "Key Dates (Timeline)",
+        "timeline.step1Date": "May 10, 2025",
+        "timeline.step1Title": "Official launch and opening of call for applications",
+        "timeline.step2Date": "June 15, 2025",
+        "timeline.step2Title": "Deadline for applications and participant validation (70 selected firms)",
+        "timeline.step3Date": "July 15, 2025",
+        "timeline.step3Title": "Prequalification of finalists (20 firms advance)",
+        "timeline.step4Date": "November 10, 2025",
+        "timeline.step4Title": "Project submission deadline",
+        "timeline.step5Date": "December 07, 2025",
+        "timeline.step5Title": "Grand Finale, Prix RAMSES Gala Evening at the Hilton Hotel in Yaoundé (300 guests)",
+        "registration.tag": "Registration",
+        "registration.headline": "Would you like to participate in a competition that highlights architectural innovation and helps shape the African cities of tomorrow?",
+        "registration.practiceEyebrow": "How do you see the future? Show us.",
+        "registration.practiceDesc": "Register for the Prix RAMSÈS 2025 and present your vision of the world.\n(Participation fees provide access to the official award ceremony evening.)",
+        "registration.registerBtn": "Register for the Prix RAMSÈS (150,000 FCFA)",
+        "registration.processEyebrow": "Benefits",
+        "registration.processDesc": "Participants benefit from masterclasses, webinars, and mentoring sessions, allowing them to refine their concepts and adapt them to international standards.",
+        "registration.stayInformedBtn": "Download the brief",
+        "jury.title": "Meet the Jury",
+        "jury.intro": "Projects submitted to the Prix RAMSES are evaluated by a jury composed of professionals and experts from the fields of architecture, urban planning, design, construction, and territorial development. The jury's role is to identify the most remarkable projects based on several criteria: Originality, Feasibility, and Impact.",
+        "jury.bottomText": "Through rigorous analysis, the jury supports the emergence of innovative architecture, adapted to local realities and open to international standards.",
+        "jury.roles.amina": "(Architect & Urban Planner)",
+        "jury.roles.kwame": "(President of the Jury)",
+        "jury.roles.christian": "(Co-founder)",
+        "jury.roles.samuel": "(Sustainability & Structural Lead)",
+        "jury.roles.fatoumata": "(Senior Landscape Architect)",
+        "jury.roles.jeanPaul": "(Urban Designer & Heritage Specialist)",
+        "faq.title": "FAQ - Frequently Asked Questions",
+        "faq.q1": "Who can participate in the Prix RAMSÈS?",
+        "faq.a1": "The competition is primarily aimed at architectural firms and design professionals wishing to offer an innovative vision of multifunctional hotel complexes in Cameroon.",
+        "faq.q2": "What are the evaluation criteria?",
+        "faq.a2": "Innovation, sustainability, local context, feasibility, aesthetics, and functionality.",
+        "faq.q3": "How does the competition unfold?",
+        "faq.a3": "Call for applications → Selection of finalists → Project development & mentoring → Final presentations → Jury deliberations → Gala awards ceremony.",
+        "faq.q4": "What prizes and awards are granted to the winners?",
+        "faq.a4": "The winner of the Grand Prix RAMSÈS 2026 receives realization support for their architectural project, international publication features in prestigious architectural magazines, and official distinction.",
+        "faq.q5": "What are the registration fees and what do they include?",
+        "faq.a5": "Registration fees are 150,000 FCFA. They provide full access to masterclasses, webinars, expert mentoring sessions, and attendance at the official award ceremony gala.",
+        "faq.q6": "What are the key dates to remember for the 2026 edition?",
+        "faq.a6": "Launch of registrations: December 2025 · Submission deadline: January 31, 2026 · Project evaluations: February 15, 2026 · Grand Finale and Gala: February 28, 2026.",
+        "laureatesPage.title": "PRIX RAMSES",
+        "laureatesPage.highlight": "LAUREATS",
+        "laureatesPage.learnMore": "Learn More",
+        "laureatesPage.edition2025Theme": "Second Edition \"The Original Place\"",
+        "laureatesPage.edition2025Winner": "The winning project: FAD Architectures",
+        "laureatesPage.edition2024Theme": "First Edition “Camp SIC Messa”",
+        "laureatesPage.edition2024Winner": "The winning project: FAD Architectures",
+        "footer.home": "Home",
+        "footer.laureates": "LAUREATES",
+        "footer.archives": "EDITION ARCHIVES",
+        "footer.copyright": "© POWERED BY EVENTIFY"
+      },
+      FR: {
+        "navbar.about": "Ambition",
+        "navbar.prizes": "Prix",
+        "navbar.timeline": "Calendrier",
+        "navbar.laureates": "Lauréats",
+        "hero.title": "PRIX RAMSES",
+        "hero.year": "2026",
+        "hero.practiceTitle": "Notre ambition",
+        "hero.practiceText": "Le Prix RAMSÈS place les architectes camerounais au cœur de la réflexion sur les nouveaux espaces urbains.",
+        "hero.workWithUs": "S’inscrire maintenant",
+        "hero.processTitle": "Notre vision",
+        "hero.processText": "Une tribune pour l’architecture qui façonnera les métropoles de demain.",
+        "stats.why": "POURQUOI ?",
+        "stats.statement": "Le Prix RAMSÈS célèbre l’excellence architecturale et stimule la conception de projets d’avant-garde capables de transformer durablement nos cités.",
+        "stats.competitions": "CONCOURS ORGANISÉS\nAVEC SUCCÈS",
+        "stats.jury": "MEMBRES DU JURY\nD’EXCELLENCE",
+        "stats.awards": "DISTINCTIONS &\nPRIX DÉCERNÉS",
+        "stats.experience": "ANNÉES D’EXPERTISE\nET D’ENGAGEMENT",
+        "prizes.sectionTitle": "PRIX & DISTINCTIONS",
+        "prizes.description": "Couronnant les visions architecturales les plus audacieuses, le lauréat du Grand Prix RAMSÈS 2026 recevra une reconnaissance d’exception pour son projet et son engagement dans la métamorphose du cadre bâti.",
+        "prizes.includes": "Le Grand Prix RAMSÈS comprend :",
+        "prizes.prize1Title": "Une dotation financière d’honneur de 2 000 000 FCFA",
+        "prizes.prize2Title": "Un trophée exclusif en cristal sculpté à l’effigie de Ramsès",
+        "prizes.prize3Title": "Une publication d’honneur dans une revue architecturale prestigieuse",
+        "timeline.title": "Calendrier Officiel (Étapes Clés)",
+        "timeline.step1Date": "10 Mai 2025",
+        "timeline.step1Title": "Lancement officiel et ouverture de l’appel à candidatures",
+        "timeline.step2Date": "15 Juin 2025",
+        "timeline.step2Title": "Clôture des candidatures et validation des participants (70 cabinets retenus)",
+        "timeline.step3Date": "15 Juillet 2025",
+        "timeline.step3Title": "Présélection des finalistes (20 cabinets qualifiés pour la phase finale)",
+        "timeline.step4Date": "10 Novembre 2025",
+        "timeline.step4Title": "Date limite de soumission des projets définitifs",
+        "timeline.step5Date": "07 Décembre 2025",
+        "timeline.step5Title": "Grande Finale & Soirée de Gala du Prix RAMSÈS à l’Hôtel Hilton de Yaoundé (300 convives)",
+        "registration.tag": "Inscriptions",
+        "registration.headline": "Souhaitez-vous participer à une compétition qui sublime l’audace architecturale et façonne les métropoles africaines de demain ?",
+        "registration.practiceEyebrow": "Comment imaginez-vous l’avenir ? Révélez-le.",
+        "registration.practiceDesc": "Inscrivez-vous au Prix RAMSÈS 2025 et sublimez votre vision du monde.\n(Les frais d’inscription incluent un accès privilégié à la prestigieuse soirée de remise des prix.)",
+        "registration.registerBtn": "S’inscrire au Prix RAMSÈS (150 000 FCFA)",
+        "registration.processEyebrow": "Avantages & Mentorat",
+        "registration.processDesc": "Les participants bénéficient de masterclasses immersives, de webinaires et de séances de mentorat avec des sommités du domaine, hissant leurs concepts aux standards internationaux.",
+        "registration.stayInformedBtn": "Télécharger le brief",
+        "jury.title": "Le Jury d’Excellence",
+        "jury.intro": "Les projets soumis au Prix RAMSÈS sont évalués par un collège d’experts de premier plan issus de l’architecture, de l’urbanisme, du design et du génie territorial. La mission du jury est d’élire les réalisations les plus remarquables selon trois piliers : Originalité, Faisabilité et Impact.",
+        "jury.bottomText": "Par une analyse rigoureuse, le jury soutient l’essor d’une architecture novatrice, intimement ancrée dans les réalités locales et portée vers les plus hauts standards mondiaux.",
+        "jury.roles.amina": "(Architecte & Urbaniste)",
+        "jury.roles.kwame": "(Président du Jury)",
+        "jury.roles.christian": "(Co-founder)",
+        "jury.roles.samuel": "(Responsable Durabilité & Structures)",
+        "jury.roles.fatoumata": "(Architecte Paysagiste Senior)",
+        "jury.roles.jeanPaul": "(Designer Urbain & Spécialiste du Patrimoine)",
+        "faq.title": "FAQ - Foire Aux Questions",
+        "faq.q1": "Qui peut participer au Prix RAMSÈS ?",
+        "faq.a1": "Le concours s’adresse prioritairement aux cabinets d’architecture, aux ateliers d’urbanisme et aux professionnels de la conception désireux d’apporter une réponse novatrice aux complexes hôteliers et urbains au Cameroun.",
+        "faq.q2": "Quels sont les critères d’évaluation ?",
+        "faq.a2": "L’innovation conceptuelle, la durabilité écologique, l’intégration contextuelle, la faisabilité technique, la qualité esthétique et l’ergonomie fonctionnelle.",
+        "faq.q3": "Comment se déroule la compétition ?",
+        "faq.a3": "Appel à candidatures → Sélection des finalistes → Développement de projet & mentorat → Soutenances finales → Délibérations du jury → Soirée de gala et remise des distinctions.",
+        "faq.q4": "Quels sont les prix et distinctions accordés aux lauréats ?",
+        "faq.a4": "Le lauréat du Grand Prix RAMSÈS 2026 bénéficie d’un accompagnement à la concrétisation de son œuvre, d’une publication d’honneur dans la presse spécialisée et d’une distinction de référence.",
+        "faq.q5": "Quels sont les frais d’inscription et que comprennent-ils ?",
+        "faq.a5": "Les frais de participation sont de 150 000 FCFA. Ils couvrent l’accès complet aux masterclasses, aux sessions de mentorat avec des experts et les invitations à la grande soirée de gala.",
+        "faq.q6": "Quelles sont les dates clés à retenir pour l’édition 2026 ?",
+        "faq.a6": "Ouverture des inscriptions : Décembre 2025 · Date limite de remise des projets : 31 Janvier 2026 · Évaluations du jury : 15 Février 2026 · Grande Finale et Soirée de Gala : 28 Février 2026.",
+        "laureatesPage.title": "PRIX RAMSES",
+        "laureatesPage.highlight": "LAURÉATS",
+        "laureatesPage.learnMore": "Découvrir le projet",
+        "laureatesPage.edition2025Theme": "Deuxième Édition \"The Original Place\"",
+        "laureatesPage.edition2025Winner": "Le projet lauréat : FAD Architectures",
+        "laureatesPage.edition2024Theme": "Première Édition « Camp SIC Messa »",
+        "laureatesPage.edition2024Winner": "Le projet lauréat : FAD Architectures",
+        "footer.home": "Accueil",
+        "footer.laureates": "LAURÉATS",
+        "footer.archives": "ARCHIVES DES ÉDITIONS",
+        "footer.copyright": "© POWERED BY EVENTIFY"
+      }
+    };
+
+    let currentLang = 'EN';
+
+    function switchLanguage(lang) {
+      currentLang = lang;
+      document.getElementById('currentLangLabel').textContent = lang;
+      
+      const elements = document.querySelectorAll('[data-i18n]');
+      elements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N_DATA[lang] && I18N_DATA[lang][key]) {
+          if (el.tagName === 'P' && el.style.whiteSpace === 'pre-line') {
+            el.innerText = I18N_DATA[lang][key];
+          } else {
+            el.innerHTML = I18N_DATA[lang][key].replace(/\n/g, '<br>');
+          }
+        }
+      });
+
+      const langItems = document.querySelectorAll('.lang-dropdown-item');
+      langItems.forEach(item => {
+        const isSelected = item.innerText.trim().toUpperCase().startsWith(lang === 'EN' ? 'ENG' : 'FRA');
+        item.classList.toggle('is-active', isSelected);
+      });
+
+      closeAllDropdowns();
+    }
+
+    // -------------------------------------------------------------
+    // 2. NAVBAR THEME DETECTOR & LANGUAGE DROPDOWN
+    // -------------------------------------------------------------
+    function toggleLang() {
+      const dropdown = document.getElementById('navLangDropdown');
+      if (dropdown) dropdown.classList.toggle('is-open');
+    }
+
+    function closeAllDropdowns() {
+      const dropdown = document.getElementById('navLangDropdown');
+      if (dropdown) dropdown.classList.remove('is-open');
+    }
+
+    document.addEventListener('click', (e) => {
+      const langWrap = document.getElementById('navLangWrapper');
+      if (langWrap && !langWrap.contains(e.target)) {
+        closeAllDropdowns();
+      }
+    });
+
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('prixNavbar');
+      const logo = document.getElementById('navbarLogoImg');
+      const sections = document.querySelectorAll('[data-theme]');
+      const navY = 50;
+
+      let isLight = false;
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= navY && rect.bottom > navY) {
+          if (sec.getAttribute('data-theme') === 'light') {
+            isLight = true;
+          }
+        }
+      });
+
+      if (isLight) {
+        nav.classList.remove('navbar--on-dark');
+        nav.classList.add('navbar--on-light');
+        logo.src = 'assets/images/prix-ramses/Logo2.svg';
+      } else {
+        nav.classList.remove('navbar--on-light');
+        nav.classList.add('navbar--on-dark');
+        logo.src = 'assets/images/prix-ramses/logo.svg';
+      }
+    });
+
+    // -------------------------------------------------------------
+    // 3. FAQ ACCORDION
+    // -------------------------------------------------------------
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-accordion-item');
+      if (item) {
+        item.classList.toggle('is-open');
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 4. LAUREATE CARDS COLLAGE SLIDERS (2025 & 2024)
+    // -------------------------------------------------------------
+    const laureateSliders = {
+      '2025': { activeSlide: 0, totalSlides: 4, direction: 'next', isAnimating: false, timer: null, autoInterval: null },
+      '2024': { activeSlide: 0, totalSlides: 4, direction: 'next', isAnimating: false, timer: null, autoInterval: null }
+    };
+
+    function startAutoplay(year) {
+      stopAutoplay(year);
+      laureateSliders[year].autoInterval = setInterval(() => {
+        nextLaureateSlide(year, false);
+      }, 3000);
+    }
+
+    function stopAutoplay(year) {
+      if (laureateSliders[year].autoInterval) {
+        clearInterval(laureateSliders[year].autoInterval);
+        laureateSliders[year].autoInterval = null;
+      }
+    }
+
+    function resetAutoplay(year) {
+      stopAutoplay(year);
+      startAutoplay(year);
+    }
+
+    function updateLaureateSlider(year) {
+      const state = laureateSliders[year];
+      const strip = document.getElementById(`strip${year}`);
+      const sliderFrame = document.getElementById(`sliderFrame${year}`);
+      if (!strip || !sliderFrame) return;
+
+      const slots = strip.querySelectorAll('.laureate-slide-slot');
+      const dots = sliderFrame.querySelectorAll('.laureate-dot-btn');
+
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('is-active', idx === state.activeSlide);
+      });
+
+      slots.forEach((slot) => {
+        const slotIdx = parseInt(slot.getAttribute('data-slot-idx'), 10);
+        const diff = (slotIdx - state.activeSlide + state.totalSlides) % state.totalSlides;
+
+        slot.className = 'laureate-slide-slot';
+        if (diff === 0) {
+          slot.classList.add('slot-center');
+        } else if (diff === 1) {
+          slot.classList.add('slot-right-peek');
+        } else if (diff === state.totalSlides - 1) {
+          slot.classList.add('slot-left-peek');
+        } else {
+          if (state.isAnimating) {
+            slot.classList.add(state.direction === 'next' ? 'slot-offscreen-left' : 'slot-offscreen-right');
+          } else {
+            slot.classList.add(state.direction === 'next' ? 'slot-offscreen-right' : 'slot-offscreen-left', 'slot-no-transition');
+          }
+        }
+      });
+    }
+
+    function nextLaureateSlide(year, userAction = true) {
+      const state = laureateSliders[year];
+      if (state.isAnimating) return;
+      if (userAction) resetAutoplay(year);
+
+      state.direction = 'next';
+      state.isAnimating = true;
+      state.activeSlide = (state.activeSlide + 1) % state.totalSlides;
+      updateLaureateSlider(year);
+
+      if (state.timer) clearTimeout(state.timer);
+      state.timer = setTimeout(() => {
+        state.isAnimating = false;
+        updateLaureateSlider(year);
+      }, 520);
+    }
+
+    function prevLaureateSlide(year, userAction = true) {
+      const state = laureateSliders[year];
+      if (state.isAnimating) return;
+      if (userAction) resetAutoplay(year);
+
+      state.direction = 'prev';
+      state.isAnimating = true;
+      state.activeSlide = (state.activeSlide - 1 + state.totalSlides) % state.totalSlides;
+      updateLaureateSlider(year);
+
+      if (state.timer) clearTimeout(state.timer);
+      state.timer = setTimeout(() => {
+        state.isAnimating = false;
+        updateLaureateSlider(year);
+      }, 520);
+    }
+
+    function goToLaureateSlide(year, index, userAction = true) {
+      const state = laureateSliders[year];
+      if (state.isAnimating || index === state.activeSlide) return;
+      if (userAction) resetAutoplay(year);
+
+      state.direction = index > state.activeSlide ? 'next' : 'prev';
+      state.isAnimating = true;
+      state.activeSlide = index;
+      updateLaureateSlider(year);
+
+      if (state.timer) clearTimeout(state.timer);
+      state.timer = setTimeout(() => {
+        state.isAnimating = false;
+        updateLaureateSlider(year);
+      }, 520);
+    }
+
+    function handleSlotClick(year, slotIdx) {
+      const state = laureateSliders[year];
+      const diff = (slotIdx - state.activeSlide + state.totalSlides) % state.totalSlides;
+      if (diff === 1) {
+        nextLaureateSlide(year, true);
+      } else if (diff === state.totalSlides - 1) {
+        prevLaureateSlide(year, true);
+      }
+    }
+
+    // Touch swipe & hover support for laureate strips
+    ['2025', '2024'].forEach(year => {
+      const frame = document.getElementById(`sliderFrame${year}`);
+      if (frame) {
+        frame.addEventListener('mouseenter', () => stopAutoplay(year));
+        frame.addEventListener('mouseleave', () => startAutoplay(year));
+      }
+
+      const strip = document.getElementById(`strip${year}`);
+      if (strip) {
+        let touchStart = 0;
+        strip.addEventListener('touchstart', (e) => {
+          stopAutoplay(year);
+          touchStart = e.touches[0].clientX;
+        }, { passive: true });
+
+        strip.addEventListener('touchend', (e) => {
+          const touchEnd = e.changedTouches[0].clientX;
+          const diff = touchStart - touchEnd;
+          if (diff > 40) {
+            nextLaureateSlide(year, true);
+          } else if (diff < -40) {
+            prevLaureateSlide(year, true);
+          } else {
+            startAutoplay(year);
+          }
+        }, { passive: true });
+      }
+
+      // Initialize 3-second autoplay
+      startAutoplay(year);
+    });
+
+    // -------------------------------------------------------------
+    // 5. GSAP SCROLL ENGINES (STATS, PRIZES PINNED STAGE, TIMELINE)
+    // -------------------------------------------------------------
+    window.addEventListener('DOMContentLoaded', () => {
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // A. STATS COUNT-UP ANIMATION
+        const statsObj = { val1: 0, val2: 0, val3: 0, val4: 0 };
+        ScrollTrigger.create({
+          trigger: '#why',
+          start: 'top 75%',
+          once: true,
+          onEnter: () => {
+            gsap.to(statsObj, {
+              val1: 17,
+              val2: 5,
+              val3: 140,
+              val4: 3,
+              duration: 3.6,
+              ease: 'power4.out',
+              onUpdate: () => {
+                const n1 = document.getElementById('statNum1');
+                const n2 = document.getElementById('statNum2');
+                const n3 = document.getElementById('statNum3');
+                const n4 = document.getElementById('statNum4');
+                if (n1) n1.textContent = '+' + Math.round(statsObj.val1);
+                if (n2) n2.textContent = String(Math.round(statsObj.val2)).padStart(2, '0');
+                if (n3) n3.textContent = Math.round(statsObj.val3) + '+';
+                if (n4) n4.textContent = String(Math.round(statsObj.val4)).padStart(2, '0');
+              }
+            });
+
+            gsap.from('.stat-card', {
+              y: 30,
+              opacity: 0,
+              duration: 1.4,
+              stagger: 0.12,
+              ease: 'power3.out'
+            });
+          }
+        });
+
+        // B. EXACT PRIZES PINNED SCROLL EXPERIENCE (WITH CLIP-PATH WIPE & PROGRESS BAR)
+        const prizesSection = document.getElementById('prizes');
+        if (prizesSection) {
+          const visualWraps = [
+            document.getElementById('prizeVisual0'),
+            document.getElementById('prizeVisual1'),
+            document.getElementById('prizeVisual2')
+          ];
+          const textItems = [
+            document.getElementById('prizeTextItem0'),
+            document.getElementById('prizeTextItem1'),
+            document.getElementById('prizeTextItem2')
+          ];
+          const progressBar = document.getElementById('prizesProgressBar');
+
+          const DURATION = 0.55;
+          const EASE = 'power3.inOut';
+
+          // Initialize visual wraps
+          visualWraps.forEach((vw, idx) => {
+            if (vw) {
+              gsap.set(vw, {
+                zIndex: idx + 1,
+                clipPath: idx === 0 ? 'inset(0%)' : 'inset(50%)'
+              });
+            }
+          });
+
+          // Initialize text items
+          textItems.forEach((ti, idx) => {
+            if (ti) {
+              if (idx === 0) {
+                gsap.set(ti, { autoAlpha: 1 });
+                const texts = ti.querySelectorAll('[data-prize-anim]');
+                gsap.set(texts.length ? texts : ti, { autoAlpha: 1, y: 0 });
+              } else {
+                gsap.set(ti, { autoAlpha: 0 });
+                const texts = ti.querySelectorAll('[data-prize-anim]');
+                gsap.set(texts.length ? texts : ti, { autoAlpha: 0, y: 30 });
+              }
+            }
+          });
+
+          let activeIndex = 0;
+
+          function transitionPrizes(fromIndex, toIndex) {
+            if (fromIndex === toIndex) return;
+            const tl = gsap.timeline({ defaults: { overwrite: 'auto' } });
+
+            // Image wipe transition
+            if (toIndex > fromIndex) {
+              for (let i = fromIndex + 1; i <= toIndex; i++) {
+                const vw = visualWraps[i];
+                if (vw) {
+                  tl.to(vw, { clipPath: 'inset(0%)', duration: DURATION, ease: EASE }, 0);
+                }
+              }
+            } else {
+              for (let i = fromIndex; i > toIndex; i--) {
+                const vw = visualWraps[i];
+                if (vw) {
+                  tl.to(vw, { clipPath: 'inset(50%)', duration: DURATION, ease: EASE }, 0);
+                }
+              }
+            }
+
+            // Staggered text item transitions
+            const fromEl = textItems[fromIndex];
+            const toEl = textItems[toIndex];
+
+            if (fromEl) {
+              const fromTexts = fromEl.querySelectorAll('[data-prize-anim]');
+              gsap.to(fromTexts.length ? fromTexts : fromEl, {
+                autoAlpha: 0,
+                y: -24,
+                ease: 'power3.out',
+                duration: 0.35,
+                onComplete: () => {
+                  gsap.set(fromEl, { autoAlpha: 0 });
+                }
+              });
+            }
+
+            if (toEl) {
+              gsap.set(toEl, { autoAlpha: 1 });
+              const toTexts = toEl.querySelectorAll('[data-prize-anim]');
+              gsap.fromTo(
+                toTexts.length ? toTexts : toEl,
+                { autoAlpha: 0, y: 24 },
+                {
+                  autoAlpha: 1,
+                  y: 0,
+                  ease: 'power3.out',
+                  duration: DURATION,
+                  stagger: 0.06
+                }
+              );
+            }
+          }
+
+          ScrollTrigger.create({
+            trigger: prizesSection,
+            start: 'top top',
+            end: () => '+=260%',
+            pin: true,
+            pinSpacing: true,
+            scrub: true,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+              const progress = Math.max(0, Math.min(1, self.progress));
+
+              if (progressBar) {
+                gsap.to(progressBar, {
+                  scaleX: progress,
+                  transformOrigin: '0% 50%',
+                  ease: 'none',
+                  duration: 0.04
+                });
+              }
+
+              let idx = 0;
+              if (progress >= 0.69) {
+                idx = 2;
+              } else if (progress >= 0.31) {
+                idx = 1;
+              } else {
+                idx = 0;
+              }
+
+              if (idx !== activeIndex) {
+                transitionPrizes(activeIndex, idx);
+                activeIndex = idx;
+              }
+            }
+          });
+        }
+
+        // C. TIMELINE SECTION: PROGRESS LINE TRACKER + STICKY ROW ILLUMINATION
+        const timelineComponent = document.getElementById('timelineComponent');
+        const timelineProgress = document.getElementById('timelineProgressBar');
+        if (timelineComponent && timelineProgress) {
+          gsap.fromTo(
+            timelineProgress,
+            { height: '0%' },
+            {
+              height: '100%',
+              ease: 'none',
+              scrollTrigger: {
+                trigger: timelineComponent,
+                start: 'top 50%',
+                end: 'bottom 50%',
+                scrub: 0.1
+              }
+            }
+          );
+
+          const items = timelineComponent.querySelectorAll('.timeline_item');
+          items.forEach((item) => {
+            const img = item.querySelector('.timeline_img');
+            if (img) {
+              gsap.fromTo(
+                img,
+                { yPercent: -8 },
+                {
+                  yPercent: 8,
+                  ease: 'none',
+                  scrollTrigger: {
+                    trigger: item,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                  }
+                }
+              );
+            }
+
+            ScrollTrigger.create({
+              trigger: item,
+              start: 'top 50%',
+              end: 'bottom 50%',
+              toggleClass: { targets: item, className: 'is-active' }
+            });
+          });
+        }
+      }
+
+      // D. JURY MARQUEE INTERACTIVE SCROLL & HOVER DECELERATION
+      const track = document.getElementById('juryTrack');
+      const wrapper = document.getElementById('juryMarqueeWrap');
+      if (track && wrapper) {
+        let posX = 0;
+        let normalSpeed = 1.0;
+        let slowSpeed = 0.22;
+        let currentSpeed = normalSpeed;
+        let isHovered = false;
+
+        wrapper.addEventListener('mouseenter', () => { isHovered = true; });
+        wrapper.addEventListener('mouseleave', () => { isHovered = false; });
+
+        function getHalfWidth() {
+          return track.scrollWidth / 2;
+        }
+
+        function animateJury() {
+          const targetSpeed = isHovered ? slowSpeed : normalSpeed;
+          currentSpeed += (targetSpeed - currentSpeed) * 0.05;
+          posX -= currentSpeed;
+
+          const halfWidth = getHalfWidth();
+          if (halfWidth > 0) {
+            if (posX <= -halfWidth) posX += halfWidth;
+            if (posX > 0) posX -= halfWidth;
+          }
+
+          track.style.transform = `translate3d(${posX.toFixed(2)}px, 0, 0)`;
+          requestAnimationFrame(animateJury);
+        }
+
+        requestAnimationFrame(animateJury);
+      }
+    });
+  </script>
+</body>
+</html>
+
+

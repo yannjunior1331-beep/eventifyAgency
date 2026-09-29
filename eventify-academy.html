@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html data-wf-page="662bb6dcf749f7a3ee85c940" data-wf-site="65a16aa73b46f7df7a972c51">
+<head>
+  <meta charset="utf-8">
+  <title>Eventify Academy | Eventify Agency</title>
+  <meta content="Eventify Academy : L'incubateur de talents d'Eventify Agency. Apprendre en faisant. Travailler sur le réel. Grandir avec les autres." name="description">
+  <meta content="Eventify Academy | Eventify Agency" property="og:title">
+  <meta content="Eventify Academy | Eventify Agency" property="twitter:title">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="assets/css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/eventify-651f6e.webflow.css?v=2" rel="stylesheet" type="text/css">
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="assets/images/favicon.jpg" rel="shortcut icon" type="image/x-icon">
+  <link href="assets/images/webclip.jpg" rel="apple-touch-icon">
+
+  <style>
+    /* EXACT EVENTIFY STYLING WITH 1:1 MATCH TO USER MOCKUP */
+    :root {
+      --ea-bg-dark: #0a0909;
+      --ea-bg-card: #131212;
+      --ea-bg-light: #ffffff;
+      --ea-orange: #c88321;
+      --ea-orange-hover: #e0962e;
+      --ea-text-light: #ffffff;
+      --ea-text-muted: #8c8c8c;
+      --ea-text-dark: #121111;
+      --ea-border-dark: #222020;
+      --ea-border-light: #eaeaea;
+      --font-eventify: Gilroy, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--ea-bg-dark) !important;
+      color: var(--ea-text-light) !important;
+      font-family: var(--font-eventify) !important;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Standard Eventify Navbar sticky container */
+    .nav-bar.home {
+      background-color: #ffffff !important;
+      border-bottom: 1px solid #eeeeee;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .italic {
+      font-style: italic;
+    }
+
+    /* ------------------------------------------------------------- */
+    /* 1. HERO SECTION (FULL BACKGROUND IMAGE & MONUMENTAL TYPOGRAPHY)*/
+    /* ------------------------------------------------------------- */
+    .ea-hero-sec {
+      position: relative;
+      min-height: 82vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-image: linear-gradient(180deg, rgba(10,9,9,0.72) 0%, rgba(10,9,9,0.88) 100%), url('assets/images/academy/DSC07879.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
+      padding: 8rem 2rem 9rem 2rem;
+      border-bottom: 1px solid #1a1818;
+    }
+    .ea-hero-container {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .ea-hero-kicker {
+      font-family: var(--font-eventify);
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ea-orange);
+      margin-bottom: 1.4rem;
+      display: inline-block;
+    }
+    .ea-hero-title {
+      font-family: var(--font-eventify);
+      font-size: clamp(3.4rem, 6.5vw, 5.2rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin: 0 0 1.2rem 0;
+    }
+    .ea-hero-motto {
+      font-family: var(--font-eventify);
+      font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--ea-orange);
+      text-transform: uppercase;
+      margin: 0 0 1.6rem 0;
+    }
+    .ea-hero-desc {
+      font-family: var(--font-eventify);
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #d0d0d0;
+      max-width: 780px;
+      margin: 0 auto 3rem auto;
+      font-weight: 400;
+    }
+    .ea-hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background-color: var(--ea-orange);
+      color: #ffffff;
+      font-family: var(--font-eventify);
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 1.2rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(200, 131, 33, 0.35);
+    }
+    .ea-hero-btn span.arrow {
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+    .ea-hero-btn:hover {
+      background-color: var(--ea-orange-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(200, 131, 33, 0.5);
+    }
+    .ea-hero-btn:hover span.arrow {
+      transform: translateY(3px);
+    }
+
+    /* ------------------------------------------------------------- */
+    /* 2. METRICS STRIP (SEPARATED & DISTINCT SOLID DARK BLOCK)      */
+    /* ------------------------------------------------------------- */
+    .ea-metrics-sec {
+      background-color: #060505;
+      border-top: 1px solid #1c1a1a;
+      border-bottom: 1px solid #1c1a1a;
+      padding: 4.5rem 2.5rem;
+      position: relative;
+    }
+    .ea-metrics-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      text-align: center;
+    }
+    .ea-metric-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2rem;
+    }
+    .ea-metric-item:not(:last-child) {
+      border-right: 1px solid var(--ea-border-dark);
+    }
+    .ea-metric-num {
+      font-family: var(--font-eventify);
+      font-size: clamp(2.8rem, 4.5vw, 4rem);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+    .ea-metric-lbl {
+      font-family: var(--font-eventify);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: #888888;
+      text-transform: uppercase;
+    }
+
+    /* ------------------------------------------------------------- */
+    /* 3. L'ACADEMY SECTION (WHITE BG)                               */
+    /* ------------------------------------------------------------- */
+    .ea-about-sec {
+      background-color: var(--ea-bg-light);
+      color: var(--ea-text-dark);
+      padding: 7rem 2.5rem;
+    }
+    .ea-about-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .ea-tag-kicker {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-eventify);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--ea-text-dark);
+      margin-bottom: 2.2rem;
+    }
+    .ea-tag-kicker .dash {
+      color: var(--ea-orange);
+      font-weight: 900;
+      font-size: 1.2rem;
+    }
+    .ea-about-2col {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 4.5rem;
+      align-items: center;
+    }
+    .ea-about-motto {
+      font-family: var(--font-eventify);
+      font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      color: var(--ea-text-dark);
+      margin: 0;
+    }
+    .ea-about-desc {
+      font-family: var(--font-eventify);
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #4a4a4a;
+      margin: 0;
+    }
+
+    /* ------------------------------------------------------------- */
+    /* 4. LES ÉDITIONS SECTION (DARK BG)                             */
+    /* ------------------------------------------------------------- */
+    .ea-editions-sec {
+      background-color: var(--ea-bg-dark);
+      color: var(--ea-text-light);
+      padding: 7rem 2.5rem;
+    }
+    .ea-editions-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .ea-editions-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3.5rem;
+    }
+    .ea-editions-header-left .ea-tag-kicker {
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+    .ea-editions-title {
+      font-family: var(--font-eventify);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: #ffffff;
+      margin: 0;
+      letter-spacing: -0.5px;
+    }
+    .ea-editions-link-all {
+      color: #ffffff;
+      font-family: var(--font-eventify);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+    .ea-editions-link-all:hover {
+      color: var(--ea-orange);
+    }
+    .ea-editions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+    .ea-edition-box {
+      height: 380px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2.2rem;
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #161515;
+    }
+    .ea-edition-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      z-index: 1;
+    }
+    .ea-edition-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,9,9,0.2) 20%, rgba(10,9,9,0.85) 100%);
+      z-index: 2;
+    }
+    .ea-edition-card-content {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .ea-edition-card-left h3 {
+      font-family: var(--font-eventify);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin: 0 0 0.2rem 0;
+    }
+    .ea-edition-card-left span {
+      font-family: var(--font-eventify);
+      font-size: 1.1rem;
+      color: #cccccc;
+      font-weight: 500;
+    }
+    .ea-edition-cta-link {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-eventify);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+      transition: color 0.3s ease;
+    }
+    .ea-edition-box:hover .ea-edition-bg-img {
+      transform: scale(1.05);
+    }
+    .ea-edition-box:hover .ea-edition-cta-link {
+      color: var(--ea-orange);
+    }
+
+    /* Video Play Button on Edition Cards */
+    .ea-edition-play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      background: rgba(18, 17, 17, 0.7);
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    }
+    .ea-edition-play-btn svg {
+      margin-left: 3px;
+      width: 26px;
+      height: 26px;
+      fill: #ffffff;
+      transition: transform 0.3s ease;
+    }
+    .ea-edition-box:hover .ea-edition-play-btn {
+      transform: translate(-50%, -50%) scale(1.15);
+      background: var(--ea-orange);
+      border-color: var(--ea-orange);
+      box-shadow: 0 0 35px rgba(200, 131, 33, 0.7);
+    }
+
+    /* Gallery Button on Edition Cards */
+    .ea-edition-gallery-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      background: rgba(18, 17, 17, 0.7);
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    }
+    .ea-edition-gallery-btn svg {
+      width: 28px;
+      height: 28px;
+      stroke: #ffffff;
+      transition: transform 0.3s ease;
+    }
+    .ea-edition-box:hover .ea-edition-gallery-btn {
+      transform: translate(-50%, -50%) scale(1.15);
+      background: var(--ea-orange);
+      border-color: var(--ea-orange);
+      box-shadow: 0 0 35px rgba(200, 131, 33, 0.7);
+    }
+
+    /* Fullscreen Lightbox Gallery Modal */
+    .ea-lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(8, 7, 7, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      box-sizing: border-box;
+      user-select: none;
+    }
+    .ea-lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+    .ea-lightbox-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(10, 9, 9, 0.75);
+      z-index: 10;
+    }
+    .ea-lightbox-title-box {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .ea-lightbox-title {
+      font-family: var(--font-eventify);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+    .ea-lightbox-badge {
+      background: rgba(200, 131, 33, 0.2);
+      color: var(--ea-orange);
+      border: 1px solid rgba(200, 131, 33, 0.5);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .ea-lightbox-close-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.6rem;
+      line-height: 1;
+      transition: all 0.25s ease;
+    }
+    .ea-lightbox-close-btn:hover {
+      background: var(--ea-orange);
+      border-color: var(--ea-orange);
+      transform: rotate(90deg) scale(1.05);
+    }
+    .ea-lightbox-stage {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 6rem;
+      overflow: hidden;
+    }
+    .ea-lightbox-main-img {
+      max-width: 100%;
+      max-height: 72vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .ea-lightbox-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(20, 19, 19, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.8rem;
+      transition: all 0.25s ease;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+    }
+    .ea-lightbox-nav-btn.prev {
+      left: 2rem;
+    }
+    .ea-lightbox-nav-btn.next {
+      right: 2rem;
+    }
+    .ea-lightbox-nav-btn:hover {
+      background: var(--ea-orange);
+      border-color: var(--ea-orange);
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 0 25px rgba(200, 131, 33, 0.6);
+    }
+    .ea-lightbox-thumbs-bar {
+      padding: 1rem 2rem 1.5rem 2rem;
+      background: rgba(10, 9, 9, 0.85);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      justify-content: center;
+      align-items: center;
+      scrollbar-width: thin;
+      scrollbar-color: var(--ea-orange) rgba(255,255,255,0.05);
+    }
+    .ea-lightbox-thumb {
+      width: 70px;
+      height: 48px;
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+      opacity: 0.45;
+      border: 2px solid transparent;
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+    .ea-lightbox-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .ea-lightbox-thumb:hover {
+      opacity: 0.85;
+      transform: translateY(-2px);
+    }
+    .ea-lightbox-thumb.active {
+      opacity: 1;
+      border-color: var(--ea-orange);
+      box-shadow: 0 0 15px rgba(200, 131, 33, 0.6);
+      transform: translateY(-2px) scale(1.05);
+    }
+    @media (max-width: 768px) {
+      .ea-lightbox-header {
+        padding: 1rem 1.5rem;
+      }
+      .ea-lightbox-stage {
+        padding: 1rem;
+      }
+      .ea-lightbox-nav-btn.prev {
+        left: 0.5rem;
+        width: 44px;
+        height: 44px;
+        font-size: 1.3rem;
+      }
+      .ea-lightbox-nav-btn.next {
+        right: 0.5rem;
+        width: 44px;
+        height: 44px;
+        font-size: 1.3rem;
+      }
+      .ea-lightbox-thumbs-bar {
+        justify-content: flex-start;
+      }
+    }
+
+    /* ------------------------------------------------------------- */
+    /* 5. RETOUR EN IMAGES SECTION (INFINITE SCROLL LEFT & FREE ARROWS) */
+    /* ------------------------------------------------------------- */
+    .ea-photos-sec {
+      background-color: var(--ea-bg-light);
+      color: var(--ea-text-dark);
+      padding: 7rem 2.5rem 8rem 2.5rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .ea-photos-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .ea-photos-sec .ea-tag-kicker {
+      color: var(--ea-text-dark);
+      margin-bottom: 2.5rem;
+    }
+    .ea-photos-carousel-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      width: 100%;
+      position: relative;
+    }
+    .ea-free-arrow {
+      background: transparent !important;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      padding: 0.6rem 0.4rem;
+      font-size: 2.8rem;
+      line-height: 1;
+      color: #111111;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.3s ease;
+      flex-shrink: 0;
+      z-index: 10;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ea-free-arrow:hover {
+      color: var(--ea-orange);
+    }
+    .ea-free-arrow.prev:hover {
+      transform: translateX(-6px);
+    }
+    .ea-free-arrow.next:hover {
+      transform: translateX(6px);
+    }
+    .ea-marquee-viewport {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      cursor: grab;
+      user-select: none;
+    }
+    .ea-marquee-viewport:active {
+      cursor: grabbing;
+    }
+    .ea-marquee-track {
+      display: flex;
+      gap: 1.8rem;
+      width: max-content;
+      will-change: transform;
+    }
+    .ea-marquee-item {
+      width: 380px;
+      height: 275px;
+      flex-shrink: 0;
+      overflow: hidden;
+      background-color: #ededed;
+      border-radius: 4px;
+      position: relative;
+    }
+    .ea-marquee-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .ea-marquee-item:hover img {
+      transform: scale(1.15);
+    }
+
+    /* ------------------------------------------------------------- */
+    /* 6. L'AVENTURE CONTINUE (DARK SUBTLE VECTOR BG)                */
+    /* ------------------------------------------------------------- */
+    .ea-continue-sec {
+      background-color: #060505;
+      background-image: radial-gradient(circle at 80% 50%, rgba(200, 131, 33, 0.05) 0%, transparent 60%);
+      color: #ffffff;
+      padding: 7rem 2.5rem;
+      border-top: 1px solid var(--ea-border-dark);
+    }
+    .ea-continue-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+    }
+    .ea-continue-left {
+      max-width: 680px;
+    }
+    .ea-continue-title {
+      font-family: var(--font-eventify);
+      font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 1rem 0;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .ea-continue-title .dash {
+      color: var(--ea-orange);
+    }
+    .ea-continue-desc {
+      font-family: var(--font-eventify);
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #999999;
+      margin: 0;
+    }
+    .ea-continue-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50px;
+      padding: 1.1rem 2.6rem;
+      color: #ffffff;
+      font-family: var(--font-eventify);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+    .ea-continue-btn:hover {
+      border-color: var(--ea-orange);
+      color: var(--ea-orange);
+      transform: translateY(-2px);
+    }
+
+    /* ------------------------------------------------------------- */
+    /* RESPONSIVE DESIGN                                             */
+    /* ------------------------------------------------------------- */
+    @media screen and (max-width: 1024px) {
+      .ea-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+      .ea-about-2col {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .ea-editions-grid {
+        grid-template-columns: 1fr;
+      }
+      .ea-continue-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .ea-hero-sec {
+        padding: 4.5rem 1.25rem 5rem 1.25rem;
+        min-height: auto;
+      }
+      .ea-hero-kicker {
+        font-size: 0.75rem;
+        letter-spacing: 2.5px;
+        margin-bottom: 1rem;
+      }
+      .ea-hero-title {
+        font-size: clamp(2.3rem, 9vw, 3.4rem);
+        line-height: 1.08;
+        margin-bottom: 1rem;
+      }
+      .ea-hero-motto {
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+        margin-bottom: 1.2rem;
+      }
+      .ea-hero-desc {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
+      .ea-hero-btn-main {
+        width: 100%;
+        max-width: 320px;
+        justify-content: center;
+        padding: 1rem 2rem;
+      }
+
+      .ea-metrics-sec {
+        padding: 3.5rem 1.25rem;
+      }
+      .ea-metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .ea-metric-item {
+        padding: 0 0 1.8rem 0 !important;
+        border-right: none !important;
+        border-bottom: 1px solid var(--ea-border-dark);
+      }
+      .ea-metric-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0 !important;
+      }
+      .ea-metric-num {
+        font-size: 3.2rem;
+      }
+      .ea-metric-label {
+        font-size: 0.85rem;
+      }
+
+      .ea-about-sec {
+        padding: 4.5rem 1.25rem;
+      }
+      .ea-about-2col {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .ea-about-motto {
+        font-size: clamp(1.8rem, 6.5vw, 2.4rem);
+        line-height: 1.2;
+      }
+      .ea-about-desc {
+        font-size: 1.05rem;
+        line-height: 1.65;
+      }
+
+      .ea-editions-sec {
+        padding: 4.5rem 1.25rem;
+      }
+      .ea-editions-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.2rem;
+        margin-bottom: 2.5rem;
+      }
+      .ea-editions-title {
+        font-size: clamp(1.8rem, 6vw, 2.4rem);
+      }
+      .ea-editions-grid {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+      .ea-edition-box {
+        height: 320px;
+        padding: 1.5rem;
+      }
+      .ea-edition-card-left h3 {
+        font-size: 1.25rem;
+      }
+      .ea-edition-card-left span {
+        font-size: 0.95rem;
+      }
+      .ea-edition-play-btn {
+        width: 54px;
+        height: 54px;
+      }
+      .ea-edition-play-btn svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .ea-photos-sec {
+        padding: 4.5rem 1.25rem;
+      }
+      .ea-photos-carousel-wrapper {
+        gap: 0.8rem;
+      }
+      .ea-free-arrow {
+        font-size: 2.2rem;
+        padding: 0.4rem;
+      }
+      .ea-marquee-item {
+        width: 260px;
+        height: 190px;
+      }
+
+      .ea-continue-sec {
+        padding: 4.5rem 1.25rem;
+      }
+      .ea-continue-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+      }
+      .ea-continue-title {
+        font-size: clamp(1.8rem, 6.5vw, 2.4rem);
+      }
+      .ea-continue-desc {
+        font-size: 1.05rem;
+        line-height: 1.6;
+      }
+      .ea-continue-btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 1rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body class="body">
+
+  <!-- ============================================================= -->
+  <!-- EXACT ORIGINAL EVENTIFY NAVBAR                                -->
+  <!-- ============================================================= -->
+  <div data-animation="default" data-collapse="medium" data-duration="7000" data-easing="ease-in-out-back" data-easing2="ease-out" data-doc-height="1" role="banner" class="nav-bar home w-nav">
+    <div class="w-layout-blockcontainer container-7 w-container">
+      <a href="index.html" class="brand w-nav-brand"><img src="assets/images/logo-Eventify-2.png" loading="lazy" sizes="(max-width: 479px) 100vw, 173.328125px" height="35" alt="" srcset="assets/images/logo-Eventify-2-p-500.png 500w, assets/images/logo-Eventify-2-p-800.png 800w, assets/images/logo-Eventify-2-p-1080.png 1080w, assets/images/logo-Eventify-2-p-1600.png 1600w, assets/images/logo-Eventify-2-p-2000.png 2000w, assets/images/logo-Eventify-2-p-2600.png 2600w, assets/images/logo-Eventify-2-p-3200.png 3200w, assets/images/logo-Eventify-2.png 3848w" class="home-image-black"></a>
+      <nav role="navigation" class="nav-menu w-nav-menu">
+        <a href="index.html" class="nav-link-20 home w-nav-link">Accueil</a>
+        <a href="nos-realisation.html" class="nav-link-44 home black w-nav-link">Nos <strong><em class="italic-text">réalisations</em></strong></a>
+        <a href="notre-expertise.html" class="nav-link-42 home-black w-nav-link">Notre expertise</a>
+        <div data-hover="true" data-delay="0" class="dropdown w-dropdown">
+          <div class="dropdown-toggle w-dropdown-toggle">
+            <div class="text-block-13 black">Nos projets</div>
+            <div class="icon-13 w-icon-dropdown-toggle"></div>
+          </div>
+          <nav class="dropdown-list w-dropdown-list">
+            <a href="prix-ramses.html" class="dropdown-link black w-dropdown-link">Le Prix Ramses</a>
+            <a href="the-woman-king-sales-edition.html" target="_blank" class="dropdown-link black _2 w-dropdown-link">The Woman king: Sales Edition</a>
+              <a href="smebaf.html" target="_blank" class="dropdown-link black _2 w-dropdown-link">Smebaf</a>
+          </nav>
+        </div>
+        <a href="agence.html" class="nav-link-43 home black w-nav-link">L&#x27;Agence</a>
+        <a href="the-legacy.html" class="nav-link-43 home black w-nav-link">The legacy</a>
+        <a href="#" class="nav-link-45 home main w-nav-link">Contact</a>
+      </nav>
+      <nav role="navigation" class="menu w-nav-menu"><img src="assets/images/icons8-close-100.png" loading="lazy" width="40" data-w-id="fea46543-137b-bb1a-a164-ffdb98f1a731" alt="" class="image-24">
+        <a href="index.html" class="nav-link-20 home _2 w-nav-link">Accueil</a>
+        <a href="nos-realisation.html" class="nav-link-44 home bold-text-2 w-nav-link">Nos réalisations</a>
+        <a href="notre-expertise.html" class="nav-link-42 home _2 w-nav-link">Notre expertise</a>
+        <div data-hover="true" data-delay="0" class="dropdown w-dropdown">
+          <div class="dropdown-toggle w-dropdown-toggle">
+            <div class="text-block-13 black">Nos projets</div>
+            <div class="icon-13 w-icon-dropdown-toggle"></div>
+          </div>
+          <nav class="dropdown-list w-dropdown-list">
+            <a href="prix-ramses.html" class="dropdown-link black w-dropdown-link">Le Prix Ramses</a>
+            <a href="the-woman-king-sales-edition.html" class="dropdown-link black w-dropdown-link">The Woman king: Sales Edition</a>
+          </nav>
+        </div>
+        <a href="agence.html" class="nav-link-43 home _2 w-nav-link">L&#x27;Agence</a>
+        <a href="#" class="nav-link-45 home _2 w-nav-link">Contact</a>
+      </nav>
+      <div class="menu-button-9 w-nav-button">
+        <div class="icon-12 w-icon-nav-menu"></div>
+      </div>
+      <div data-w-id="fea46543-137b-bb1a-a164-ffdb98f1a740" class="icon2 home-black w-icon-nav-menu"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- 1. HERO SECTION (FULL BACKGROUND IMAGE & MONUMENTAL TYPO)     -->
+  <!-- ============================================================= -->
+  <section class="ea-hero-sec">
+    <div class="ea-hero-container">
+      <h1 class="ea-hero-title">EVENTIFY ACADEMY</h1>
+      <p class="ea-hero-desc">
+        Un programme d'incubation opérationnelle unique conçu pour former, accélérer et propulser la nouvelle génération de leaders événementiels au cœur de productions réelles et de projets d'envergure.
+      </p>
+      <a href="#about" class="ea-hero-btn">
+        <span>Explorer le programme</span>
+        <span class="arrow">↓</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 2. METRICS STRIP (SEPARATED SOLID BLOCK)                      -->
+  <!-- ============================================================= -->
+  <section class="ea-metrics-sec">
+    <div class="ea-metrics-grid">
+      <div class="ea-metric-item">
+        <div class="ea-metric-num" data-count="2" data-pad="2">00</div>
+        <div class="ea-metric-lbl">ÉDITIONS RÉALISÉES</div>
+      </div>
+      <div class="ea-metric-item">
+        <div class="ea-metric-num" data-count="22" data-suffix="+">0+</div>
+        <div class="ea-metric-lbl">TALENTS FORMÉS</div>
+      </div>
+      <div class="ea-metric-item">
+        <div class="ea-metric-num" data-count="95" data-suffix="%">0%</div>
+        <div class="ea-metric-lbl">TAUX D'INSERTION</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 3. L'ACADEMY SECTION (1:1 MOCKUP)                             -->
+  <!-- ============================================================= -->
+  <section id="about" class="ea-about-sec">
+    <div class="ea-about-inner">
+      <div class="ea-tag-kicker">
+        <span class="dash">—</span> L'ACADEMY
+      </div>
+      <div class="ea-about-2col">
+        <h2 class="ea-about-motto">
+          Apprendre en faisant.<br>
+          Travailler sur le réel.<br>
+          Grandir avec les autres.
+        </h2>
+        <p class="ea-about-desc">
+          Eventify Academy est un programme de formation et d'accompagnement qui réunit de jeunes talents autour de projets concrets, de workshops et de rencontres avec des professionnels du secteur événementiel et de la communication.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 4. LES ÉDITIONS SECTION (1:1 MOCKUP)                          -->
+  <!-- ============================================================= -->
+  <section id="editions" class="ea-editions-sec">
+    <div class="ea-editions-inner">
+      <div class="ea-editions-header">
+        <div class="ea-editions-header-left">
+          <div class="ea-tag-kicker">
+            <span class="dash">—</span> LES ÉDITIONS
+          </div>
+          <h2 class="ea-editions-title">
+            Revivez les moments forts<br>des deux premières éditions.
+          </h2>
+        </div>
+        <a href="javascript:void(0)" class="ea-editions-link-all" onclick="return false;">Voir toutes les éditions →</a>
+      </div>
+
+      <div class="ea-editions-grid">
+        <!-- Card 1: Edition 01 -->
+        <a href="eventify-academy-edition-1.html" class="ea-edition-box" style="cursor: pointer;" aria-label="Édition 01">
+          <img src="assets/images/academy/IMG_6695.jpg" alt="Édition 01 2024" class="ea-edition-bg-img" style="object-position: center 25%;">
+          <div class="ea-edition-overlay"></div>
+          <div class="ea-edition-play-btn" aria-label="Play Edition 01 Recap">
+            <svg viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <div class="ea-edition-card-content">
+            <div class="ea-edition-card-left">
+              <h3>ÉDITION 01</h3>
+              <span>2024</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2: Edition 02 (Interactive Photo Gallery) -->
+        <a href="javascript:void(0)" onclick="openSecondEditionGallery(0); return false;" class="ea-edition-box" style="cursor: pointer;" aria-label="Édition 02 - Galerie Photos">
+          <img src="assets/images/academy/second_edition/A7409056.jpg" alt="Édition 02 2025" class="ea-edition-bg-img" style="object-position: center 25%;">
+          <div class="ea-edition-overlay"></div>
+          <div class="ea-edition-gallery-btn" aria-label="Voir la Galerie Photos">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </div>
+          <div class="ea-edition-card-content">
+            <div class="ea-edition-card-left">
+              <h3>ÉDITION 02</h3>
+              <span>2025 • Galerie Photos (14 clichés)</span>
+            </div>
+            <div class="ea-edition-cta-link">
+              <span>Voir la galerie</span>
+              <span class="arrow">→</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 5. RETOUR EN IMAGES SECTION (INFINITE SCROLL RIGHT & FREE ARROWS) -->
+  <!-- ============================================================= -->
+  <section id="moments" class="ea-photos-sec">
+    <div class="ea-photos-inner">
+      <div class="ea-tag-kicker">
+        <span class="dash">—</span> RETOUR EN IMAGES
+      </div>
+
+      <div class="ea-photos-carousel-wrapper">
+        <button class="ea-free-arrow prev" onclick="scrollMarquee('left')" aria-label="Précédent">←</button>
+        <div class="ea-marquee-viewport" id="marqueeViewport">
+          <div class="ea-marquee-track" id="marqueeTrack">
+            <!-- Set 1 -->
+            <div class="ea-marquee-item">
+              <img src="assets/images/academy/DSC00639.jpg" alt="Stagiaire Eventify Academy" loading="lazy">
+            </div>
+            <div class="ea-marquee-item">
+              <img src="assets/images/academy/DSC00644.jpg" alt="Pitch et présentation de projet" loading="lazy">
+            </div>
+            <div class="ea-marquee-item">
+              <img src="assets/images/academy/DSC07879.jpg" alt="Captation média et réalisation" loading="lazy">
+            </div>
+            <div class="ea-marquee-item">
+              <img src="assets/images/academy/DSC07961.jpg" alt="Régie son, lumière et production" loading="lazy">
+            </div>
+            <div class="ea-marquee-item">
+              <img src="assets/images/academy/IMG_6666.jpg" alt="Esprit d'équipe et synergie" loading="lazy">
+            </div>
+            <div class="ea-marquee-item">
+              <img src="assets/images/academy/IMG_6695.jpg" alt="Conception graphique et branding" loading="lazy">
+            </div>
+
+            <!-- Set 2 (Continuous Loop duplicates) -->
+            <div class="ea-marquee-item">
+              <img src="assets/images/academy/DSC00639.jpg" alt="Stagiaire Eventify Academy" loading="lazy">
+            </div>
+            <div class="ea-marquee-item">
+              <img src="assets/images/academy/DSC00644.jpg" alt="Pitch et présentation de projet" loading="lazy">
+            </div>
+            <div class="ea-marquee-item">
+              <img src="assets/images/academy/DSC07879.jpg" alt="Captation média et réalisation" loading="lazy">
+            </div>
+            <div class="ea-marquee-item">
+              <img src="assets/images/academy/DSC07961.jpg" alt="Régie son, lumière et production" loading="lazy">
+            </div>
+            <div class="ea-marquee-item">
+              <img src="assets/images/academy/IMG_6666.jpg" alt="Esprit d'équipe et synergie" loading="lazy">
+            </div>
+            <div class="ea-marquee-item">
+              <img src="assets/images/academy/IMG_6695.jpg" alt="Conception graphique et branding" loading="lazy">
+            </div>
+          </div>
+        </div>
+        <button class="ea-free-arrow next" onclick="scrollMarquee('right')" aria-label="Suivant">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 6. L'AVENTURE CONTINUE (1:1 MOCKUP)                           -->
+  <!-- ============================================================= -->
+  <section class="ea-continue-sec">
+    <div class="ea-continue-inner">
+      <div class="ea-continue-left">
+        <h2 class="ea-continue-title">
+          <span class="dash">—</span> L'aventure continue.
+        </h2>
+        <p class="ea-continue-desc">
+          Restez connectés pour ne rien manquer de la prochaine édition de l'Eventify Academy.
+        </p>
+      </div>
+      <a href="mailto:contact@eventifyagency.com?subject=Candidature%20Eventify%20Academy" class="ea-continue-btn">
+        <span>Découvrir l'academy</span>
+        <span>→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- EXACT ORIGINAL EVENTIFY FOOTER                                -->
+  <!-- ============================================================= -->
+  <div class="rl_footer3_component">
+    <div class="rl-padding-global">
+      <div class="rl-container-large">
+        <div class="rl-padding-section-medium">
+          <div class="w-layout-grid rl_footer3_top-wrapper">
+            <div class="rl_footer3_left-wrapper">
+              <div class="rl_footer3_spacing-block-3">
+                <div class="rl_footer3_text">Besoin d’un brin de lumière? </div>
+                <div class="text-block-5">Ecrivez-nous</div>
+                <div class="div-footer-contact-here">
+                  <div class="text-block">contact nous</div>
+                  <a href="tel:+237697936764" class="text-link-here">+237 6 97 93 67 64</a>
+                  <a href="tel:+237692917312" class="text-link-here">+237 6 92 91 73 12</a>
+                </div>
+              </div><img src="assets/images/logo-Eventify-2.png" loading="lazy" sizes="(max-width: 479px) 100vw, 123.796875px" height="25" alt="" srcset="assets/images/logo-Eventify-2-p-500.png 500w, assets/images/logo-Eventify-2-p-800.png 800w, assets/images/logo-Eventify-2-p-1080.png 1080w, assets/images/logo-Eventify-2-p-1600.png 1600w, assets/images/logo-Eventify-2-p-2000.png 2000w, assets/images/logo-Eventify-2-p-2600.png 2600w, assets/images/logo-Eventify-2-p-3200.png 3200w, assets/images/logo-Eventify-2.png 3848w" class="rl_footer3_logo">
+            </div>
+            <div class="w-layout-grid rl_footer3_menu-wrapper">
+              <div class="rl_footer3_link-list">
+                <div class="div-footer-join-our-team">
+                  <div class="text-block-3">Vous recherchez un nouveau challenge ?</div>
+                  <a href="tel:+237697936764" class="link">Rejoignez notre équipe</a><img src="assets/images/icons8-arrow-48.png" loading="lazy" alt="" height="25" class="image">
+                </div>
+                <div class="w-layout-grid rl_footer3_social-list">
+                  <a href="https://www.instagram.com/eventifyagency?igsh=dmpwcHR3NHRnM2l2&amp;utm_source=qr" class="rl_footer3_social-link w-inline-block">
+                    <div class="rl-social-icon w-embed"><svg width="24" height="20" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16 3H8C5.23858 3 3 5.23858 3 8V16C3 18.7614 5.23858 21 8 21H16C18.7614 21 21 18.7614 21 16V8C21 5.23858 18.7614 3 16 3ZM19.25 16C19.2445 17.7926 17.7926 19.2445 16 19.25H8C6.20735 19.2445 4.75549 17.7926 4.75 16V8C4.75549 6.20735 6.20735 4.75549 8 4.75H16C17.7926 4.75549 19.2445 6.20735 19.25 8V16ZM16.75 8.25C17.3023 8.25 17.75 7.80228 17.75 7.25C17.75 6.69772 17.3023 6.25 16.75 6.25C16.1977 6.25 15.75 6.69772 15.75 7.25C15.75 7.80228 16.1977 8.25 16.75 8.25ZM12 7.5C9.51472 7.5 7.5 9.51472 7.5 12C7.5 14.4853 9.51472 16.5 12 16.5C14.4853 16.5 16.5 14.4853 16.5 12C16.5027 10.8057 16.0294 9.65957 15.1849 8.81508C14.3404 7.97059 13.1943 7.49734 12 7.5ZM9.25 12C9.25 13.5188 10.4812 14.75 12 14.75C13.5188 14.75 14.75 13.5188 14.75 12C14.75 10.4812 13.5188 9.25 12 9.25C10.4812 9.25 9.25 10.4812 9.25 12Z" fill="CurrentColor"></path>
+                      </svg></div>
+                  </a>
+                  <a href="https://www.linkedin.com/company/eventify-agency/" class="rl_footer3_social-link w-inline-block">
+                    <div class="rl-social-icon w-embed"><svg width="24" height="20" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M5 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3ZM8 18C8.27614 18 8.5 17.7761 8.5 17.5V10.5C8.5 10.2239 8.27614 10 8 10H6.5C6.22386 10 6 10.2239 6 10.5V17.5C6 17.7761 6.22386 18 6.5 18H8ZM7.25 9C6.42157 9 5.75 8.32843 5.75 7.5C5.75 6.67157 6.42157 6 7.25 6C8.07843 6 8.75 6.67157 8.75 7.5C8.75 8.32843 8.07843 9 7.25 9ZM17.5 18C17.7761 18 18 17.7761 18 17.5V12.9C18.0325 11.3108 16.8576 9.95452 15.28 9.76C14.177 9.65925 13.1083 10.1744 12.5 11.1V10.5C12.5 10.2239 12.2761 10 12 10H10.5C10.2239 10 10 10.2239 10 10.5V17.5C10 17.7761 10.2239 18 10.5 18H12C12.2761 18 12.5 17.7761 12.5 17.5V13.75C12.5 12.9216 13.1716 12.25 14 12.25C14.8284 12.25 15.5 12.9216 15.5 13.75V17.5C15.5 17.7761 15.7239 18 16 18H17.5Z" fill="CurrentColor"></path>
+                      </svg></div>
+                  </a>
+                </div>
+                <div class="text-block-4">@ 2023 - EVENTIFY. All Rights Reserved</div>
+              </div>
+            </div>
+            <div id="w-node-cfcf88ac-8c3b-f652-5ffc-e2cabbb7b357-a104fc60" class="div-block"></div>
+          </div>
+          <div class="rl_footer3_spacing-block-5"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=65a16aa73b46f7df7a972c51" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="assets/js/webflow.js" type="text/javascript"></script>
+  <script>
+    (function() {
+      const track = document.getElementById('marqueeTrack');
+      const viewport = document.getElementById('marqueeViewport');
+      if (!track || !viewport) return;
+
+      let posX = 0;
+      let normalSpeed = 1.15; // Leftwards scrolling drift speed
+      let slowSpeed = 0.22;   // Deceleration on hover (does not stop, decelerates gently)
+      let currentSpeed = normalSpeed;
+      let isHovered = false;
+      let nudgeOffset = 0;
+
+      viewport.addEventListener('mouseenter', () => { isHovered = true; });
+      viewport.addEventListener('mouseleave', () => { isHovered = false; });
+
+      function getHalfWidth() {
+        return track.scrollWidth / 2;
+      }
+
+      function animate() {
+        // Smoothly decelerate or accelerate depending on hover
+        const targetSpeed = isHovered ? slowSpeed : normalSpeed;
+        currentSpeed += (targetSpeed - currentSpeed) * 0.05;
+
+        // Continuous drift leftwards (opposite to previous rightwards)
+        posX -= currentSpeed;
+
+        // Smoothly interpolate arrow click nudges
+        if (Math.abs(nudgeOffset) > 0.5) {
+          const step = nudgeOffset * 0.12;
+          posX += step;
+          nudgeOffset -= step;
+        } else {
+          posX += nudgeOffset;
+          nudgeOffset = 0;
+        }
+
+        const halfWidth = getHalfWidth();
+        if (halfWidth > 0) {
+          while (posX <= -halfWidth) {
+            posX += halfWidth;
+          }
+          while (posX > 0) {
+            posX -= halfWidth;
+          }
+        }
+
+        track.style.transform = `translate3d(${posX.toFixed(2)}px, 0, 0)`;
+        requestAnimationFrame(animate);
+      }
+
+      requestAnimationFrame(animate);
+
+      // Global function called by the free arrow buttons
+      window.scrollMarquee = function(direction) {
+        const step = 410; // Scroll distance matching item width + gap
+        if (direction === 'left') {
+          nudgeOffset += step; // shift right to reveal previous photos
+        } else {
+          nudgeOffset -= step; // shift left to reveal next photos
+        }
+      };
+    })();
+  </script>
+
+  <!-- ============================================================= -->
+  <!-- COUNT UP ANIMATION ON SCROLL (ONE-TIME TRIGGER)                -->
+  <!-- ============================================================= -->
+  <script>
+    (function() {
+      const metricSection = document.querySelector('.ea-metrics-sec');
+      const metricNums = document.querySelectorAll('.ea-metric-num[data-count]');
+      if (!metricSection || metricNums.length === 0) return;
+
+      let hasAnimated = false;
+
+      function startCountUp() {
+        if (hasAnimated) return;
+        hasAnimated = true;
+
+        const duration = 1800; // 1.8s smooth duration
+        const startTime = performance.now();
+
+        function updateCounters(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease-out cubic for realistic, satisfying momentum slowing down near the end
+          const easeProgress = 1 - Math.pow(1 - progress, 3);
+
+          metricNums.forEach((el) => {
+            const target = parseInt(el.getAttribute('data-count'), 10);
+            const pad = el.getAttribute('data-pad');
+            const suffix = el.getAttribute('data-suffix') || '';
+            const current = Math.floor(easeProgress * target);
+
+            let valStr = current.toString();
+            if (pad && valStr.length < parseInt(pad, 10)) {
+              valStr = valStr.padStart(parseInt(pad, 10), '0');
+            }
+
+            if (progress >= 1) {
+              let finalStr = target.toString();
+              if (pad && finalStr.length < parseInt(pad, 10)) {
+                finalStr = finalStr.padStart(parseInt(pad, 10), '0');
+              }
+              el.textContent = finalStr + suffix;
+            } else {
+              el.textContent = valStr + suffix;
+            }
+          });
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCounters);
+          }
+        }
+
+        requestAnimationFrame(updateCounters);
+      }
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              startCountUp();
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+
+        observer.observe(metricSection);
+      } else {
+        startCountUp();
+      }
+    })();
+  </script>
+
+  <!-- ============================================================= -->
+  <!-- LIGHTBOX GALLERY MODAL (SECOND EDITION)                      -->
+  <!-- ============================================================= -->
+  <div id="secondEditionModal" class="ea-lightbox-modal" role="dialog" aria-modal="true" aria-label="Galerie Photos Deuxième Édition">
+    <div class="ea-lightbox-header">
+      <div class="ea-lightbox-title-box">
+        <h3 class="ea-lightbox-title">Édition 02 — Galerie Photos</h3>
+        <span class="ea-lightbox-badge"><span id="galleryCurrentIdx">1</span> / <span id="galleryTotalCount">14</span></span>
+      </div>
+      <button class="ea-lightbox-close-btn" onclick="closeSecondEditionGallery()" aria-label="Fermer la galerie">×</button>
+    </div>
+
+    <div class="ea-lightbox-stage" onclick="handleStageClick(event)">
+      <button class="ea-lightbox-nav-btn prev" onclick="navigateSecondEditionGallery(-1)" aria-label="Photo précédente">‹</button>
+      <img id="galleryMainImage" class="ea-lightbox-main-img" src="assets/images/academy/second_edition/A7409056.jpg" alt="Photo Deuxième Édition Eventify Academy">
+      <button class="ea-lightbox-nav-btn next" onclick="navigateSecondEditionGallery(1)" aria-label="Photo suivante">›</button>
+    </div>
+
+    <div class="ea-lightbox-thumbs-bar" id="galleryThumbsTrack">
+      <!-- Generated via JS -->
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const secondEditionImages = [
+        "assets/images/academy/second_edition/A7408993.jpg",
+        "assets/images/academy/second_edition/A7409036.jpg",
+        "assets/images/academy/second_edition/A7409037.jpg",
+        "assets/images/academy/second_edition/A7409045.jpg",
+        "assets/images/academy/second_edition/A7409056.jpg",
+        "assets/images/academy/second_edition/A7409060.jpg",
+        "assets/images/academy/second_edition/A7409068.jpg",
+        "assets/images/academy/second_edition/A7409073.jpg",
+        "assets/images/academy/second_edition/A7409117.jpg",
+        "assets/images/academy/second_edition/A7409178.jpg",
+        "assets/images/academy/second_edition/A7409185.jpg",
+        "assets/images/academy/second_edition/A7409191.jpg",
+        "assets/images/academy/second_edition/A7409202.jpg",
+        "assets/images/academy/second_edition/A7409205-Avec accentuation-Bruit.jpg"
+      ];
+
+      let currentIndex = 0;
+      const modal = document.getElementById('secondEditionModal');
+      const mainImg = document.getElementById('galleryMainImage');
+      const currentIdxEl = document.getElementById('galleryCurrentIdx');
+      const totalCountEl = document.getElementById('galleryTotalCount');
+      const thumbsTrack = document.getElementById('galleryThumbsTrack');
+
+      if (totalCountEl) {
+        totalCountEl.textContent = secondEditionImages.length;
+      }
+
+      // Build thumbnails once
+      if (thumbsTrack) {
+        thumbsTrack.innerHTML = '';
+        secondEditionImages.forEach((src, idx) => {
+          const thumb = document.createElement('div');
+          thumb.className = 'ea-lightbox-thumb' + (idx === 0 ? ' active' : '');
+          thumb.setAttribute('data-idx', idx);
+          thumb.onclick = function() {
+            setGalleryIndex(idx);
+          };
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = 'Vignette ' + (idx + 1);
+          img.loading = 'lazy';
+          thumb.appendChild(img);
+          thumbsTrack.appendChild(thumb);
+        });
+      }
+
+      function setGalleryIndex(idx) {
+        if (idx < 0) idx = secondEditionImages.length - 1;
+        if (idx >= secondEditionImages.length) idx = 0;
+        currentIndex = idx;
+
+        if (mainImg) {
+          mainImg.style.opacity = '0';
+          mainImg.style.transform = 'scale(0.97)';
+          setTimeout(() => {
+            mainImg.src = secondEditionImages[currentIndex];
+            mainImg.style.opacity = '1';
+            mainImg.style.transform = 'scale(1)';
+          }, 150);
+        }
+
+        if (currentIdxEl) {
+          currentIdxEl.textContent = currentIndex + 1;
+        }
+
+        // Update thumbnails active state
+        if (thumbsTrack) {
+          const thumbs = thumbsTrack.querySelectorAll('.ea-lightbox-thumb');
+          thumbs.forEach((t, i) => {
+            if (i === currentIndex) {
+              t.classList.add('active');
+              t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            } else {
+              t.classList.remove('active');
+            }
+          });
+        }
+      }
+
+      window.openSecondEditionGallery = function(startIdx) {
+        if (typeof startIdx !== 'number') startIdx = 0;
+        if (!modal) return;
+        setGalleryIndex(startIdx);
+        modal.style.display = 'flex';
+        setTimeout(() => {
+          modal.classList.add('active');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.closeSecondEditionGallery = function() {
+        if (!modal) return;
+        modal.classList.remove('active');
+        setTimeout(() => {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }, 300);
+      };
+
+      window.navigateSecondEditionGallery = function(step) {
+        setGalleryIndex(currentIndex + step);
+      };
+
+      window.handleStageClick = function(event) {
+        if (event.target === event.currentTarget) {
+          closeSecondEditionGallery();
+        }
+      };
+
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (!modal || !modal.classList.contains('active')) return;
+        if (e.key === 'Escape') {
+          closeSecondEditionGallery();
+        } else if (e.key === 'ArrowLeft') {
+          navigateSecondEditionGallery(-1);
+        } else if (e.key === 'ArrowRight') {
+          navigateSecondEditionGallery(1);
+        }
+      });
+    })();
+  </script>
+  <script src="assets/js/i18n.js" defer></script>
+</body>
+</html>
+
+

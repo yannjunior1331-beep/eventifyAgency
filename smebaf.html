@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="assets/images/smebaf/logo.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMEBAF | Student Mobility Fair - Belgium, Germany & France</title>
+  <meta name="description"
+    content="SMEBAF - Student Mobility Fair for Belgium, Germany & France. Bringing together European universities, embassies, Cameroonian schools, and thousands of students. Organized by Eventify with STUDELY.">
+
+  <!-- Google Fonts: Parkinsans & Plus Jakarta Sans / Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1:1 EXACT FIGMA DESIGN SYSTEM TOKENS (MacBook Pro 16" - 1)
+       ========================================================================== */
+    :root {
+      --color-page-bg: #F0F0F0;
+      --color-white: #FFFFFF;
+      --color-black: #000000;
+      --color-dark-bg: #1C1C1C;
+      --color-dark-card: #121212;
+      --color-dark-accordion-btn: #343434;
+
+      /* Primary Branding Colors */
+      --color-red-primary: #ED2939;
+      /* Figma Frame 27 BTN Red */
+      --color-red-footer: #B20513;
+      /* Figma Footer Newsletter & Up Button */
+      --color-yellow-accent: #FFD500;
+      /* Figma Impact Card 01 Yellow */
+      --color-yellow-checkbox: #F9DF43;
+      /* Figma Checkbox Yellow */
+      --color-blue-france: #1668AE;
+      /* Figma Destinations France Blue */
+      --color-blue-guidance: #1369AD;
+      /* Figma Guidance Button Blue */
+      --color-dark-belgium: #252525;
+      /* Figma Destinations Belgium */
+      --color-burgundy-germany: #381216;
+      /* Figma Destinations Germany */
+      --color-charcoal-france2: #181818;
+      /* Figma Destinations France 2 */
+      --color-impact-gray: rgba(240, 240, 240, 0.34);
+
+      /* Typography */
+      --font-headline: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Parkinsans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+      --container-max-w: 1760px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background-color: var(--color-page-bg);
+      color: var(--color-black);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+      outline: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ==========================================================================
+       1. NAVBAR (Header Frame 2 / 7:137)
+       Figma: x: 0, y: 0, width: 1920, height: 94, paddingTop: 40, paddingBottom: 20, paddingLeft: 80, paddingRight: 80
+       No borders, no shadows.
+       ========================================================================== */
+    .smebaf-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 94px;
+      padding: 40px clamp(20px, calc(80 * 100vw / 1920), 80px) 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      box-sizing: border-box;
+    }
+
+    .navbar-logo-wrap {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-logo-img {
+      width: 107px;
+      height: 30px;
+      object-fit: contain;
+    }
+
+    /* Language Toggle Switcher */
+    .lang-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 34px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-white);
+      transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+      user-select: none;
+    }
+
+    .lang-toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.24);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .lang-opt {
+      opacity: 0.6;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .lang-opt.active {
+      opacity: 1;
+      font-weight: 800;
+      color: var(--color-blue-guidance);
+    }
+
+    .lang-divider {
+      opacity: 0.4;
+      font-size: 11px;
+    }
+
+    /* Light Theme for Navbar on White Sections (Frame 2 Black Logo) */
+    .smebaf-navbar.nav-light .lang-toggle-btn {
+      background: rgba(0, 0, 0, 0.07);
+      border-color: rgba(0, 0, 0, 0.15);
+      color: var(--color-black);
+    }
+
+    .smebaf-navbar.nav-light .lang-toggle-btn:hover {
+      background: rgba(0, 0, 0, 0.12);
+      border-color: rgba(0, 0, 0, 0.28);
+    }
+
+    .smebaf-navbar.nav-light .lang-opt {
+      color: var(--color-black);
+      opacity: 0.5;
+    }
+
+    .smebaf-navbar.nav-light .lang-opt.active {
+      opacity: 1;
+      font-weight: 800;
+      color: var(--color-blue-guidance);
+    }
+
+    .smebaf-navbar.nav-light .lang-divider {
+      color: var(--color-black);
+      opacity: 0.3;
+    }
+
+    /* ==========================================================================
+       2. HERO SECTION (Frame 10 / 7:134)
+       Figma: width: 1920, height: 1117, paddingBottom: 120, itemSpacing: 40
+       Asset 5@2x-80 1: width: 1920, height: 803
+       Frame 11: height: 154, paddingLeft: 80, paddingRight: 200
+       Headline: 64px, Semibold, line-height: 120%, letter-spacing: -4%
+       ========================================================================== */
+    .smebaf-hero-section {
+      width: 100%;
+      padding-top: 0;
+      background-color: var(--color-page-bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .hero-banner-container {
+      width: 100%;
+      height: 100vh;
+      min-height: 500px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner-video,
+    .hero-banner-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .hero-banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.48);
+    }
+
+    .hero-statement-bar {
+      width: 100%;
+      max-width: 1920px;
+      padding: clamp(30px, calc(40 * 100vw / 1920), 40px) clamp(20px, calc(80 * 100vw / 1920), 80px) clamp(60px, calc(120 * 100vw / 1920), 120px);
+      box-sizing: border-box;
+    }
+
+    .hero-statement-text {
+      font-family: var(--font-headline);
+      font-size: clamp(28px, calc(64 * 100vw / 1920), 64px);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      color: var(--color-black);
+      max-width: 1640px;
+    }
+
+    /* ==========================================================================
+       3. WHO ARE WE / ABOUT (Frame 27 / 10:171)
+       Figma: width: 1920, height: 1090, paddingTop: 120, paddingBottom: 250, paddingLeft: 80, paddingRight: 80, itemSpacing: 80
+       Image: width: 890, height: 720, cornerRadius: 8
+       Frame 70: width: 790, height: 720, paddingTop: 40, paddingBottom: 40, paddingRight: 80, space-between
+       ========================================================================== */
+    .about-section {
+      width: 100%;
+      padding: clamp(60px, calc(120 * 100vw / 1920), 120px) 0 clamp(80px, calc(250 * 100vw / 1920), 250px);
+      background-color: var(--color-page-bg);
+      display: flex;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .about-container {
+      width: 100%;
+      max-width: 1920px;
+      padding: 0 clamp(20px, calc(80 * 100vw / 1920), 80px);
+      display: grid;
+      grid-template-columns: minmax(0, 890px) minmax(0, 790px);
+      gap: clamp(32px, calc(80 * 100vw / 1920), 80px);
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    .about-image-media {
+      width: 100%;
+      max-width: 890px;
+      height: clamp(420px, calc(720 * 100vw / 1920), 720px);
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .about-content-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: clamp(auto, calc(720 * 100vw / 1920), 720px);
+      min-height: 540px;
+      padding: clamp(10px, calc(40 * 100vw / 1920), 40px) clamp(0px, calc(80 * 100vw / 1920), 80px) clamp(10px, calc(40 * 100vw / 1920), 40px) 0;
+      box-sizing: border-box;
+    }
+
+    .about-top-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      max-width: 670px;
+    }
+
+    .about-headline {
+      font-family: var(--font-headline);
+      font-size: clamp(36px, calc(64 * 100vw / 1920), 64px);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      color: var(--color-black);
+    }
+
+    .about-description {
+      font-family: var(--font-body);
+      font-size: clamp(16px, calc(20 * 100vw / 1920), 20px);
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--color-black);
+    }
+
+    /* Red Split Button in Frame 27 (Linked by default, separates on hover) */
+    .btn-split-red {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      margin-top: 4px;
+      cursor: pointer;
+      transition: gap 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn-split-red:hover {
+      gap: 4px;
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .btn-split-red-text {
+      height: 33px;
+      padding: 8px 16px;
+      background-color: var(--color-red-primary);
+      color: var(--color-white);
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .btn-split-red-icon {
+      width: 36px;
+      height: 33px;
+      background-color: var(--color-red-primary);
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    /* Bottom Event Link in Frame 27 (Positioned under, no border) */
+    .about-bottom-group {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      margin-top: 32px;
+    }
+
+    .event-upcoming-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 34px;
+      padding: 8px 0;
+      border: none;
+      color: var(--color-black);
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 400;
+      cursor: pointer;
+      background: transparent;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .event-upcoming-link:hover {
+      opacity: 0.75;
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       4. KEY FIGURES / IMPACT (Frame 28 / 10:199)
+       Figma: width: 1920, height: 1091, paddingTop: 180, paddingBottom: 180, paddingLeft: 80, paddingRight: 80
+       Cards: width: 432.5, height: 520, cornerRadius: 8, padding: 24px 58px 14px 58px, itemSpacing: 24, space-between
+       Default background: rgba(240, 240, 240, 0.34)
+       Hover background: Yellow #FFD500
+       Footnote: Frame 77 -> aligned to the right, no border
+       ========================================================================== */
+    .impact-section {
+      width: 100%;
+      padding: clamp(60px, calc(180 * 100vw / 1920), 180px) 0;
+      background-color: var(--color-white);
+      display: flex;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .impact-container {
+      width: 100%;
+      max-width: 1920px;
+      padding: 0 clamp(20px, calc(80 * 100vw / 1920), 80px);
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      box-sizing: border-box;
+    }
+
+    .impact-section-title {
+      font-family: var(--font-headline);
+      font-size: clamp(36px, calc(64 * 100vw / 1920), 64px);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      color: var(--color-black);
+    }
+
+    .impact-grid-track {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      width: 100%;
+    }
+
+    .impact-card-box {
+      width: 100%;
+      min-height: 520px;
+      border-radius: 8px;
+      padding: 24px clamp(24px, calc(58 * 100vw / 1920), 58px) 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--color-impact-gray);
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .impact-card-box:hover {
+      background-color: var(--color-yellow-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .impact-card-header {
+      width: 100%;
+      height: 56px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .impact-card-label-text {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-black);
+      line-height: 1.3;
+    }
+
+    .impact-card-label-text.medium {
+      font-weight: 500;
+    }
+
+    .impact-card-stat-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+    }
+
+    .impact-card-stat-text {
+      font-family: var(--font-headline);
+      font-size: clamp(48px, calc(64 * 100vw / 1920), 64px);
+      font-weight: 800;
+      line-height: 1.4;
+      color: var(--color-black);
+    }
+
+    .impact-card-stat-text.semibold {
+      font-weight: 600;
+    }
+
+    .impact-card-footer {
+      width: 100%;
+      height: 33px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .impact-card-index-num {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-black);
+    }
+
+    .impact-card-index-num.regular {
+      font-weight: 400;
+    }
+
+    /* Footnote right aligned, no border */
+    .impact-footnote-wrap {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+    }
+
+    .impact-footnote-text {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--color-black);
+      padding: 8px 0;
+      border: none;
+    }
+
+    /* ==========================================================================
+       5. DESTINATIONS (Frame 29 / 14:269) - INFINITE STACKING ANIMATION
+       Figma: width: 1920, height: 1113, paddingTop: 180, paddingBottom: 250, paddingLeft: 80, paddingRight: 80
+       Cards: 771x556, padding: 50px 58px, space-between, 0 space between cards
+       Infinite stacking animation with cursor-based direction & hover slowdown
+       ========================================================================== */
+    .destinations-section {
+      width: 100%;
+      padding: clamp(60px, calc(180 * 100vw / 1920), 180px) 0 clamp(80px, calc(250 * 100vw / 1920), 250px);
+      background-color: var(--color-white);
+      display: flex;
+      justify-content: center;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .destinations-container {
+      width: 100%;
+      max-width: 1920px;
+      padding: 0 clamp(20px, calc(80 * 100vw / 1920), 80px);
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      box-sizing: border-box;
+    }
+
+    .destinations-title {
+      font-family: var(--font-headline);
+      font-size: clamp(36px, calc(64 * 100vw / 1920), 64px);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      color: var(--color-black);
+    }
+
+    /* Stacking Stage */
+    .destinations-stack-stage {
+      position: relative;
+      width: 100%;
+      max-width: 1760px;
+      height: 556px;
+      overflow: visible;
+    }
+
+    .dest-card-panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: clamp(320px, 771px, 771px);
+      max-width: 100%;
+      height: 556px;
+      padding: 50px clamp(24px, 58px, 58px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--color-white);
+      box-sizing: border-box;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.14), -6px 0 20px rgba(0, 0, 0, 0.08);
+      will-change: transform, opacity;
+      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease;
+    }
+
+    .destinations-stack-stage.is-slow .dest-card-panel {
+      transition: transform 2.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.8s ease;
+    }
+
+    .dest-card-panel.france {
+      background-color: var(--color-blue-france);
+    }
+
+    .dest-card-panel.belgium {
+      background-color: var(--color-dark-belgium);
+    }
+
+    .dest-card-panel.germany {
+      background-color: var(--color-burgundy-germany);
+    }
+
+    .dest-card-panel.france2 {
+      background-color: var(--color-charcoal-france2);
+    }
+
+    .dest-panel-top-group {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .dest-panel-country-title {
+      font-family: var(--font-headline);
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--color-white);
+    }
+
+    .dest-panel-summary-desc {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--color-white);
+      max-width: 623px;
+    }
+
+    .dest-panel-bottom-group {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .dest-cost-row-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 20px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-white);
+    }
+
+    /* Split Button inside Destinations Panel (Linked by default, separates on hover) */
+    .dest-panel-btn-split {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      width: 100%;
+      height: 57px;
+      cursor: pointer;
+      transition: gap 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .dest-panel-btn-split:hover {
+      gap: 4px;
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .dest-panel-btn-left {
+      flex: 1;
+      height: 57px;
+      background-color: rgba(225, 225, 225, 0.05);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .dest-panel-btn-left span {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--color-white);
+      text-transform: lowercase;
+    }
+
+    .dest-panel-btn-right {
+      width: 56px;
+      height: 57px;
+      background-color: rgba(225, 225, 225, 0.05);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    /* ==========================================================================
+       6. GUIDANCE WORKSHOP CTA (Frame 31 / 16:361)
+       Figma: width: 1920, height: 885, overlay 0.82
+       Guidance eyebrow: 14px, SemiBold, letterSpacing: -4%
+       Headline: 64px, Semibold, letterSpacing: -4%
+       BTN: width: 394, height: 57, Blue #1369AD (Left: 334px, Right: 56px)
+       ========================================================================== */
+    .guidance-section {
+      position: relative;
+      width: 100%;
+      height: 885px;
+      background-color: var(--color-dark-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .guidance-bg-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .guidance-bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .guidance-bg-dark-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(19, 19, 19, 0.82);
+    }
+
+    .guidance-content-container {
+      position: relative;
+      z-index: 10;
+      max-width: 960px;
+      padding: 0 40px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      box-sizing: border-box;
+    }
+
+    .guidance-eyebrow-text {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      color: var(--color-white);
+    }
+
+    .guidance-headline-text {
+      font-family: var(--font-headline);
+      font-size: clamp(32px, calc(64 * 100vw / 1920), 64px);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      color: var(--color-white);
+    }
+
+    /* Blue Guidance Split Button (Linked by default, separates on hover) */
+    .guidance-btn-split {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      width: 394px;
+      height: 57px;
+      cursor: pointer;
+      transition: gap 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .guidance-btn-split:hover {
+      gap: 4px;
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .guidance-btn-left-part {
+      width: 334px;
+      height: 57px;
+      background-color: var(--color-blue-guidance);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .guidance-btn-left-part span {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--color-white);
+    }
+
+    .guidance-btn-right-part {
+      width: 56px;
+      height: 57px;
+      background-color: var(--color-blue-guidance);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    /* ==========================================================================
+       7. FAQS SECTION (Frame 75 / 19:493)
+       Figma: width: 1920, height: 1140, layout HORIZONTAL, itemSpacing: 80
+       Left card: width: 588, height: 740, image + 0.62 dark overlay, FAQs 64px
+       Right accordion: width: 1092, 5 items, right dark box 56x56
+       ========================================================================== */
+    .faqs-section {
+      width: 100%;
+      padding: clamp(60px, calc(140 * 100vw / 1920), 140px) 0;
+      background-color: var(--color-white);
+      display: flex;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .faqs-container {
+      width: 100%;
+      max-width: 1920px;
+      padding: 0 clamp(20px, calc(80 * 100vw / 1920), 80px);
+      display: grid;
+      grid-template-columns: minmax(0, 588px) minmax(0, 1092px);
+      gap: clamp(32px, calc(80 * 100vw / 1920), 80px);
+      align-items: start;
+      box-sizing: border-box;
+    }
+
+    .faqs-left-card-box {
+      position: relative;
+      width: 100%;
+      height: 740px;
+      overflow: hidden;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+
+    .faqs-left-card-bg-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .faqs-left-card-dark-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.62);
+      z-index: 2;
+    }
+
+    .faqs-left-card-title-text {
+      position: relative;
+      z-index: 10;
+      font-family: var(--font-headline);
+      font-size: 64px;
+      font-weight: 600;
+      color: var(--color-white);
+      letter-spacing: -0.04em;
+    }
+
+    .faqs-accordion-column {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .faq-accordion-item-row {
+      background-color: var(--color-white);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      overflow: hidden;
+    }
+
+    .faq-accordion-item-row:hover {
+      border-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .faq-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      padding-left: 28px;
+      box-sizing: border-box;
+    }
+
+    .faq-header-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .faq-index-number {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-black);
+    }
+
+    .faq-question-label {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-black);
+    }
+
+    .faq-chevron-dark-box {
+      width: 56px;
+      height: 56px;
+      background-color: var(--color-dark-accordion-btn);
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, background-color 0.2s ease;
+    }
+
+    .faq-accordion-item-row.is-open .faq-chevron-dark-box {
+      transform: rotate(90deg);
+      background-color: var(--color-black);
+    }
+
+    .faq-body-drawer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 28px;
+    }
+
+    .faq-accordion-item-row.is-open .faq-body-drawer {
+      max-height: 200px;
+      padding: 0 28px 24px 64px;
+    }
+
+    .faq-body-content-text {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--color-black);
+    }
+
+    /* ==========================================================================
+       8. FOOTER (Frame 24 / 20:573)
+       Figma: width: 1920, height: 836.67, paddingTop: 140, paddingBottom: 60, paddingLeft: 80, paddingRight: 80
+       Frame 51: Quick Nav, Contact Us, Main Office, Newsletter Button
+       Frame 129: Logo, Socials, Scroll Up Button #B20513
+       ========================================================================== */
+    .smebaf-footer {
+      width: 100%;
+      background-color: var(--color-dark-bg);
+      color: var(--color-white);
+      padding: clamp(60px, calc(140 * 100vw / 1920), 140px) clamp(20px, calc(80 * 100vw / 1920), 80px) clamp(40px, calc(60 * 100vw / 1920), 60px);
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+    }
+
+    .footer-wrapper {
+      width: 100%;
+      max-width: 1920px;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(40px, calc(80 * 100vw / 1920), 80px);
+      box-sizing: border-box;
+    }
+
+    .footer-columns-row {
+      display: grid;
+      grid-template-columns: 2fr 2fr 3fr 3fr;
+      gap: 40px;
+      align-items: start;
+      width: 100%;
+    }
+
+    .footer-column-group {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .footer-header-label {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--color-white);
+      opacity: 0.2;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links-list li a {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--color-white);
+      transition: opacity 0.2s ease;
+    }
+
+    .footer-links-list li a:hover {
+      opacity: 0.7;
+    }
+
+    .footer-text-block {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--color-white);
+    }
+
+    /* Newsletter Red Button with Yellow Checkbox */
+    .footer-newsletter-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 334px;
+      height: 57px;
+      background-color: var(--color-red-footer);
+      color: var(--color-white);
+      cursor: pointer;
+      padding: 0 20px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .footer-newsletter-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .newsletter-checkbox-icon {
+      width: 16px;
+      height: 16px;
+      stroke: var(--color-yellow-checkbox);
+    }
+
+    .newsletter-btn-label {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--color-white);
+    }
+
+    /* Footer Bottom Bar */
+    .footer-bottom-bar-track {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 40px;
+      width: 100%;
+    }
+
+    .footer-bottom-logo-img {
+      width: 107px;
+      height: 30px;
+      object-fit: contain;
+    }
+
+    .footer-social-links-list {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, calc(32 * 100vw / 1920), 40px);
+      list-style: none;
+    }
+
+    .footer-social-links-list li a {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--color-white);
+      transition: opacity 0.2s ease;
+    }
+
+    .footer-social-links-list li a:hover {
+      opacity: 0.7;
+    }
+
+    .footer-scroll-top-square-btn {
+      width: 56px;
+      height: 56px;
+      background-color: var(--color-red-footer);
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .footer-scroll-top-square-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 1200px) {
+      .about-container {
+        grid-template-columns: 1fr;
+      }
+
+      .impact-grid-track {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .faqs-container {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-columns-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .impact-grid-track {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-columns-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom-bar-track {
+        flex-direction: column;
+        gap: 24px;
+        align-items: flex-start;
+      }
+
+      .guidance-btn-split {
+        width: 100%;
+      }
+
+      .guidance-btn-left-part {
+        width: calc(100% - 56px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================= -->
+  <!-- 1. NAVBAR (Header Frame 2 / 7:137)                            -->
+  <!-- ============================================================= -->
+  <header class="smebaf-navbar" id="navbar">
+    <div class="navbar-logo-wrap">
+      <a href="smebaf.html" aria-label="SMEBAF Homepage">
+        <img src="assets/images/smebaf/logo-footer.svg" alt="SMEBAF" class="navbar-logo-img" id="navLogo">
+      </a>
+    </div>
+
+    <div class="lang-toggle-btn" onclick="toggleLanguage()" id="langToggle" aria-label="Toggle language">
+      <span class="lang-opt active" id="langEn">EN</span>
+      <span class="lang-divider">/</span>
+      <span class="lang-opt" id="langFr">FR</span>
+    </div>
+  </header>
+
+  <!-- ============================================================= -->
+  <!-- 2. HERO SECTION (Frame 10 / 7:134)                            -->
+  <!-- ============================================================= -->
+  <section class="smebaf-hero-section" id="hero">
+    <div class="hero-banner-container">
+      <video class="hero-banner-video" autoplay loop muted playsinline poster="assets/images/smebaf/hero-banner.jpg">
+        <source src="https://res.cloudinary.com/zcs64qhn/video/upload/v1790663633/smebaf_2025.mp4" type="video/mp4">
+      </video>
+      <div class="hero-banner-overlay"></div>
+    </div>
+    <div class="hero-statement-bar">
+      <h1 class="hero-statement-text">
+        SMEBAF gives a central place to Cameroonian higher education institutions
+      </h1>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 3. WHO ARE WE / ABOUT (Frame 27 / 10:171)                     -->
+  <!-- ============================================================= -->
+  <section class="about-section" id="about">
+    <div class="about-container">
+      <!-- Left: Image (890x720) -->
+      <img src="assets/images/smebaf/1.jpg" alt="Students exploring mobility" class="about-image-media">
+
+      <!-- Right: Content Column -->
+      <div class="about-content-column">
+        <div class="about-top-group">
+          <h2 class="about-headline">Who are we?</h2>
+          <p class="about-description">
+            The Student Mobility Fair for Belgium, Germany & France HAS returned for its 2nd edition in January 2026.
+            Organized by Eventify with STUDELY as official sponsor, SMEBAF brings together in one place European
+            universities, embassies, mobility experts, Cameroonian schools, and thousands of students and parents.
+          </p>
+          <a href="#destinations" class="btn-split-red">
+            <span class="btn-split-red-text">see Our Upcoming events</span>
+            <span class="btn-split-red-icon">
+              <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="about-bottom-group">
+          <a href="#destinations" class="event-upcoming-link">
+            <span>NEXT Upcoming EVENT - February 05, 2027</span>
+            <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 4. KEY FIGURES / IMPACT SECTION (Frame 28 / 10:199)           -->
+  <!-- ============================================================= -->
+  <section class="impact-section" id="impact">
+    <div class="impact-container">
+      <h2 class="impact-section-title">Key figures / impact</h2>
+
+      <div class="impact-grid-track">
+        <!-- Card 1 -->
+        <article class="impact-card-box">
+          <div class="impact-card-header">
+            <h3 class="impact-card-label-text">European schools present</h3>
+          </div>
+          <div class="impact-card-stat-wrap">
+            <span class="impact-card-stat-text">+20</span>
+          </div>
+          <div class="impact-card-footer">
+            <span class="impact-card-index-num">01</span>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="impact-card-box">
+          <div class="impact-card-header">
+            <h3 class="impact-card-label-text medium">Students, pupils, and representatives expected</h3>
+          </div>
+          <div class="impact-card-stat-wrap">
+            <span class="impact-card-stat-text semibold">+3,000 (2026)</span>
+          </div>
+          <div class="impact-card-footer">
+            <span class="impact-card-index-num regular">02</span>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="impact-card-box">
+          <div class="impact-card-header">
+            <h3 class="impact-card-label-text medium">Cameroonian higher education institutions present</h3>
+          </div>
+          <div class="impact-card-stat-wrap">
+            <span class="impact-card-stat-text semibold">+20</span>
+          </div>
+          <div class="impact-card-footer">
+            <span class="impact-card-index-num regular">03</span>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="impact-card-box">
+          <div class="impact-card-header">
+            <h3 class="impact-card-label-text medium">Media outlets present</h3>
+          </div>
+          <div class="impact-card-stat-wrap">
+            <span class="impact-card-stat-text semibold">+30</span>
+          </div>
+          <div class="impact-card-footer">
+            <span class="impact-card-index-num regular">04</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="impact-footnote-wrap">
+        <span class="impact-footnote-text">Sources : SMEBAF 2026 presentation file.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 5. DESTINATIONS SECTION (Frame 29 / 14:269)                   -->
+  <!-- ============================================================= -->
+  <section class="destinations-section" id="destinations">
+    <div class="destinations-container">
+      <h2 class="destinations-title">Destinations</h2>
+
+      <div class="destinations-stack-stage" id="destStackStage">
+        <!-- France Card -->
+        <article class="dest-card-panel france" data-index="0">
+          <div class="dest-panel-top-group">
+            <h3 class="dest-panel-country-title">France</h3>
+            <p class="dest-panel-summary-desc">
+              France is recognized for the excellence of its Grandes Écoles and the diversity of its programs . It is
+              also an affordable destination in public education: public universities are heavily subsidized by the
+              State, maintaining low tuition fees even for international students .
+            </p>
+          </div>
+          <div class="dest-panel-bottom-group">
+            <div class="dest-cost-row-wrap">
+              <span>Cost of living</span>
+              <span>~€700 – €1,200/month</span>
+            </div>
+            <a href="#guidance" class="dest-panel-btn-split">
+              <div class="dest-panel-btn-left">
+                <span>see more</span>
+              </div>
+              <div class="dest-panel-btn-right">
+                <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </a>
+          </div>
+        </article>
+
+        <!-- Belgium Card -->
+        <article class="dest-card-panel belgium" data-index="1">
+          <div class="dest-panel-top-group">
+            <h3 class="dest-panel-country-title">Belgium</h3>
+            <p class="dest-panel-summary-desc">
+              Belgium offers high-quality higher education in a bilingual framework (French/Dutch) at the heart of
+              European institutions. Fees are competitive and the cost of living is moderate compared to neighbors .
+            </p>
+          </div>
+          <div class="dest-panel-bottom-group">
+            <div class="dest-cost-row-wrap">
+              <span>Cost of living</span>
+              <span>~€800 – €1,300/month</span>
+            </div>
+            <a href="#guidance" class="dest-panel-btn-split">
+              <div class="dest-panel-btn-left">
+                <span>see more</span>
+              </div>
+              <div class="dest-panel-btn-right">
+                <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </a>
+          </div>
+        </article>
+
+        <!-- Germany Card -->
+        <article class="dest-card-panel germany" data-index="2">
+          <div class="dest-panel-top-group">
+            <h3 class="dest-panel-country-title">Germany</h3>
+            <p class="dest-panel-summary-desc">
+              German public universities generally do not charge tuition fees for bachelor's programs and many master's
+              programs. Academic quality is high and ties with industry are strong.
+            </p>
+          </div>
+          <div class="dest-panel-bottom-group">
+            <div class="dest-cost-row-wrap">
+              <span>Cost of living</span>
+              <span>~€1,150/month on average</span>
+            </div>
+            <a href="#guidance" class="dest-panel-btn-split">
+              <div class="dest-panel-btn-left">
+                <span>see more</span>
+              </div>
+              <div class="dest-panel-btn-right">
+                <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </a>
+          </div>
+        </article>
+
+        <!-- France 2 Card -->
+        <article class="dest-card-panel france2" data-index="3">
+          <div class="dest-panel-top-group">
+            <h3 class="dest-panel-country-title">France</h3>
+            <p class="dest-panel-summary-desc">
+              France is recognized for the excellence of its Grandes Écoles and the diversity of its programs . It is
+              also an affordable destination in public education: public universities are heavily subsidized by the
+              State, maintaining low tuition fees even for international students .
+            </p>
+          </div>
+          <div class="dest-panel-bottom-group">
+            <div class="dest-cost-row-wrap">
+              <span>Cost of living</span>
+              <span>~€700 – €1,200/month</span>
+            </div>
+            <a href="#guidance" class="dest-panel-btn-split">
+              <div class="dest-panel-btn-left">
+                <span>see more</span>
+              </div>
+              <div class="dest-panel-btn-right">
+                <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 6. GUIDANCE SECTION (Frame 31 / 16:361)                       -->
+  <!-- ============================================================= -->
+  <section class="guidance-section" id="guidance">
+    <div class="guidance-bg-layer">
+      <img src="assets/images/smebaf/2.jpg" alt="" class="guidance-bg-image">
+      <div class="guidance-bg-dark-overlay"></div>
+    </div>
+
+    <div class="guidance-content-container">
+      <span class="guidance-eyebrow-text">Guidance</span>
+      <h2 class="guidance-headline-text">
+        SMEBAF offers practical workshops to prepare your academic application
+      </h2>
+      <a href="mailto:contact@eventifyagency.com?subject=SMEBAF%20Guidance%20Guide" class="guidance-btn-split">
+        <div class="guidance-btn-left-part">
+          <span>Access the guidance guide</span>
+        </div>
+        <div class="guidance-btn-right-part">
+          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 7. FAQS SECTION (Frame 75 / 19:493)                           -->
+  <!-- ============================================================= -->
+  <section class="faqs-section" id="faqs">
+    <div class="faqs-container">
+      <!-- Left Card (588x740) -->
+      <div class="faqs-left-card-box">
+        <img src="assets/images/smebaf/3.jpg" alt="" class="faqs-left-card-bg-img">
+        <div class="faqs-left-card-dark-overlay"></div>
+        <h2 class="faqs-left-card-title-text">FAQs</h2>
+      </div>
+
+      <!-- Right Accordion List -->
+      <div class="faqs-accordion-column">
+        <!-- Item 01 -->
+        <div class="faq-accordion-item-row" onclick="toggleFaq(this)">
+          <div class="faq-header-bar">
+            <div class="faq-header-left">
+              <span class="faq-index-number">01</span>
+              <h3 class="faq-question-label">Is SMEBAF an immigration fair?</h3>
+            </div>
+            <div class="faq-chevron-dark-box">
+              <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+          <div class="faq-body-drawer">
+            <p class="faq-body-content-text">
+              No. SMEBAF is strictly an educational and academic mobility fair focusing on higher education studies,
+              institutional exchange, and academic guidance.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 02 -->
+        <div class="faq-accordion-item-row" onclick="toggleFaq(this)">
+          <div class="faq-header-bar">
+            <div class="faq-header-left">
+              <span class="faq-index-number">02</span>
+              <h3 class="faq-question-label">Can I come without prior registration?</h3>
+            </div>
+            <div class="faq-chevron-dark-box">
+              <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+          <div class="faq-body-drawer">
+            <p class="faq-body-content-text">
+              Welcome and registration of participants take place on site from 08:00 AM to 09:00 AM. Admission is open
+              to students, pupils, parents, and professionals.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 03 -->
+        <div class="faq-accordion-item-row" onclick="toggleFaq(this)">
+          <div class="faq-header-bar">
+            <div class="faq-header-left">
+              <span class="faq-index-number">03</span>
+              <h3 class="faq-question-label">What is the selection process like?</h3>
+            </div>
+            <div class="faq-chevron-dark-box">
+              <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+          <div class="faq-body-drawer">
+            <p class="faq-body-content-text">
+              Meet directly with university representatives, present your academic background, and receive personalized
+              evaluations on admission requirements.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 04 -->
+        <div class="faq-accordion-item-row" onclick="toggleFaq(this)">
+          <div class="faq-header-bar">
+            <div class="faq-header-left">
+              <span class="faq-index-number">04</span>
+              <h3 class="faq-question-label">Is the information provided reliable?</h3>
+            </div>
+            <div class="faq-chevron-dark-box">
+              <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+          <div class="faq-body-drawer">
+            <p class="faq-body-content-text">
+              Yes, all universities, embassies, and consular agencies present are officially accredited and recognized.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 05 -->
+        <div class="faq-accordion-item-row" onclick="toggleFaq(this)">
+          <div class="faq-header-bar">
+            <div class="faq-header-left">
+              <span class="faq-index-number">05</span>
+              <h3 class="faq-question-label">Where can I get tickets</h3>
+            </div>
+            <div class="faq-chevron-dark-box">
+              <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L1 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+          <div class="faq-body-drawer">
+            <p class="faq-body-content-text">
+              Tickets and access badges are available through Eventify online registration and directly at the venue
+              entrance.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 8. FOOTER (Frame 24 / 20:573)                                 -->
+  <!-- ============================================================= -->
+  <footer class="smebaf-footer" id="footer">
+    <div class="footer-wrapper">
+      <!-- 4 Columns Grid -->
+      <div class="footer-columns-row">
+        <!-- Col 1: Quick Nav -->
+        <div class="footer-column-group">
+          <span class="footer-header-label">Quick Navigation</span>
+          <ul class="footer-links-list">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">Events</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#guidance">Counseling</a></li>
+            <li><a href="#impact">Exhibitors</a></li>
+            <li><a href="#faqs">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 2: Contact Us -->
+        <div class="footer-column-group">
+          <span class="footer-header-label">Contact Us</span>
+          <p class="footer-text-block">hello@schoolofstyle.com</p>
+        </div>
+
+        <!-- Col 3: Main Office -->
+        <div class="footer-column-group">
+          <span class="footer-header-label">Main Office</span>
+          <p class="footer-text-block">939 61st Street STE 9 Oakland, California United States</p>
+        </div>
+
+        <!-- Col 4: Newsletter Button -->
+        <div class="footer-column-group" style="align-items: flex-start;">
+          <a href="mailto:contact@eventifyagency.com?subject=Newsletter%20Subscription" class="footer-newsletter-btn">
+            <svg class="newsletter-checkbox-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5" />
+              <path d="M4.5 8L7 10.5L11.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            <span class="newsletter-btn-label">Yes, sign me up to newsletter</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar-track">
+        <img src="assets/images/smebaf/logo-footer.svg" alt="SMEBAF" class="footer-bottom-logo-img">
+
+        <ul class="footer-social-links-list">
+          <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener">instagram</a></li>
+          <li><a href="https://facebook.com" target="_blank" rel="noopener">facebook</a></li>
+          <li><a href="https://twitter.com" target="_blank" rel="noopener">twitter</a></li>
+          <li><a href="https://behance.net" target="_blank" rel="noopener">behance</a></li>
+        </ul>
+
+        <button type="button" class="footer-scroll-top-square-btn"
+          onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Scroll to top">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 12V2M7 2L2 7M7 2L12 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================= -->
+  <!-- JAVASCRIPT LOGIC                                              -->
+  <!-- ============================================================= -->
+  <script>
+    // FAQ Accordion Toggle
+    function toggleFaq(el) {
+      const isOpen = el.classList.contains('is-open');
+      document.querySelectorAll('.faq-accordion-item-row').forEach(row => {
+        row.classList.remove('is-open');
+      });
+      if (!isOpen) {
+        el.classList.add('is-open');
+      }
+    }
+
+    // Language Toggle (EN / FR)
+    let currentLang = 'en';
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'fr' : 'en';
+      const enEl = document.getElementById('langEn');
+      const frEl = document.getElementById('langFr');
+      if (currentLang === 'en') {
+        enEl.classList.add('active');
+        frEl.classList.remove('active');
+      } else {
+        frEl.classList.add('active');
+        enEl.classList.remove('active');
+      }
+    }
+
+    // Dynamic Navbar Logo & Theme Switching (Black logo on white sections, White logo on dark sections)
+    const navbar = document.getElementById('navbar');
+    const navLogo = document.getElementById('navLogo');
+    const lightSections = document.querySelectorAll('#about, #impact, #destinations, #faqs');
+
+    function updateNavTheme() {
+      if (!navbar || !navLogo) return;
+      const navRect = navbar.getBoundingClientRect();
+      const navMidY = navRect.top + navRect.height / 2;
+
+      let isLight = false;
+      lightSections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= navMidY && rect.bottom >= navMidY) {
+          isLight = true;
+        }
+      });
+
+      if (isLight) {
+        navbar.classList.add('nav-light');
+        if (!navLogo.src.endsWith('assets/images/smebaf/logo.svg')) {
+          navLogo.src = 'assets/images/smebaf/logo.svg';
+        }
+      } else {
+        navbar.classList.remove('nav-light');
+        if (!navLogo.src.endsWith('assets/images/smebaf/logo-footer.svg')) {
+          navLogo.src = 'assets/images/smebaf/logo-footer.svg';
+        }
+      }
+    }
+
+    window.addEventListener('scroll', updateNavTheme, { passive: true });
+    window.addEventListener('resize', updateNavTheme, { passive: true });
+    updateNavTheme();
+
+    // =============================================================
+    // DESTINATIONS INFINITE STACKING ANIMATION
+    // Cards stack one by one over the first card, and loop infinitely.
+    // =============================================================
+    // DESTINATIONS INFINITE STACKING ANIMATION (Original Direction)
+    // - 0 spacing between adjacent cards
+    // - Cards stack one by one on the first card on the left infinitely
+    // - On hover: animation slows down smoothly
+    // =============================================================
+    (function initDestinationsStack() {
+      const section = document.getElementById('destinations');
+      const stage = document.getElementById('destStackStage');
+      if (!section || !stage) return;
+      const cards = Array.from(stage.querySelectorAll('.dest-card-panel'));
+      if (cards.length === 0) return;
+
+      const totalCards = cards.length;
+      let currentStep = 0;
+      let isSlow = false;
+      let timer = null;
+      let zCounter = 10;
+
+      function getCardWidth() {
+        return cards[0].offsetWidth || 771;
+      }
+
+      function applyPositions(advancing = false) {
+        const cardW = getCardWidth();
+        const activeCardIdx = currentStep % totalCards;
+        const nextInLineIdx = (activeCardIdx + 1) % totalCards;
+        const secondInLineIdx = (activeCardIdx + 2) % totalCards;
+        const buriedCardIdx = (activeCardIdx + totalCards - 2) % totalCards;
+
+        if (advancing) {
+          zCounter += 1;
+        }
+
+        // Silently reset the buried card (hidden under 2+ cards) off-screen to the right
+        if (advancing && currentStep >= 2) {
+          const buriedCard = cards[buriedCardIdx];
+          buriedCard.style.transition = 'none';
+          buriedCard.style.zIndex = '1';
+          buriedCard.style.transform = `translate3d(${cardW * 2}px, 0, 0)`;
+          void buriedCard.offsetWidth; // force reflow
+        }
+
+        const transSpeed = stage.classList.contains('is-slow')
+          ? 'transform 2.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.8s ease'
+          : 'transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease';
+
+        cards.forEach((card) => {
+          card.style.transition = transSpeed;
+        });
+
+        // 1. Active card sits on top of the left stack at x: 0
+        const activeCard = cards[activeCardIdx];
+        activeCard.style.zIndex = zCounter;
+        activeCard.style.transform = 'translate3d(0px, 0, 0)';
+        activeCard.style.opacity = '1';
+
+        // 2. Next incoming card directly touches at x: cardW
+        const nextCard = cards[nextInLineIdx];
+        nextCard.style.zIndex = `${zCounter - 1}`;
+        nextCard.style.transform = `translate3d(${cardW}px, 0, 0)`;
+        nextCard.style.opacity = '1';
+
+        // 3. 2nd incoming card directly touches at x: cardW * 2
+        if (secondInLineIdx !== activeCardIdx && secondInLineIdx !== nextInLineIdx) {
+          const secondCard = cards[secondInLineIdx];
+          secondCard.style.zIndex = `${zCounter - 2}`;
+          secondCard.style.transform = `translate3d(${cardW * 2}px, 0, 0)`;
+        }
+      }
+
+      function initLayout() {
+        const cardW = getCardWidth();
+        cards.forEach((card, i) => {
+          card.style.transition = 'none';
+          if (i === 0) {
+            card.style.transform = 'translate3d(0px, 0, 0)';
+            card.style.zIndex = '10';
+            card.style.opacity = '1';
+          } else {
+            card.style.transform = `translate3d(${cardW * i}px, 0, 0)`;
+            card.style.zIndex = `${10 - i}`;
+            card.style.opacity = '1';
+          }
+        });
+      }
+
+      function scheduleNext() {
+        clearTimeout(timer);
+        const interval = isSlow ? 7500 : 3200;
+        timer = setTimeout(() => {
+          currentStep += 1;
+          applyPositions(true);
+          scheduleNext();
+        }, interval);
+      }
+
+      // Hover slowdown handlers
+      section.addEventListener('mouseenter', () => {
+        isSlow = true;
+        stage.classList.add('is-slow');
+        cards.forEach(card => {
+          card.style.transition = 'transform 2.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.8s ease';
+        });
+        scheduleNext();
+      });
+
+      section.addEventListener('mouseleave', () => {
+        isSlow = false;
+        stage.classList.remove('is-slow');
+        cards.forEach(card => {
+          card.style.transition = 'transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease';
+        });
+        scheduleNext();
+      });
+
+      // Window resize re-calculation
+      window.addEventListener('resize', () => {
+        applyPositions(false);
+      });
+
+      // Initial run
+      initLayout();
+      scheduleNext();
+    })();
+  </script>
+</body>
+
+</html>
+
