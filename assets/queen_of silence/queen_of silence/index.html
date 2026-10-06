@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Queen of Silence — Initiative RSE Eventify</title>
+  <meta name="description" content="THE QUEEN OF SILENCE est un projet de responsabilité sociétale créé par Eventify pour soutenir les femmes qui affrontent les maladies silencieuses (cancer du sein, col de l'utérus).">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+
+  <!-- Authentic House of Honey Typography Suite -->
+  <link rel="preload" href="fonts/Canora.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/NoeText-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/NeueHaasGrotDisp-55Roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/NeueHaasGrotDisp-65Medium.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Google Fonts: Bodoni Moda & Inter Fallbacks -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main>
+
+    <!-- HERO SECTION -->
+    <section class="hero-container" id="hero">
+      
+      <!-- Masthead -->
+      <div class="masthead">
+        <h1 class="masthead-title">
+          <span class="title-queen">QUEEN</span>
+          <span class="title-of">of</span>
+          <span class="title-silence">SILENCE</span>
+        </h1>
+        <div class="masthead-sub-row">
+          <div class="sub-col sub-left">
+            <span class="sub-label">PRÉVENTION, DIGNITÉ & MOBILISATION</span>
+            <span class="sub-desc">SOUTIEN AUX FEMMES FACE AUX MALADIES SILENCIEUSES</span>
+          </div>
+          <div class="sub-col sub-right">
+            <span class="sub-label">INITIATIVE RSE EVENTIFY</span>
+            <span class="sub-desc">LIBÉRER LA PAROLE, SAUVER DES VIES</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diorama Visual Banner Slider (100vh / Reference Site Curtain Animation) -->
+      <div class="diorama-slider" id="dioramaSlider">
+        <div class="diorama-slides-track">
+          <!-- Slide 1 (Featured: hero_diapo3) -->
+          <div class="diorama-slide is-current" data-index="0" style="clip-path: inset(0 0 0 0%); z-index: 1;">
+            <div class="slide-inner">
+              <img src="assets/hero_diapo3.jpeg" alt="The Queen of Silence - Keep Stepping Banner" class="diorama-img" loading="eager">
+            </div>
+          </div>
+          <!-- Slide 2 (hero_diapo1) -->
+          <div class="diorama-slide is-next" data-index="1" style="clip-path: inset(0 0 0 100%); z-index: 0;">
+            <div class="slide-inner">
+              <img src="assets/hero_diapo1.jpg" alt="Dépistage et engagement sur le terrain" class="diorama-img" loading="lazy">
+            </div>
+          </div>
+          <!-- Slide 3 (hero_diapo2) -->
+          <div class="diorama-slide is-hidden" data-index="2" style="clip-path: inset(0 0 0 100%); z-index: 0;">
+            <div class="slide-inner">
+              <img src="assets/hero_diapo2.jpg" alt="Soutien solidaire et mobilisation Eventify" class="diorama-img" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <!-- Reference Progress Line -->
+        <div class="hero-accent-progress" id="heroProgress"></div>
+      </div>
+
+    </section>
+
+    <!-- SECTION 2: STATEMENT / DEFINITION (Manifesto) -->
+    <section class="section-statement" id="definition">
+      <div class="watermark-bg" aria-hidden="true">Queen of Silence</div>
+      <div class="container statement-content">
+        <blockquote class="statement-main">
+          THE QUEEN OF SILENCE EST UN PROJET CRÉÉ POUR SOUTENIR LES FEMMES QUI AFFRONTENT DES MALADIES SOUVENT QUALIFIÉES DE « SILENCIEUSES » — LE CANCER DU SEIN, LE CANCER DU COL DE L’UTÉRUS AINSI QUE D’AUTRES PATHOLOGIES QUI TOUCHENT PROFONDÉMENT LE CORPS, L’IDENTITÉ ET LA VIE.
+        </blockquote>
+        <div class="statement-divider"></div>
+        <p class="statement-sub">
+          « AU-DELÀ DES CONSÉQUENCES MÉDICALES, NOUS AGISSONS POUR LIBÉRER LA PAROLE, VALORISER LA DIGNITÉ ET TRANSFORMER CHAQUE COMBAT EN UNE FORCE COLLECTIVE D’ÉCOUTE ET D’ACTION. »
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 3: MISSIONS FONDATRICES (Cashmere Blush Pink) -->
+    <section class="section-missions missions-light" id="mission">
+      <div class="container diagonal-grid">
+        
+        <!-- Left: Stacked Images (f1 nurse foreground, f2 medical team background) -->
+        <div class="stacked-images-container stack-left">
+          <div class="image-layer layer-back" data-parallax="0.05">
+            <img src="assets/f2.jpeg" alt="Équipe soignante et partenaires médicaux The Queen of Silence" class="stack-img" loading="lazy">
+          </div>
+          <div class="image-layer layer-front" data-parallax="0.08">
+            <img src="assets/f1.jpeg" alt="Infirmière engagée pour le dépistage précoce du cancer" class="stack-img" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Right: Content Block -->
+        <div class="content-block content-right">
+          <div class="content-header">
+            <span class="section-kicker kicker-rose">MISSIONS FONDATRICES</span>
+            <h2 class="section-title title-dark">
+              Dépistage précoce et libération de la parole face au silence.
+            </h2>
+            <p class="section-lead lead-dark">
+              Les pathologies féminines silencieuses — cancer du sein et cancer du col de l'utérus — évoluent souvent sans bruit. The Queen of Silence agit en première ligne pour anticiper la maladie et désamorcer la solitude par le dialogue.
+            </p>
+          </div>
+
+          <div class="mission-cards-wrap">
+            <!-- Mission 01 -->
+            <div class="mission-item-card">
+              <div class="mission-header">
+                <span class="badge-num badge-dark">01</span>
+                <h3 class="mission-name name-dark">DÉPISTAGE PRÉCOCE & DÉTECTION ANTICIPÉE</h3>
+              </div>
+              <ul class="checklist-items">
+                <li class="check-item">
+                  <span class="check-badge">✓</span>
+                  <span class="check-text text-dark">Encourager le dépistage régulier et une meilleure information médicale.</span>
+                </li>
+                <li class="check-item">
+                  <span class="check-badge">✓</span>
+                  <span class="check-text text-dark">Informer sur les signes précoces et faciliter l'accès aux examens cliniques.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Mission 02 -->
+            <div class="mission-item-card">
+              <div class="mission-header">
+                <span class="badge-num badge-dark">02</span>
+                <h3 class="mission-name name-dark">LIBÉRER LA PAROLE & BRISER LES TABOUS</h3>
+              </div>
+              <ul class="checklist-items">
+                <li class="check-item">
+                  <span class="check-badge">✓</span>
+                  <span class="check-text text-dark">Créer des cercles d'expression bienveillants pour surmonter peur et gêne.</span>
+                </li>
+                <li class="check-item">
+                  <span class="check-badge">✓</span>
+                  <span class="check-text text-dark">Permettre à chaque femme de partager son parcours sans crainte ni tabou.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="btn-wrap">
+            <a href="#axes" class="btn-capsule btn-espresso">
+              EN SAVOIR PLUS <span class="arrow-icon">→</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: MISSIONS FONDATRICES (Deep Royal Espresso Plum - Diagonal Reversal) -->
+    <section class="section-missions missions-dark" id="solidarite">
+      <div class="container diagonal-grid grid-reversed">
+        
+        <!-- Left: Content Block -->
+        <div class="content-block content-left">
+          <div class="content-header">
+            <span class="section-kicker kicker-pink">MISSIONS FONDATRICES</span>
+            <h2 class="section-title title-light">
+              Dignité retrouvée et mobilisation collective de la société.
+            </h2>
+            <p class="section-lead lead-light">
+              Au-delà des conséquences physiques, ces pathologies bouleversent l'identité, la vie de couple et le lien social. Nous restaurons l'estime de soi et mobilisons familles, proches et soignants dans un même élan solidaire.
+            </p>
+          </div>
+
+          <div class="mission-cards-wrap">
+            <!-- Mission 03 -->
+            <div class="mission-item-card">
+              <div class="mission-header">
+                <span class="badge-num badge-pink">03</span>
+                <h3 class="mission-name name-light">ESTIME DE SOI & RÉAPPROPRIATION IDENTITAIRE</h3>
+              </div>
+              <ul class="checklist-items">
+                <li class="check-item">
+                  <span class="check-badge">✓</span>
+                  <span class="check-text text-light">Accompagner les transformations corporelles et la perte de repères.</span>
+                </li>
+                <li class="check-item">
+                  <span class="check-badge">✓</span>
+                  <span class="check-text text-light">Valoriser la force, la beauté et la dignité de chaque femme concernée.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Mission 04 -->
+            <div class="mission-item-card">
+              <div class="mission-header">
+                <span class="badge-num badge-pink">04</span>
+                <h3 class="mission-name name-light">MOBILISATION DES PROCHES & DE LA SOCIÉTÉ</h3>
+              </div>
+              <ul class="checklist-items">
+                <li class="check-item">
+                  <span class="check-badge">✓</span>
+                  <span class="check-text text-light">Sensibiliser familles, conjoints et collègues à l'écoute et au soutien actif.</span>
+                </li>
+                <li class="check-item">
+                  <span class="check-badge">✓</span>
+                  <span class="check-text text-light">Transformer les épreuves individuelles en une immense force collective.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="btn-wrap">
+            <button class="btn-capsule btn-blush" id="rejoindreBtn">
+              REJOINDRE L'ACTION <span class="arrow-icon">→</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Right: Stacked Images (f3 solidarity kiss foreground, f4 campaign leaders background) -->
+        <div class="stacked-images-container stack-right">
+          <div class="image-layer layer-back" data-parallax="0.05">
+            <img src="assets/f4.jpeg" alt="Équipe dirigeante et ambassadrices The Queen of Silence" class="stack-img" loading="lazy">
+          </div>
+          <div class="image-layer layer-front" data-parallax="0.08">
+            <img src="assets/f3.jpeg" alt="Moment d'affection et de solidarité pour une patiente" class="stack-img" loading="lazy">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ARCHITECTURAL FOOTER (Pink Vibe) -->
+  <footer class="section-footer" id="guide">
+    <div class="footer-arch-graphic" aria-hidden="true"></div>
+    <div class="footer-watermark" aria-hidden="true">Queen of Silence</div>
+    <div class="container footer-content">
+      <span class="section-kicker kicker-rose">INITIATIVE RSE · EVENTIFY</span>
+      <h2 class="footer-callout">
+        « ENSEMBLE, BRISONS LE SILENCE.<br>
+        CHAQUE FEMME MÉRITE DIGNITÉ, ÉCOUTE ET SOUTIEN. »
+      </h2>
+      <div class="footer-cta-row">
+        <button class="btn-capsule btn-espresso" id="actionFooterBtn">
+          REJOINDRE L'ACTION <span class="arrow-icon">→</span>
+        </button>
+      </div>
+
+      <div class="footer-divider-line"></div>
+
+      <div class="footer-meta-row">
+        <div class="footer-meta-left">
+          THE QUEEN OF SILENCE · PROJET DE RESPONSABILITÉ SOCIÉTALE · EVENTIFY
+        </div>
+        <div class="footer-meta-right">
+          All rights reserved · Eventify Agency
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Action Modal (Lead capture / Support) -->
+  <div class="modal-backdrop" id="actionModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose" aria-label="Fermer">&times;</button>
+      <h3 class="modal-title">Rejoindre The Queen of Silence</h3>
+      <p class="modal-desc">
+        Participez à la mobilisation collective. Que vous soyez proche aidant, professionnelle de santé ou citoyen engagé, votre voix compte.
+      </p>
+      <form class="modal-form" id="supportForm" onsubmit="return false;">
+        <div class="form-group">
+          <label for="formName">Nom complet</label>
+          <input type="text" id="formName" placeholder="Ex: Marie Dupont" required>
+        </div>
+        <div class="form-group">
+          <label for="formEmail">Adresse Email</label>
+          <input type="email" id="formEmail" placeholder="votre.email@exemple.com" required>
+        </div>
+        <div class="form-group">
+          <label for="formRole">Votre engagement</label>
+          <select id="formRole">
+            <option value="particulier">Citoyen / Soutien bénévole</option>
+            <option value="famille">Proche aidant / Famille</option>
+            <option value="soignant">Professionnel de santé / Soignant</option>
+            <option value="entreprise">Entreprise / Partenaire RSE</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-capsule btn-espresso btn-submit" id="submitFormBtn">
+          CONFIRMER MON ENGAGEMENT →
+        </button>
+        <div class="form-feedback" id="formFeedback"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Trailing Cursor Follower (Pink Ribbon Motif — House of Honey Style) -->
+  <div class="cursor-follower" id="cursorFollower" aria-hidden="true">
+    <img src="assets/breast_svg.svg" alt="" class="follower-icon" width="37" height="37">
+  </div>
+
+  <!-- Lenis Smooth Scroll Engine -->
+  <script src="lenis.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

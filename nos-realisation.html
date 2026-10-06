@@ -211,20 +211,23 @@
     }
 
     .bento-card-light {
-      background-color: rgba(255, 255, 255, 0.9) !important;
+      background-color: #ffffff !important;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
     .bento-card-light .bento-overlay {
-      background: none !important;
-      display: none !important;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.75) 70%, rgba(255, 255, 255, 0.98) 100%) !important;
+      display: block !important;
     }
     .bento-card-light .bento-sector-title {
       color: #111111 !important;
     }
     .bento-card-light .bento-arrow {
-      color: #333333 !important;
+      color: #111111 !important;
     }
     .bento-card-light:hover .bento-arrow {
       color: #000000 !important;
+      transform: translateX(6px);
     }
 
     @media screen and (max-width: 1024px) {
@@ -264,15 +267,27 @@
 
     <div class="bento-grid">
       <!-- 1. INSTITUTIONNEL (Hero 8 Cols) -->
-      <a href="institutionel.html" class="bento-card span-8 bento-card-light" style="background-color: rgba(255, 255, 255, 0.9);">
-        <div class="bento-bg-img contain" style="background-image: url('assets/images/nos-realisation/guce_white.png'); background-size: 60% auto;"></div>
+      <a href="institutionel.html" class="bento-card span-8" style="background-color: #000000;">
+        <div class="bento-bg-img contain" style="background-image: url('assets/images/nos-realisation/cobac_logo.svg'); background-size: 50% auto; background-color: #000000;"></div>
         <div class="bento-overlay"></div>
+        <div class="bento-content">
+          <h2 class="bento-sector-title">
+            INSTITUTIONNEL
+            <span class="bento-arrow">→</span>
+          </h2>
+        </div>
       </a>
 
       <!-- 2. BANQUE & ASSURANCE (4 Cols) -->
-      <a href="banque-and-assurance.html" class="bento-card span-4 bento-card-light" style="background-color: rgba(255, 255, 255, 0.9);">
-        <div class="bento-bg-img contain" style="background-image: url('assets/images/nos-realisation/ld_assurance_white.jpg'); background-size: 75% auto;"></div>
+      <a href="banque-and-assurance.html" class="bento-card span-4 bento-card-light" style="background-color: #ffffff;">
+        <div class="bento-bg-img contain" style="background-image: url('assets/images/nos-realisation/bange_bank.jpg'); background-size: 75% auto;"></div>
         <div class="bento-overlay"></div>
+        <div class="bento-content">
+          <h2 class="bento-sector-title">
+            BANQUE &amp; ASSURANCE
+            <span class="bento-arrow">→</span>
+          </h2>
+        </div>
       </a>
 
       <!-- 3. TELECOM & DIGITAL (4 Cols) -->
@@ -287,10 +302,16 @@
         </div>
       </a>
 
-      <!-- 4. INDUSTRIE (4 Cols) -->
-      <a href="industrie.html" class="bento-card span-4 bento-card-light" style="background-color: rgba(255, 255, 255, 0.9);">
+      <!-- 4. INDUSTRIE / BATIMENT & CONSTRUCTION (4 Cols) -->
+      <a href="industrie.html" class="bento-card span-4 bento-card-light" style="background-color: #ffffff;">
         <div class="bento-bg-img contain" style="background-image: url('assets/images/nos-realisation/sika_white.svg'); background-size: 70% auto;"></div>
         <div class="bento-overlay"></div>
+        <div class="bento-content">
+          <h2 class="bento-sector-title">
+            BUILDING &amp; CONSTRUCTION
+            <span class="bento-arrow">→</span>
+          </h2>
+        </div>
       </a>
 
       <!-- 5. AUTOMOBILE (4 Cols) -->
@@ -330,9 +351,15 @@
       </a>
 
       <!-- 8. SERVICES ET AUTRES (4 Cols) -->
-      <a href="services-et-autres.html" class="bento-card span-4 bento-card-light" style="background-color: rgba(255, 255, 255, 0.9);">
+      <a href="services-et-autres.html" class="bento-card span-4 bento-card-light" style="background-color: #ffffff;">
         <div class="bento-bg-img contain" style="background-image: url('assets/images/nos-realisation/studely_white.jpg'); background-size: 70% auto;"></div>
         <div class="bento-overlay"></div>
+        <div class="bento-content">
+          <h2 class="bento-sector-title">
+            SERVICES &amp; AUTRES
+            <span class="bento-arrow">→</span>
+          </h2>
+        </div>
       </a>
 
       <!-- 9. VINS & SPIRITUEUX (4 Cols) -->

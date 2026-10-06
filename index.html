@@ -85,6 +85,111 @@
       </div>
     </div>
   </section>
+  <style>
+    /* Realisation Preview Cards (Home Page) - Ultra Smooth Hover System */
+    .cell {
+      background-image: url('assets/images/nos-realisation/bange_bank.jpg') !important;
+      background-position: 50% 50% !important;
+      background-size: 65% auto !important;
+      background-repeat: no-repeat !important;
+      background-color: #ffffff !important;
+      position: relative !important;
+      overflow: hidden !important;
+      cursor: pointer;
+      border-radius: 12px !important;
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    }
+    .cell-2, .cell-3 {
+      position: relative !important;
+      overflow: hidden !important;
+      cursor: pointer;
+      border-radius: 12px !important;
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    }
+    .div-food-beverage,
+    .div-media-tech,
+    .div-banque-finance {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      text-decoration: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      transition: opacity 0.45s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.45s !important;
+      z-index: 10 !important;
+      padding: 1.5rem !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Headings baseline & smooth motion */
+    .heading-food-beverage,
+    .heading-tech-media,
+    .heading-21 {
+      display: block !important;
+      font-family: Gilroy, sans-serif !important;
+      font-size: clamp(1.4rem, 2vw, 2.1rem) !important;
+      font-weight: 700 !important;
+      margin: 0 !important;
+      letter-spacing: 0.5px !important;
+      transform: translateY(0);
+      transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.45s ease !important;
+      will-change: transform;
+    }
+
+    /* Card 1: Banque & Assurance (BANGE Bank) */
+    .div-food-beverage {
+      background: rgba(255, 255, 255, 0.88) !important;
+      backdrop-filter: blur(1.5px);
+      -webkit-backdrop-filter: blur(1.5px);
+    }
+    .heading-food-beverage {
+      color: #111111 !important;
+    }
+
+    /* Card 2: Oil, Petrol & Gaz */
+    .div-media-tech {
+      background: rgba(0, 0, 0, 0.68) !important;
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+    .heading-tech-media {
+      color: #ffffff !important;
+    }
+
+    /* Card 3: Institutionnel */
+    .div-banque-finance {
+      background: rgba(0, 0, 0, 0.68) !important;
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+    .heading-21 {
+      color: #ffffff !important;
+    }
+
+    /* HOVER STATES - Smooth reveal and downward position glide */
+    .cell:hover .div-food-beverage,
+    .cell-2:hover .div-media-tech,
+    .cell-3:hover .div-banque-finance {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    .cell:hover .heading-food-beverage {
+      transform: translateY(35px) !important;
+    }
+    .cell-2:hover .heading-tech-media {
+      transform: translateY(15px) !important;
+    }
+    .cell-3:hover .heading-21 {
+      transform: translateY(15px) !important;
+    }
+  </style>
   <section class="section-nos-realisation">
     <div class="w-layout-blockcontainer container-nos-realisation w-container">
       <div class="div-nos-realisation-top-holder">
@@ -95,17 +200,17 @@
       </div>
       <div id="w-node-b784c51c-f0c4-bc90-e4e9-f60975f6017e-7a972c62" class="w-layout-layout quick-stack wf-layout-layout">
         <div id="w-node-db8788df-9c18-74c3-42df-e488b8d85f2f-7a972c62" data-w-id="db8788df-9c18-74c3-42df-e488b8d85f2f" style="-webkit-transform:translate3d(0, 370px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 370px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 370px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 370px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0.17" class="w-layout-cell cell">
-          <a style="opacity:0" href="banque-and-assurance.html" class="div-food-beverage w-inline-block">
+          <a href="banque-and-assurance.html" class="div-food-beverage w-inline-block">
             <h1 class="heading-food-beverage">BANQUE &amp; ASSURANCE</h1>
           </a>
         </div>
         <div id="w-node-_73d01f78-23b2-5027-8b91-f81553bc0335-7a972c62" data-w-id="73d01f78-23b2-5027-8b91-f81553bc0335" style="opacity:0.2;-webkit-transform:translate3d(0, 370px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 370px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 370px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 370px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="w-layout-cell cell-2">
-          <a data-w-id="041cb5ab-38de-cc96-ab15-5b07cffc4a96" style="opacity:0" href="oil-petrol-and-gaz.html" class="div-media-tech w-inline-block">
+          <a data-w-id="041cb5ab-38de-cc96-ab15-5b07cffc4a96" href="oil-petrol-and-gaz.html" class="div-media-tech w-inline-block">
             <h1 class="heading-tech-media">OIL, PETROL &amp; GAZ</h1>
           </a>
         </div>
         <div id="w-node-_993f6681-db2f-048b-d007-0efa8fbf1826-7a972c62" data-w-id="993f6681-db2f-048b-d007-0efa8fbf1826" style="-webkit-transform:translate3d(0, 200px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 200px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 200px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 200px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0.2" class="w-layout-cell cell-3">
-          <a data-w-id="da573b02-7c66-251f-32a0-e337ed1c0f4e" style="opacity:0" href="institutionel.html" class="div-banque-finance w-inline-block">
+          <a data-w-id="da573b02-7c66-251f-32a0-e337ed1c0f4e" href="institutionel.html" class="div-banque-finance w-inline-block">
             <h1 class="heading-21">INSTITUTIONNEL</h1>
           </a>
         </div>
