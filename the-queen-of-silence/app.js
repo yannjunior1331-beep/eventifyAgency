@@ -591,4 +591,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial calculation on page load
   onScrollFrame();
+
+  /* ==========================================================================
+     4. VIDEO MODAL PLAYER LOGIC (THE QUEEN OF SILENCE)
+     ========================================================================== */
+  const videoModal = document.getElementById('videoModal');
+  const videoModalClose = document.getElementById('videoModalClose');
+  const queenVideoPlayer = document.getElementById('queenVideoPlayer');
+  const seeMoreVideoBtn = document.getElementById('seeMoreVideoBtn');
+
+  function openVideoModal() {
+    if (!videoModal) return;
+    lenis?.stop();
+    videoModal.classList.add('active');
+    videoModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (queenVideoPlayer) {
+      queenVideoPlayer.currentTime = 0;
+      queenVideoPlayer.play().catch(() => {});
+    }
+  }
+
+  function closeVideoModal() {
+    if (!videoModal) return;
+    videoModal.classList.remove('active');
+    videoModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (queenVideoPlayer) {
+      queenVideoPlayer.pause();
+    }
+    lenis?.start();
+  }
+
+  seeMoreVideoBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openVideoModal();
+  });
+
+  document.querySelectorAll('[data-open-video], .open-queen-video').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openVideoModal();
+    });
+  });
+
+  videoModalClose?.addEventListener('click', closeVideoModal);
+
+  videoModal?.addEventListener('click', (e) => {
+    if (e.target === videoModal) {
+      closeVideoModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && videoModal?.classList.contains('active')) {
+      closeVideoModal();
+    }
+  });
+
+  // Auto-open video if anchor or query parameter requests it
+  if (window.location.hash === '#video' || window.location.search.includes('video=1')) {
+    setTimeout(openVideoModal, 400);
+  }
+
 });

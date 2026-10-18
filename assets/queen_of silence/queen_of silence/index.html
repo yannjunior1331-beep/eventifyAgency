@@ -54,7 +54,7 @@
           <!-- Slide 1 (Featured: hero_diapo3) -->
           <div class="diorama-slide is-current" data-index="0" style="clip-path: inset(0 0 0 0%); z-index: 1;">
             <div class="slide-inner">
-              <img src="assets/hero_diapo3.jpeg" alt="The Queen of Silence - Keep Stepping Banner" class="diorama-img" loading="eager">
+              <img src="assets/hero_diapo3.jpeg" alt="The Queen of Silence" class="diorama-img" style="object-position: center bottom;" loading="eager">
             </div>
           </div>
           <!-- Slide 2 (hero_diapo1) -->
@@ -157,9 +157,9 @@
 
           <!-- CTA -->
           <div class="btn-wrap">
-            <a href="#axes" class="btn-capsule btn-espresso">
-              EN SAVOIR PLUS <span class="arrow-icon">→</span>
-            </a>
+            <button type="button" class="btn-capsule btn-espresso" id="seeMoreVideoBtn" style="cursor: pointer; border: none; font-family: inherit;">
+              EN SAVOIR PLUS <span class="arrow-icon">▶</span>
+            </button>
           </div>
 
         </div>
@@ -273,6 +273,25 @@
       </div>
     </div>
   </footer>
+
+  
+  <!-- Video Player Modal for The Queen of Silence -->
+  <div class="video-modal-backdrop" id="videoModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="video-modal-card">
+      <button class="video-modal-close" id="videoModalClose" aria-label="Fermer la vidéo">&times;</button>
+      <div class="video-modal-header">
+        <span class="video-modal-badge">FILM & TÉMOIGNAGES · RSE EVENTIFY</span>
+        <h3 class="video-modal-title">The Queen of Silence</h3>
+        <p class="video-modal-desc">Découvrez le projet de responsabilité sociétale créé par Eventify pour soutenir les femmes face aux maladies silencieuses.</p>
+      </div>
+      <div class="video-player-container">
+        <video id="queenVideoPlayer" controls playsinline preload="metadata">
+          <source src="assets/video_queen_of_silence.mp4" type="video/mp4">
+          Votre navigateur ne prend pas en charge la lecture de vidéos.
+        </video>
+      </div>
+    </div>
+  </div>
 
   <!-- Interactive Action Modal (Lead capture / Support) -->
   <div class="modal-backdrop" id="actionModal" aria-hidden="true">

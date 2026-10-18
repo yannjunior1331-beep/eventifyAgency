@@ -1612,3 +1612,128 @@ button {
     display: none !important;
   }
 }
+
+
+/* ==========================================================================
+   VIDEO MODAL FOR QUEEN OF SILENCE
+   ========================================================================== */
+.video-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 6, 11, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 3500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.video-modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.video-modal-card {
+  background: #14080e;
+  border: 1px solid rgba(220, 38, 127, 0.3);
+  width: 100%;
+  max-width: 960px;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 50px rgba(220, 38, 127, 0.15);
+  transform: translateY(24px) scale(0.96);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+.video-modal-backdrop.active .video-modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.video-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  z-index: 10;
+  line-height: 1;
+}
+
+.video-modal-close:hover {
+  background: #dc267f;
+  border-color: #dc267f;
+  transform: rotate(90deg) scale(1.08);
+}
+
+.video-modal-header {
+  margin-bottom: 20px;
+  padding-right: 50px;
+}
+
+.video-modal-badge {
+  display: inline-block;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  color: #dc267f;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.video-modal-title {
+  font-family: var(--font-serif, serif);
+  font-size: clamp(22px, 3vw, 32px);
+  color: #fff;
+  margin: 0 0 6px 0;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.video-modal-desc {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.video-player-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.video-player-container video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background: #000;
+}

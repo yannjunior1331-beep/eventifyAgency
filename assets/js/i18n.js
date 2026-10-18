@@ -9,6 +9,11 @@
   // Master bidirectional translation dictionary
   const DICTIONARY = [
     // -------------------------------------------------------------
+    // Project Sheets Sections
+    { fr: 'Réalisation', en: 'Execution' },
+    { fr: 'Étendue de la mission', en: 'Scope of Work' },
+    { fr: 'Preuves de réalisation', en: 'Proof of Execution' },
+    
     // 1. NAVIGATION & GLOBAL
     // -------------------------------------------------------------
     { fr: 'Accueil', en: 'Home' },
@@ -515,9 +520,9 @@
 
     document.querySelectorAll('.academy-main-title').forEach((el) => {
       if (lang === 'en') {
-        el.innerHTML = "The Talent Accelerator<br>of Eventify Agency";
+        el.innerHTML = "Eventify Talent Program";
       } else {
-        el.innerHTML = "L’incubateur de talents<br>d’Eventify Agency";
+        el.innerHTML = "Eventify Talent Program";
       }
     });
 
@@ -815,6 +820,14 @@
     injectNavDropdowns();
     const activeLang = getCurrentLang();
     setLanguage(activeLang);
+
+    // Auto-mount Smooth Scroll engine if not already active
+    if (!window.EventifySmoothScroll && !document.querySelector('script[src*="smooth-scroll.js"]')) {
+      const ss = document.createElement('script');
+      ss.src = 'assets/js/smooth-scroll.js';
+      ss.defer = true;
+      document.head.appendChild(ss);
+    }
   }
 
   if (document.readyState === 'loading') {
